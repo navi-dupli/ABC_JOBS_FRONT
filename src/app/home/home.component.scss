@@ -1,0 +1,12 @@
+.home-container {
+    display: flex;
+    align-items: flex-start;
+
+    &__menu {
+        width: 20%;
+    }
+
+    &__content {
+        width: 80%;
+    }
+}
