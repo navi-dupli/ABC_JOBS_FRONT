@@ -1,0 +1,10 @@
+.layout-topbar-menu {
+    &__option {
+        display: flex;
+        align-items: center;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
