@@ -17,16 +17,13 @@ RUN npm install
 COPY . .
 
 # Build the Angular application for production
-RUN ng build --prod
+RUN ng build
 
 # Use an official Nginx runtime as a parent image
-FROM nginx:alpine
+FROM nginx:alpine AS ngi
 
 # Copy the built Angular app to the default Nginx web server location
-COPY dist/your-app-name /usr/share/nginx/html
-
+COPY dist/abc-jobs /usr/share/nginx/html
+COPY /nginx.conf  /etc/nginx/conf.d/default.conf
 # Expose port 80
 EXPOSE 80
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
