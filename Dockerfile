@@ -23,7 +23,7 @@ RUN ng build
 FROM nginx:alpine AS ngi
 
 # Copy the built Angular app to the default Nginx web server location
-COPY dist/abc-jobs /usr/share/nginx/html
+COPY --from=build dist/abc-jobs /usr/share/nginx/html
 COPY /nginx.conf  /etc/nginx/conf.d/default.conf
 # Expose port 80
 EXPOSE 80
