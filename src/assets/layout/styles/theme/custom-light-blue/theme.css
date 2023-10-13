@@ -42,6 +42,7 @@
     --surface-hover:#f6f9fc;
     --focus-ring: 0 0 0 0.2rem #b8e7ff;
     --maskbg: rgba(0, 0, 0, 0.4);
+    --error-color:  #e24c4c;
     color-scheme:light
 }
 * {
@@ -60,7 +61,7 @@
     opacity:.6
 }
 .p-error {
-    color:#e24c4c
+    color: var(--error-color)
 }
 .p-text-secondary {
     color:#64748b
@@ -265,7 +266,7 @@
     margin-left:.5rem
 }
 p-autocomplete.ng-dirty.ng-invalid>.p-autocomplete>.p-inputtext {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-autocomplete-panel {
     background:#fff;
@@ -318,7 +319,7 @@ p-autocomplete.p-autocomplete-clearable .p-autocomplete-dd .p-autocomplete-clear
     right:3.75rem
 }
 p-calendar.ng-dirty.ng-invalid>.p-calendar>.p-inputtext {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-datepicker {
     padding:.5rem;
@@ -614,7 +615,7 @@ p-calendar.p-calendar-clearable.p-calendar-w-btn .p-calendar-clear-icon {
     height:.875rem
 }
 p-cascadeselect.ng-dirty.ng-invalid>.p-cascadeselect {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-input-filled .p-cascadeselect {
     background:#e9ecef
@@ -681,7 +682,7 @@ p-cascadeselect.p-cascadeselect-clearable .p-cascadeselect-clear-icon {
     color:#fff
 }
 p-checkbox.ng-dirty.ng-invalid>.p-checkbox>.p-checkbox-box {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-input-filled .p-checkbox .p-checkbox-box {
     background-color:#e9ecef
@@ -731,7 +732,7 @@ p-checkbox.ng-dirty.ng-invalid>.p-checkbox>.p-checkbox-box {
     margin:0
 }
 p-chips.ng-dirty.ng-invalid>.p-chips>.p-inputtext {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 p-chips.p-chips-clearable .p-inputtext {
     padding-right:1.75rem
@@ -851,7 +852,7 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
     font-weight:700
 }
 p-dropdown.ng-dirty.ng-invalid>.p-dropdown {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-input-filled .p-dropdown {
     background:#e9ecef
@@ -1000,7 +1001,7 @@ p-dropdown.ng-dirty.ng-invalid>.p-dropdown {
     width:3rem
 }
 p-inputmask.ng-dirty.ng-invalid>.p-inputtext {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 p-inputmask.p-inputmask-clearable .p-inputtext {
     padding-right:2.5rem
@@ -1010,7 +1011,7 @@ p-inputmask.p-inputmask-clearable .p-inputmask-clear-icon {
     right:.75rem
 }
 p-inputnumber.ng-dirty.ng-invalid>.p-inputnumber>.p-inputtext {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 p-inputnumber.p-inputnumber-clearable .p-inputnumber-input {
     padding-right:2.5rem
@@ -1064,7 +1065,7 @@ p-inputnumber.p-inputnumber-clearable .p-inputnumber-buttons-horizontal .p-input
     background:#68dafd
 }
 p-inputswitch.ng-dirty.ng-invalid>.p-inputswitch {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-inputtext {
     font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -1087,7 +1088,7 @@ p-inputswitch.ng-dirty.ng-invalid>.p-inputswitch {
     border-color:#6dc9f1
 }
 .p-inputtext.ng-dirty.ng-invalid {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-inputtext.p-inputtext-sm {
     font-size:.875rem;
@@ -1103,7 +1104,7 @@ p-inputswitch.ng-dirty.ng-invalid>.p-inputswitch {
     transition-duration:.2s
 }
 .p-float-label>.ng-invalid.ng-dirty+label {
-    color:#e24c4c
+    color: var(--error-color)
 }
 .p-input-icon-left>.p-icon-wrapper.p-icon,.p-input-icon-left>i:first-of-type {
     left:.75rem;
@@ -1216,7 +1217,7 @@ p-inputswitch.ng-dirty.ng-invalid>.p-inputswitch {
     background:#e9ecef
 }
 p-listbox.ng-dirty.ng-invalid>.p-listbox {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-multiselect {
     background:#fff;
@@ -1349,7 +1350,7 @@ p-listbox.ng-dirty.ng-invalid>.p-listbox {
     background:transparent
 }
 p-multiselect.ng-dirty.ng-invalid>.p-multiselect {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-input-filled .p-multiselect {
     background:#e9ecef
@@ -1368,7 +1369,7 @@ p-multiselect.p-multiselect-clearable .p-multiselect-clear-icon {
     right:3rem
 }
 p-password.ng-invalid.ng-dirty>.p-password>.p-inputtext {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-password-panel {
     padding:1.25rem;
@@ -1443,7 +1444,7 @@ p-password.p-password-clearable.p-password-mask .p-password-clear-icon {
     color:#fff
 }
 p-radiobutton.ng-dirty.ng-invalid>.p-radiobutton>.p-radiobutton-box {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-input-filled .p-radiobutton .p-radiobutton-box {
     background-color:#e9ecef
@@ -1527,7 +1528,7 @@ p-radiobutton.ng-dirty.ng-invalid>.p-radiobutton>.p-radiobutton-box {
     color:#fff
 }
 p-selectbutton.ng-dirty.ng-invalid>.p-selectbutton>.p-button {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-slider {
     background:#e2e8f0;
@@ -1614,7 +1615,7 @@ p-selectbutton.ng-dirty.ng-invalid>.p-selectbutton>.p-button {
     color:#fff
 }
 p-togglebutton.ng-dirty.ng-invalid>.p-togglebutton.p-button {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-treeselect {
     background:#fff;
@@ -1653,7 +1654,7 @@ p-togglebutton.ng-dirty.ng-invalid>.p-togglebutton.p-button {
     border-bottom-right-radius:4px
 }
 p-treeselect.ng-invalid.ng-dirty>.p-treeselect {
-    border-color:#e24c4c
+    border-color: var(--error-color)
 }
 .p-inputwrapper-filled .p-treeselect.p-treeselect-chip .p-treeselect-label {
     padding:.375rem .75rem

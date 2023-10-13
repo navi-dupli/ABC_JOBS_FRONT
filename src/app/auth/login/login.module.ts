@@ -7,6 +7,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { LoginRoutingModule } from './login-routing.module';
 import { PasswordModule } from 'primeng/password';
 import { CheckboxModule } from 'primeng/checkbox';
+import { SelectLanguageModule } from 'src/app/components/select-language/select-language.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CustomDialogModule } from 'src/app/components/custom-dialog/custom-dialog.module';
 
 @NgModule({
     imports: [
@@ -17,6 +20,9 @@ import { CheckboxModule } from 'primeng/checkbox';
         PasswordModule,
         CheckboxModule,
         LoginRoutingModule,
+        SelectLanguageModule,
+        ReactiveFormsModule,
+        CustomDialogModule
     ],
     declarations: [LoginComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
