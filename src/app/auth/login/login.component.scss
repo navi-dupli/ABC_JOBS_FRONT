@@ -13,6 +13,15 @@
 .login-container {
     position: relative;
 
+    overflow-x: hidden;
+    &-card {
+        min-height: 50vh;
+        height: 100%;
+        padding-top: 2%;
+        position: relative;
+        z-index: 9;
+    }
+
     &__language {
         display: flex;
         justify-content: flex-end;
