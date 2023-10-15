@@ -22,7 +22,7 @@ export class SelectLanguageComponent implements OnInit {
     this.languages = [
       {name: 'Español - COL', code: 'spanish'},
       {name: 'Ingles - USA', code: 'english'},
-  ];
+    ];
   }
 
 }

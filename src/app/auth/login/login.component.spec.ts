@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
-import { AuthService } from '../../../app/services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 import { LoginComponent } from './login.component';
 

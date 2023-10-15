@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomDialogModel } from '../../../app/models/custom-dialog.model';
-import { AuthService } from '../../../app/services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
     selector: 'app-login',
