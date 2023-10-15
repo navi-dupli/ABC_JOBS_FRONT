@@ -41,36 +41,48 @@ export class RegisterCompanyComponent implements OnInit {
 
   ngOnInit(): void {
     this.countriesOptions = [
-      {name: 'Español - COL', code: 1},
-      {name: 'Ingles - USA', code: 1},
+      {name: 'Seleccione una opción', code: 0},
+      {name: 'Colombia', code: 1},
+      {name: 'Argentina', code: 1},
     ];
     this.regionOptions = [
-      {name: 'Español - COL', code: 1},
-      {name: 'Ingles - USA', code: 1},
+      {name: 'Seleccione una opción', code: 0},
+      {name: 'Boyacá', code: 1},
+      {name: 'Cundinamarca', code: 1},
     ];
     this.cityOptions = [
-      {name: 'Español - COL', code: 1},
-      {name: 'Ingles - USA', code: 1},
+      {name: 'Seleccione una opción', code: 0},
+      {name: 'Tunja', code: 1},
+      {name: 'Bogotá', code: 1},
     ];
   }
-
   onSubmit() {
     this.companyService.registerCompany(this.registerCompany.value).subscribe({
       next: (result) => {
-          if (result) {
-              localStorage.setItem('currentUser', JSON.stringify(result));
-              this.router.navigate(['/']);
+        if (result) {
+          localStorage.setItem('currentUser', JSON.stringify(result));
+          this.dataModal = {
+            displayModal: true,
+            textModal: 'Empresa registrada con éxito',
+            iconModal: 'pi-check',
+            typeModal: 'Confirmación'
           }
+        }
       },
       error: (e) => {
-          this.dataModal = {
-              displayModal: true,
-              textModal: 'Hubo un error al registrar la empresa',
-              iconModal: 'pi-exclamation-circle',
-              typeModal: 'Error'
-          }
+        this.dataModal = {
+          displayModal: true,
+          textModal: 'Hubo un error al registrar la empresa',
+          iconModal: 'pi-exclamation-circle',
+          typeModal: 'Error'
+        }
       }
-  });
+    });
+  }
+  closeModal(event: boolean) {
+    if (event) {
+      this.router.navigate(['/']);
+    }
   }
 
   get companyName() { return this.registerCompany.get('companyName'); }
