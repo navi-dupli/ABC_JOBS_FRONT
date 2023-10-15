@@ -15,15 +15,18 @@ export interface CompanyModel {
 
 export interface CountriesModel {
     name: string, 
-    code: number
+    id: number,
+    code: string
   }
 
 export interface RegionModel {
   name: string, 
-  code: number
+  id: number,
+  code: string
 }
 
 export interface CityModel {
   name: string, 
-  code: number
+  id: number,
+  code: string
 }

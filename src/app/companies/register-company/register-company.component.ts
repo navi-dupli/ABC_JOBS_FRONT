@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LocationService } from 'src/app/services/location/location.service';
 import { CityModel, CountriesModel, RegionModel } from '../../../app/models/companies';
 import { CustomDialogModel } from '../../../app/models/custom-dialog.model';
 import { CompaniesService } from '../../../app/services/companies/companies.service';
@@ -22,7 +23,8 @@ export class RegisterCompanyComponent implements OnInit {
 
   constructor(
     private companyService: CompaniesService,
-    private router: Router) { 
+    private router: Router,
+    private locationService: LocationService) { 
     this.registerCompany = new FormGroup({
       companyName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       uniqueIdentification: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -40,27 +42,15 @@ export class RegisterCompanyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.countriesOptions = [
-      {name: 'Seleccione una opción', code: 0},
-      {name: 'Colombia', code: 1},
-      {name: 'Argentina', code: 1},
-    ];
-    this.regionOptions = [
-      {name: 'Seleccione una opción', code: 0},
-      {name: 'Boyacá', code: 1},
-      {name: 'Cundinamarca', code: 1},
-    ];
-    this.cityOptions = [
-      {name: 'Seleccione una opción', code: 0},
-      {name: 'Tunja', code: 1},
-      {name: 'Bogotá', code: 1},
-    ];
+    this.locationService.getCountries().subscribe(result => {
+      this.countriesOptions = result;
+    });
+    
   }
   onSubmit() {
     this.companyService.registerCompany(this.registerCompany.value).subscribe({
       next: (result) => {
         if (result) {
-          localStorage.setItem('currentUser', JSON.stringify(result));
           this.dataModal = {
             displayModal: true,
             textModal: 'Empresa registrada con éxito',
@@ -79,10 +69,23 @@ export class RegisterCompanyComponent implements OnInit {
       }
     });
   }
+
   closeModal(event: boolean) {
     if (event) {
       this.router.navigate(['/']);
     }
+  }
+
+  onChangeCountry(country: number) {
+    this.locationService.getRegions(country).subscribe(result => {
+      this.regionOptions = result;
+    })
+  }
+
+  onChangeRegion(region: number) {
+    this.locationService.getCity(region).subscribe(result => {
+      this.cityOptions = result;
+    })
   }
 
   get companyName() { return this.registerCompany.get('companyName'); }
