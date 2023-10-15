@@ -1,0 +1,373 @@
+<div class="flex justify-content-center mt-5">
+    <div class="flex flex-column justify-content-center surface-card p-5 register-company-container">
+        <div class="text-3xl font-medium mb-3">Registro Empresa</div>
+
+        <form [formGroup]="registerCompany">
+            <label 
+                for="company_name" 
+                class="block text-xl font-medium mb-2">Nombre empresa</label>
+            <div class="mb-5">
+                <div class="w-full">
+                    <input 
+                        id="company_name" 
+                        type="text" 
+                        placeholder="Nombre empresa*" 
+                        pInputText 
+                        [class]="'w-full ' + 
+                                (companyName.invalid && (companyName.dirty || companyName.touched) ? 'ng-dirty' : '')" 
+                        style="padding:1rem"
+                        formControlName="companyName">
+                </div>
+
+                <div
+                    class="error-form"
+                    *ngIf="companyName.invalid && (companyName.dirty || companyName.touched)">
+                    <span *ngIf="companyName.errors.required">
+                        Campo obligatorio
+                    </span>
+                    <span *ngIf="companyName.errors.minlength">
+                        El nombre debe ser de máximo 100 caracteres
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex w-full gap-5">
+                <div class="w-6">
+                    <label 
+                        for="company_id" 
+                        class="block text-xl font-medium mb-2">Identificación unica</label>
+                    <div class="mb-5">
+                        <div class="w-full">
+                            <input 
+                                id="company_id" 
+                                type="text" 
+                                placeholder="Identificación unica*" 
+                                pInputText 
+                                [class]="'w-full ' + 
+                                        (uniqueIdentification.invalid && (uniqueIdentification.dirty || uniqueIdentification.touched) ? 'ng-dirty' : '')" 
+                                style="padding:1rem"
+                                formControlName="uniqueIdentification">
+                        </div>
+
+                        <div
+                            class="error-form"
+                            *ngIf="uniqueIdentification.invalid && (uniqueIdentification.dirty || uniqueIdentification.touched)">
+                            <span *ngIf="uniqueIdentification.errors.required">
+                                Campo obligatorio
+                            </span>
+                            <span *ngIf="uniqueIdentification.errors.minlength">
+                                La Identificación unica debe ser de máximo 100 caracteres
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-6">
+                    <label 
+                        for="company_business" 
+                        class="block text-xl font-medium mb-2">Actividad comercial</label>
+                    <div class="mb-5">
+                        <div class="w-full">
+                            <input 
+                                id="company_business" 
+                                type="text" 
+                                placeholder="Actividad comercial*" 
+                                pInputText 
+                                [class]="'w-full ' + 
+                                        (businessActivity.invalid && (businessActivity.dirty || businessActivity.touched) ? 'ng-dirty' : '')" 
+                                style="padding:1rem"
+                                formControlName="businessActivity">
+                        </div>
+
+                        <div
+                            class="error-form"
+                            *ngIf="businessActivity.invalid && (businessActivity.dirty || businessActivity.touched)">
+                            <span *ngIf="businessActivity.errors.required">
+                                Campo obligatorio
+                            </span>
+                            <span *ngIf="businessActivity.errors.minlength">
+                                La Identificación unica debe ser de máximo 100 caracteres
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <label 
+                for="company_email" 
+                class="block text-xl font-medium mb-2">Correo electrónico</label>
+            <div class="mb-5">
+                <div class="w-full">
+                    <input 
+                        id="company_email" 
+                        type="text" 
+                        placeholder="Correo electrónico*" 
+                        pInputText 
+                        [class]="'w-full ' + 
+                                (companyEmail.invalid && (companyEmail.dirty || companyEmail.touched) ? 'ng-dirty' : '')" 
+                        style="padding:1rem"
+                        formControlName="companyEmail">
+                </div>
+
+                <div
+                    class="error-form"
+                    *ngIf="companyEmail.invalid && (companyEmail.dirty || companyEmail.touched)">
+                    <span *ngIf="companyEmail.errors.required">
+                        Campo obligatorio
+                    </span>
+
+                    <span *ngIf="companyEmail.errors.pattern">
+                        Formato incorrecto se espera formato aa@dominio.co
+                    </span>
+                </div>
+            </div>
+
+            <label 
+                for="company_name_representative" 
+                class="block text-xl font-medium mb-2">Nombre representante</label>
+            <div class="mb-5">
+                <div class="w-full">
+                    <input 
+                        id="company_name_representative" 
+                        type="text" 
+                        placeholder="Nombre representante*" 
+                        pInputText 
+                        [class]="'w-full ' + 
+                                (representativeName.invalid && (representativeName.dirty || representativeName.touched) ? 'ng-dirty' : '')" 
+                        style="padding:1rem"
+                        formControlName="representativeName">
+                </div>
+
+                <div
+                    class="error-form"
+                    *ngIf="representativeName.invalid && (representativeName.dirty || representativeName.touched)">
+                    <span *ngIf="representativeName.errors.required">
+                        Campo obligatorio
+                    </span>
+                    <span *ngIf="representativeName.errors.minlength">
+                        El nombre del representante debe ser de máximo 100 caracteres
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex w-full gap-5">
+                <div class="w-6">
+                    <label 
+                        for="company_email_representative" 
+                        class="block text-xl font-medium mb-2">Correo electrónico representante</label>
+                    <div class="mb-5">
+                        <div class="w-full">
+                            <input 
+                                id="company_email_representative" 
+                                type="text" 
+                                placeholder="Correo electrónico representante*" 
+                                pInputText 
+                                [class]="'w-full ' + 
+                                        (representativeEmail.invalid && (representativeEmail.dirty || representativeEmail.touched) ? 'ng-dirty' : '')" 
+                                style="padding:1rem"
+                                formControlName="representativeEmail">
+                        </div>
+
+                        <div
+                            class="error-form"
+                            *ngIf="representativeEmail.invalid && (representativeEmail.dirty || representativeEmail.touched)">
+                            <span *ngIf="representativeEmail.errors.required">
+                                Campo obligatorio
+                            </span>
+                            <span *ngIf="representativeEmail.errors.pattern">
+                                Formato incorrecto se espera formato aa@dominio.co
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-6">
+                    <label 
+                        for="company_representative_password" 
+                        class="block font-medium text-xl mb-2">Contraseña representante</label>
+                    <div class="mb-5 w-full">
+                        <p-password 
+                            id="company_representative_password" 
+                            placeholder="Contraseña representante*" 
+                            [toggleMask]="true" 
+                            [class]="'company-password w-full' + (representativePassword.invalid && (representativePassword.dirty || representativePassword.touched) ? 'ng-dirty' : '')" 
+                            formControlName="representativePassword">
+                        </p-password>
+
+                        <div
+                            class="error-form"
+                            *ngIf="representativePassword.invalid && (representativePassword.dirty || representativePassword.touched)">
+                            <span *ngIf="representativePassword.errors.required">
+                                Campo obligatorio
+                            </span>
+                            <span *ngIf="representativePassword.errors.minlength">
+                                La contraseña del representante debe ser de mínimo 8 caracteres
+                            </span>
+                            <span *ngIf="representativePassword.errors.pattern">
+                                La contraseña debe tener mínimo una mayúscula y un número y un caracter especial
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <label 
+                for="company_phone" 
+                class="block text-xl font-medium mb-2">Teléfono</label>
+            <div class="mb-5">
+                <div class="w-full">
+                    <input 
+                        id="company_phone" 
+                        type="text" 
+                        placeholder="Teléfono*" 
+                        pInputText 
+                        [class]="'w-full ' + 
+                                (phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched) ? 'ng-dirty' : '')" 
+                        style="padding:1rem"
+                        formControlName="phoneNumber">
+                </div>
+
+                <div
+                    class="error-form"
+                    *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
+                    <span *ngIf="phoneNumber.errors.required">
+                        Campo obligatorio
+                    </span>
+                    <span *ngIf="password.errors.minlength">
+                        El nombre del representante debe ser de máximo 50 caracteres
+                    </span>
+                </div>
+            </div>
+            
+            <div class="flex w-full gap-5">
+                <div class="w-6">
+                    <label 
+                        for="company_country" 
+                        class="block text-xl font-medium mb-2">País</label>
+                    <div class="mb-5">
+                        <div class="w-full">
+                            <p-dropdown 
+                                [options]="countriesOptions"
+                                optionValue="code"
+                                optionLabel="name"
+                                formControlName="country"
+                                [class]="(country.invalid && (country.dirty || country.touched) ? 'ng-dirty' : '')" ></p-dropdown>
+                        </div>
+
+                        <div
+                            class="error-form"
+                            *ngIf="country.invalid && (country.dirty || country.touched)">
+                            <span *ngIf="country.errors.required">
+                                Campo obligatorio
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-6">
+                    <label 
+                        for="company_region" 
+                        class="block text-xl font-medium mb-2">Región</label>
+                    <div class="mb-5">
+                        <div class="w-full">
+                            <p-dropdown 
+                                [options]="regionOptions"
+                                optionValue="code"
+                                optionLabel="name"
+                                formControlName="region"
+                                [class]="(region.invalid && (region.dirty || region.touched) ? 'ng-dirty' : '')" ></p-dropdown>
+                        </div>
+
+                        <div
+                            class="error-form"
+                            *ngIf="region.invalid && (region.dirty || region.touched)">
+                            <span *ngIf="region.errors.required">
+                                Campo obligatorio
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex w-full gap-5">
+                <div class="w-6">
+                    <label 
+                        for="company_city" 
+                        class="block text-xl font-medium mb-2">Ciudad</label>
+                    <div class="mb-5">
+                        <div class="w-full">
+                            <p-dropdown 
+                                [options]="cityOptions"
+                                optionValue="code"
+                                optionLabel="name"
+                                formControlName="city"
+                                [class]="(city.invalid && (city.dirty || city.touched) ? 'ng-dirty' : '')" ></p-dropdown>
+                        </div>
+
+                        <div
+                            class="error-form"
+                            *ngIf="city.invalid && (city.dirty || city.touched)">
+                            <span *ngIf="city.errors.required">
+                                Campo obligatorio
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-6">
+                    <label 
+                        for="company_address" 
+                        class="block text-xl font-medium mb-2">Dirección</label>
+                    <div class="mb-5">
+                        <div class="w-full">
+                            <input 
+                                id="company_address" 
+                                type="text" 
+                                placeholder="Dirección*" 
+                                pInputText 
+                                [class]="'w-full ' + 
+                                        (address.invalid && (address.dirty || address.touched) ? 'ng-dirty' : '')" 
+                                style="padding:1rem"
+                                formControlName="address">
+                        </div>
+
+                        <div
+                            class="error-form"
+                            *ngIf="address.invalid && (address.dirty || address.touched)">
+                            <span *ngIf="address.errors.required">
+                                Campo obligatorio
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex justify-content-end">
+                <button 
+                    pButton 
+                    pRipple 
+                    type="button" 
+                    label="Cancelar" 
+                    class="p-button-outlined mr-5" 
+                    [routerLink]="['/']">
+                </button>
+                <button 
+                    pButton 
+                    pRipple 
+                    type="button" 
+                    label="Guardar" 
+                    [disabled]="registerCompany.invalid"
+                    (click)="onSubmit()">
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<app-custom-dialog
+        [dataModal]="dataModal"
+        (closeModal)="closeModal($event)">
+</app-custom-dialog>

@@ -1,13 +1,15 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
+import { AuthGuard } from './guard/auth-guard';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {
                 path: '',
-                loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+                loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+                canActivate: [AuthGuard]
             },
             {
                 path: 'iniciar-sesion',

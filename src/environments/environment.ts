@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  grant_type: "password",
+  username: "mi13dj22@gmail.com",
+  password: "prueba$123",
+  audience: "http://abc-jobs.users-api.dev", 
+  client_id: "pWsYKGDM60cdtDOwAdGZyT9ipiAcHR4N",
+  client_secret: "XU_cTmnfLTog_Nc9whCHTtz1bTTkhT6vvT-4uruXavU7546z5XxERkaRoRZUH2Zw",
+  url_login: "https://abc-jobs-dev.us.auth0.com/oauth/token",
+  url_commons: "https://microservice-commons-zipu7fiszq-uc.a.run.app",
+  url_companies: "https://microservice-companies-zipu7fiszq-uc.a.run.app/companies"
 };
 
 /*

@@ -8,11 +8,20 @@ module.exports = {
             stringifyContentPathRegex: '\\.(html|svg)$',
         },
     },
+    coverageThreshold: {
+        "global": {
+            "functions": 70,
+            "lines": 70,
+            "statements": 70
+        }
+    },
     coverageDirectory: './coverage',
     transform: {
         '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
     },
-    transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
+    transformIgnorePatterns: [
+        'node_modules/(?!.*\\.mjs$)',
+        "<rootDir>/src/app/layout/service/app.layout.service.ts"],
     snapshotSerializers: [
         'jest-preset-angular/build/serializers/no-ng-attributes',
         'jest-preset-angular/build/serializers/ng-snapshot',

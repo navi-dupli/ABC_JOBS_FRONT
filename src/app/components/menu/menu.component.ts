@@ -24,6 +24,12 @@ export class MenuComponent {
         items: [
           { label: 'Crear proyecto', icon: 'pi pi-fw pi-id-card', routerLink: ['/crear-proyecto'] }
         ]
+      },
+      {
+        label: 'Registrar empresa',
+        items: [
+          { label: 'Registrar empresa', icon: 'pi pi-fw pi-id-card', routerLink: ['/registrar-empresa'] }
+        ]
       }
     ];
   }

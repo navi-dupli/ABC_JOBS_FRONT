@@ -1,36 +1,123 @@
-<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
-    <div class="flex flex-column align-items-center justify-content-center">
-        <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
-            <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
-                <div class="text-center mb-5">
-                    <img src="assets/demo/images/login/avatar.png" alt="Image" height="50" class="mb-3">
-                    <div class="text-900 text-3xl font-medium mb-3">Ingreso</div>
+<div class="login-container">
+    <div class="surface-ground flex justify-content-center align-items-center min-h-screen min-w-screen overflow-hidden">
+        <div class="flex flex-column justify-content-center surface-card login-container-card">
+            <div class="login-container__language">
+                <app-select-language></app-select-language>
+            </div>
+
+            <div class="w-full h-full py-8 px-5 sm:px-8">
+                <div class="text-center">
+                    <img 
+                        src="assets/images/logo.png" 
+                        alt="Logo" 
+                        class="mb-3">
                 </div>
 
-                <div>
-                    <label for="email1" class="block text-900 text-xl font-medium mb-2">Correo eléctronico</label>
-                    <span class="p-input-icon-right">
-						<i class="pi pi-user"></i>
-                        <input id="email1" type="text" placeholder="Correo eléctronico" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
-					</span>
+                <div class="text-center mb-5">
+                    <img 
+                        src="assets/images/nombre.png" 
+                        alt="Nombre empresa" 
+                        class="mb-3">
+                    <div class="text-3xl font-medium mb-3">Ingreso</div>
+                </div>
 
-                    <label for="password1" class="block text-900 font-medium text-xl mb-2">Contraseña</label>
-                    <span class="p-input-icon-right">
-						<i class="pi pi-user"></i>
-                        <p-password id="password1" placeholder="Contraseña" [toggleMask]="true" styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
-					</span>
+                <form [formGroup]="login">
+                    <label 
+                        for="login_email" 
+                        class="block text-xl font-medium mb-2">Correo electrónico</label>
+                    <div class="mb-5">
+                        <div class="p-input-icon-right">
+                            <input 
+                                id="login_email" 
+                                type="text" 
+                                placeholder="Correo electrónico*" 
+                                pInputText 
+                                [class]="'w-full md:w-30rem ' + 
+                                        (email.invalid && (email.dirty || email.touched) ? 'ng-dirty' : '')" 
+                                style="padding:1rem"
+                                formControlName="email">
+                            <i class="pi pi-user"></i>
+                        </div>
+
+                        <div
+                            class="error-form"
+                            *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <span *ngIf="email.errors.required">
+                                Campo obligatorio
+                            </span>
+
+                            <span *ngIf="email.errors.pattern">
+                                Formato incorrecto se espera formato aa@dominio.co
+                            </span>
+                        </div>
+                    </div>
+
+                    <label 
+                        for="login_password" 
+                        class="block font-medium text-xl mb-2">Contraseña</label>
+                    <div class="p-input-icon-right mb-5">
+                        <p-password 
+                            id="login_password" 
+                            placeholder="Contraseña*" 
+                            [toggleMask]="true" 
+                            [class]="(password.invalid && (password.dirty || password.touched) ? 'ng-dirty' : '')" 
+                            inputStyleClass="w-full p-3 md:w-30rem"
+                            formControlName="password">
+                        </p-password>
+
+                        <div
+                            class="error-form"
+                            *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <span *ngIf="password.errors.required">
+                                Campo obligatorio
+                            </span>
+
+                            <span *ngIf="password.errors.minlength">
+                                La contraseña debe ser de mínimo 8 caracteres
+                            </span>
+                        </div>
+                    </div>
 
                     <div class="flex align-items-center justify-content-between mb-5 gap-5">
                         <div class="flex align-items-center">
-                            <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                            <p-checkbox 
+                                id="login_rememberme" 
+                                [binary]="true" 
+                                styleClass="mr-2"></p-checkbox>
                             <label for="rememberme1">Recordarme</label>
                         </div>
-                        <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Olvide mi contraseña</a>
+                        <a id="login_forgot_password" class="font-medium ml-2 text-right cursor-pointer forgot">Olvide mi contraseña</a>
                     </div>
-                    <button pButton pRipple type="button" label="Primary" class="p-button-outlined" [routerLink]="['/']"></button>
-                    <button pButton pRipple type="button" label="Ingresar" [routerLink]="['/']"></button>
-                </div>
+
+                    <div class="login-container__btns">
+                        <button 
+                            pButton 
+                            pRipple 
+                            type="button" 
+                            label="Registrarme" 
+                            class="p-button-outlined mr-5" 
+                            [routerLink]="['/']">
+                        </button>
+                        <button 
+                            pButton 
+                            pRipple 
+                            type="button" 
+                            label="Ingresar" 
+                            [disabled]="login.invalid"
+                            (click)="onSubmit()">
+                        </button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
+
+    <div class="login-container__footer">
+        <img src="assets/images/frame.png" alt="">
+    </div>
 </div>
+
+<app-custom-dialog
+    [dataModal]="dataModal">
+</app-custom-dialog>

@@ -1,15 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
 import { ButtonModule } from 'primeng/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { LoginRoutingModule } from './login-routing.module';
 import { PasswordModule } from 'primeng/password';
-import { CheckboxModule } from 'primeng/checkbox';
-import { SelectLanguageModule } from 'src/app/components/select-language/select-language.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { CustomDialogModule } from 'src/app/components/custom-dialog/custom-dialog.module';
+import { RegisterCompanyComponent } from './register-company.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
@@ -18,13 +16,12 @@ import { CustomDialogModule } from 'src/app/components/custom-dialog/custom-dial
 		InputTextModule,
 		ButtonModule,
         PasswordModule,
-        CheckboxModule,
-        LoginRoutingModule,
-        SelectLanguageModule,
         ReactiveFormsModule,
-        CustomDialogModule
+        CustomDialogModule,
+        DropdownModule,
+        RouterModule
     ],
-    declarations: [LoginComponent],
+    declarations: [RegisterCompanyComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
-export class LoginModule { }
+export class RegisterCompanyModule { }
