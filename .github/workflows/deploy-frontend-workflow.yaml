@@ -41,8 +41,6 @@ jobs:
         with:
           service: ${{ inputs.service }}
           region: ${{ inputs.region }}
-          # NOTE: If required, update to the appropriate source folder
-          source: ${{ inputs.source }}
 
       # If required, use the Cloud Run url output in later steps
       - name: Show Output
