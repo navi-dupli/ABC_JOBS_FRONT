@@ -4,10 +4,14 @@
 
     &__menu {
         width: 20%;
+        min-height: 100vh;
+        position: fixed;
+        background-color: var(--surface-menu);
     }
 
     &__wrapper {
         width: 80%;
+        margin-left: auto;
 
         &__content {
             min-height: calc(100vh - 70px);

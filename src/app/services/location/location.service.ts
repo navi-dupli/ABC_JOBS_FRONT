@@ -8,14 +8,13 @@ import { environment } from '../../../environments/environment';
 export class LocationService {
 
   headers: HttpHeaders;
-  currentUser;
 
   constructor(private http: HttpClient) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.currentUser.access_token}`
+        'Authorization': `Bearer ${currentUser.access_token}`
       }
     );
   }
