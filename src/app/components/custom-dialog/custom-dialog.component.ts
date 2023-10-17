@@ -11,20 +11,23 @@ export class CustomDialogComponent implements OnInit {
     this.data = data;
   }
   @Output() closeModal = new EventEmitter<boolean>();
+  @Output() confirmModal = new EventEmitter<boolean>();
   ref: DynamicDialogRef;
   data: CustomDialogModel;
   constructor() { }
   ngOnInit(): void {
-    if (this.data.typeModal === 'Confirmación') {
-      this.ref.onClose.subscribe(() => {
-        this.closeModal.emit(true);
-      });
-    }
+
   }
+
   closeDialog() {
-    this.data.displayModal=false;
-    if (this.data.textModal === 'Confirmación') {
+    this.data.displayModal = false;
+    if (this.data.typeModal === 'Éxito') {
       this.closeModal.emit(true);
     }
+  }
+
+  confirmDialog() {
+    this.confirmModal.emit(true);
+    this.data.displayModal = false;
   }
 }

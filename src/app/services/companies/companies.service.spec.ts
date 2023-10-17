@@ -6,6 +6,8 @@ import { CompaniesService } from './companies.service';
 describe('CompaniesService', () => {
   let companiesService: CompaniesService;
   let httpTestingController: HttpTestingController;
+  const currentUser = { access_token: 'your-access-token' };
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
   beforeEach(() => {
     TestBed.configureTestingModule({

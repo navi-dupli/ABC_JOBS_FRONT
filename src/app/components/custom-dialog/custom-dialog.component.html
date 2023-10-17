@@ -16,6 +16,15 @@
         </p>
     </div>
     <ng-template pTemplate="footer">
-        <button pButton (click)="closeDialog()" label="Ok"></button>
+        <button 
+            pButton 
+            (click)="closeDialog()" 
+            [class]="data.typeModal === 'Confirmación' ? 'p-button-outlined' : ''"
+            [label]="data.typeModal === 'Confirmación' ? 'Cancelar' : 'Ok'"></button>
+        <button 
+            *ngIf="data.typeModal === 'Confirmación'"
+            pButton 
+            (click)="confirmDialog()" 
+            label="Aceptar"></button>
     </ng-template>
 </p-dialog>
