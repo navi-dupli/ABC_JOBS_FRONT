@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LocationService } from 'src/app/services/location/location.service';
+import { LocationService } from '../../../app/services/location/location.service';
 import { CityModel, CountriesModel, RegionModel } from '../../../app/models/companies';
 import { CustomDialogModel } from '../../../app/models/custom-dialog.model';
 import { CompaniesService } from '../../../app/services/companies/companies.service';
@@ -48,31 +48,42 @@ export class RegisterCompanyComponent implements OnInit {
     
   }
   onSubmit() {
-    this.companyService.registerCompany(this.registerCompany.value).subscribe({
-      next: (result) => {
-        if (result) {
+    this.dataModal = {
+      displayModal: true,
+      textModal: '¿Desea registrar una nueva empresa?',
+      iconModal: 'pi-exclamation-triangle',
+      typeModal: 'Confirmación'
+    }
+  }
+
+  confirmModal(event: boolean) {
+    if (event) {
+      this.companyService.registerCompany(this.registerCompany.value).subscribe({
+        next: (result) => {
+          if (result) {
+            this.dataModal = {
+              displayModal: true,
+              textModal: 'Empresa registrada con éxito',
+              iconModal: 'pi-check',
+              typeModal: 'Éxito'
+            }
+          }
+        },
+        error: (e) => {
           this.dataModal = {
             displayModal: true,
-            textModal: 'Empresa registrada con éxito',
-            iconModal: 'pi-check',
-            typeModal: 'Confirmación'
+            textModal: 'Hubo un error al registrar la empresa',
+            iconModal: 'pi-exclamation-circle',
+            typeModal: 'Error'
           }
         }
-      },
-      error: (e) => {
-        this.dataModal = {
-          displayModal: true,
-          textModal: 'Hubo un error al registrar la empresa',
-          iconModal: 'pi-exclamation-circle',
-          typeModal: 'Error'
-        }
-      }
-    });
+      });
+    }
   }
 
   closeModal(event: boolean) {
     if (event) {
-      this.router.navigate(['/']);
+      this.clearForm();
     }
   }
 
@@ -86,6 +97,10 @@ export class RegisterCompanyComponent implements OnInit {
     this.locationService.getCity(region).subscribe(result => {
       this.cityOptions = result;
     })
+  }
+
+  clearForm() {
+    this.registerCompany.reset();
   }
 
   get companyName() { return this.registerCompany.get('companyName'); }
