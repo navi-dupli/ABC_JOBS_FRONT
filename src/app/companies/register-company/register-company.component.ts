@@ -70,11 +70,21 @@ export class RegisterCompanyComponent implements OnInit {
           }
         },
         error: (e) => {
-          this.dataModal = {
-            displayModal: true,
-            textModal: 'Hubo un error al registrar la empresa',
-            iconModal: 'pi-exclamation-circle',
-            typeModal: 'Error'
+          console.log(e)
+          if (e.status === 400) {
+            this.dataModal = {
+              displayModal: true,
+              textModal: e.error.message,
+              iconModal: 'pi-exclamation-circle',
+              typeModal: 'Error'
+            }
+          } else {
+            this.dataModal = {
+              displayModal: true,
+              textModal: 'Hubo un error al registrar la empresa',
+              iconModal: 'pi-exclamation-circle',
+              typeModal: 'Error'
+            }
           }
         }
       });
