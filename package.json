@@ -47,6 +47,7 @@
         "@angular-devkit/build-angular": "^16.1.5",
         "@angular/cli": "~16.1.5",
         "@angular/compiler-cli": "^16.1.0",
+        "jest-localstorage-mock": "^2.4.26",
         "typescript": "~5.1.3"
     }
 }

@@ -247,11 +247,13 @@
                     <div class="mb-5">
                         <div class="w-full">
                             <p-dropdown 
+                                placeholder="Seleccione una opción"
                                 [options]="countriesOptions"
-                                optionValue="code"
+                                optionValue="id"
                                 optionLabel="name"
                                 formControlName="country"
-                                [class]="(country.invalid && (country.dirty || country.touched) ? 'ng-dirty' : '')" ></p-dropdown>
+                                [class]="(country.invalid && (country.dirty || country.touched) ? 'ng-dirty' : '')" 
+                                (onChange)="onChangeCountry(country.value)"></p-dropdown>
                         </div>
 
                         <div
@@ -271,11 +273,13 @@
                     <div class="mb-5">
                         <div class="w-full">
                             <p-dropdown 
+                                placeholder="Seleccione una opción"
                                 [options]="regionOptions"
-                                optionValue="code"
+                                optionValue="id"
                                 optionLabel="name"
                                 formControlName="region"
-                                [class]="(region.invalid && (region.dirty || region.touched) ? 'ng-dirty' : '')" ></p-dropdown>
+                                [class]="(region.invalid && (region.dirty || region.touched) ? 'ng-dirty' : '')" 
+                                (onChange)="onChangeRegion(region.value)"></p-dropdown>
                         </div>
 
                         <div
@@ -297,8 +301,9 @@
                     <div class="mb-5">
                         <div class="w-full">
                             <p-dropdown 
+                                placeholder="Seleccione una opción"
                                 [options]="cityOptions"
-                                optionValue="code"
+                                optionValue="id"
                                 optionLabel="name"
                                 formControlName="city"
                                 [class]="(city.invalid && (city.dirty || city.touched) ? 'ng-dirty' : '')" ></p-dropdown>
@@ -369,5 +374,6 @@
 
 <app-custom-dialog
         [dataModal]="dataModal"
-        (closeModal)="closeModal($event)">
+        (closeModal)="closeModal($event)"
+        (confirmModal)="confirmModal($event)">
 </app-custom-dialog>

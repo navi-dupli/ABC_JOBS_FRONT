@@ -27,4 +27,35 @@ describe('CustomDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should close dialog with success', () => {
+    component.data = {
+      displayModal: true,
+      textModal: 'Success message',
+      iconModal: 'success-icon',
+      typeModal: 'Éxito',
+    };
+
+    let closeEventEmitted = false;
+    component.closeModal.subscribe((result: boolean) => {
+      closeEventEmitted = result;
+    });
+
+    component.closeDialog();
+
+    expect(component.data.displayModal).toBe(false);
+    expect(closeEventEmitted).toBe(true);
+  });
+
+  it('should confirm dialog', () => {
+    let confirmEventEmitted = false;
+    component.confirmModal.subscribe((result: boolean) => {
+      confirmEventEmitted = result;
+    });
+
+    component.confirmDialog();
+
+    expect(confirmEventEmitted).toBe(true);
+    expect(component.data.displayModal).toBe(false);
+  });
+
 });

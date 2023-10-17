@@ -1,80 +1,95 @@
+import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
+import { LocationService } from '../../../app/services/location/location.service';
 import { CompaniesService } from '../../../app/services/companies/companies.service';
-
 import { RegisterCompanyComponent } from './register-company.component';
 
 describe('RegisterCompanyComponent', () => {
   let component: RegisterCompanyComponent;
   let fixture: ComponentFixture<RegisterCompanyComponent>;
+  let locationService: LocationService;
   let companiesService: CompaniesService;
+  const currentUser = { access_token: 'your-access-token' };
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      declarations: [ RegisterCompanyComponent ],
-      providers: [CompaniesService]
-    })
-    .compileComponents();
+      declarations: [RegisterCompanyComponent],
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],
+      providers: [LocationService, CompaniesService],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RegisterCompanyComponent);
-    companiesService = TestBed.inject(CompaniesService);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    locationService = TestBed.inject(LocationService);
+    companiesService = TestBed.inject(CompaniesService);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should submit the form', () => {
-
-    const registerCompanyValue = {
-      "companyName": "Mi Empresa",
-      "uniqueIdentification": "123456789",
-      "businessActivity": "Servicios de Tecnología",
-      "companyEmail": "contacto@miempresa.com",
-      "representativeName": "Juan Pérez",
-      "representativeEmail": "juan@miempresa.com",
-      "representativePassword": "contraseña123",
-      "phoneNumber": "+1234567890",
-      "country": 1,   
-      "region": 2,  
-      "city": 3,     
-      "address": "123 Calle Principal, Suite 4A"
-    };
-    jest.spyOn(companiesService, 'registerCompany').mockReturnValue(of(registerCompanyValue)); 
-    
-    component.registerCompany.setValue(registerCompanyValue);
-
-    component.onSubmit();
-
-    expect(component.onSubmit()).toBeUndefined();
+  it('should initialize the form', () => {
+    expect(component.registerCompany).toBeDefined();
   });
 
-  it('should handle error when submitting the form', () => {
-    const companiesService = TestBed.inject(CompaniesService); // Mock service instance
+  it('should fetch countries on ngOnInit', () => {
+    const countries = [{ name: 'Country A' }, { name: 'Country B' }];
+    jest.spyOn(locationService, 'getCountries').mockReturnValue(of(countries));
 
-    const loginSpy = jest.spyOn(companiesService, 'registerCompany').mockReturnValue(throwError(() => 'Error en la autenticación'));
+    component.ngOnInit();
 
-    // Set form values
-    component.registerCompany.setValue({ 
-      "companyName": "Mi Empresa",
-      "uniqueIdentification": "123456789",
-      "businessActivity": "Servicios de Tecnología",
-      "companyEmail": "contacto@miempresa.com",
-      "representativeName": "Juan Pérez",
-      "representativeEmail": "juan@miempresa.com",
-      "representativePassword": "contraseña123",
-      "phoneNumber": "+1234567890",
-      "country": 1,   
-      "region": 2,  
-      "city": 3,     
-      "address": "123 Calle Principal, Suite 4A"
-    });
+    expect(component.countriesOptions).toEqual(countries);
+  });
 
+  it('should handle onSubmit', () => {
     component.onSubmit();
+
     expect(component.dataModal.displayModal).toBe(true);
+    expect(component.dataModal.textModal).toBe('¿Desea registrar una nueva empresa?');
   });
+
+  it('should handle confirmModal with event true', () => {
+    jest.spyOn(companiesService, 'registerCompany').mockReturnValue(of({ success: true }));
+    component.confirmModal(true);
+
+    expect(component.dataModal.displayModal).toBe(true);
+    expect(component.dataModal.textModal).toBe('Empresa registrada con éxito');
+  });
+
+  it('should handle confirmModal with event false', () => {
+    expect(component.confirmModal(false)).toBeUndefined();
+  });
+
+  it('should handle closeModal with event true', () => {
+    expect(component.closeModal(true)).toBeUndefined();
+  });
+
+  it('should handle onChangeCountry', fakeAsync(() => {
+    const regions = [{ name: 'Region A' }, { name: 'Region B' }];
+    jest.spyOn(locationService, 'getRegions').mockReturnValue(of(regions));
+
+    component.onChangeCountry(1);
+    tick();
+
+    expect(component.regionOptions).toEqual(regions);
+  }));
+
+  it('should handle onChangeRegion', fakeAsync(() => {
+    const cities = [{ name: 'City A' }, { name: 'City B' }];
+    jest.spyOn(locationService, 'getCity').mockReturnValue(of(cities));
+
+    component.onChangeRegion(1);
+    tick();
+
+    expect(component.cityOptions).toEqual(cities);
+  }));
+
+  it('should clear the form', () => {
+    expect(component.clearForm()).toBeUndefined();
+  });
+
 });
