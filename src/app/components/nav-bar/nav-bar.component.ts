@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthService} from "../../services/auth/auth.service";
+import * as jose from "jose";
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,9 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
+  user: any;
+  constructor(private authService: AuthService) {
+  }
 
-  constructor() {
-
+  ngOnInit() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const decodeToken = jose.decodeJwt(currentUser.id_token);
+    this.user = {
+      name: decodeToken["name"],
+      picture: decodeToken["picture"]
+    }
   }
 
 }

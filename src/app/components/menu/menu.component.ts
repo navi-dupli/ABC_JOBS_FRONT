@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import * as jose from 'jose';
+import {AuthService} from "../../services/auth/auth.service";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -28,7 +30,7 @@ export class MenuComponent {
     }
   ];
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.filterMenu();
@@ -58,5 +60,10 @@ export class MenuComponent {
        }) ? item : null;
       }
     });
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/iniciar-sesion']);
   }
 }

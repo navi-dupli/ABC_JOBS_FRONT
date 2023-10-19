@@ -6,7 +6,6 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-
   headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
@@ -16,15 +15,19 @@ export class AuthService {
   login(username: string, password: string) {
     const headers = this.headers;
     const body = {
-    grant_type: environment.grant_type,
-    username,
-    password,
-    audience: environment.audience, 
-    client_id: environment.client_id,
-    client_secret: environment.client_secret
+      grant_type: environment.grant_type,
+      username,
+      password,
+      audience: environment.audience,
+      client_id: environment.client_id,
+      client_secret: environment.client_secret,
+      scope: 'openid profile email'
     };
-    return this.http.post<any>(environment.url_login, body, { headers });
+    return this.http.post<any>(`${environment.url_auth}/oauth/token`, body, { headers });
   }
 
+  logout() {
+    localStorage.removeItem('currentUser');
+  }
 
 }
