@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
-import * as jose from "jose";
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,7 +14,7 @@ export class NavBarComponent {
 
   ngOnInit() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const decodeToken = jose.decodeJwt(currentUser.id_token);
+    const decodeToken = jwt_decode(currentUser.id_token);
     this.user = {
       name: decodeToken["name"],
       picture: decodeToken["picture"]

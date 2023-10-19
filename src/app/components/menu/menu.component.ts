@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as jose from 'jose';
+import jwt_decode from "jwt-decode";
 import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
 @Component({
@@ -38,7 +38,7 @@ export class MenuComponent {
 
   getScopes(){
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const decodeToken = jose.decodeJwt(currentUser.access_token);
+    const decodeToken = jwt_decode(currentUser.access_token);
     return decodeToken["permissions"] as string[];
   }
 
