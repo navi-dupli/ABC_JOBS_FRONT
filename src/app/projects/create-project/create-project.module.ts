@@ -1,11 +1,23 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateProjectComponent } from './create-project.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {InputTextModule} from "primeng/inputtext";
+import {InputTextareaModule} from "primeng/inputtextarea";
+import {CalendarModule} from "primeng/calendar";
+import {RouterLink} from "@angular/router";
+import {CustomDialogModule} from "../../components/custom-dialog/custom-dialog.module";
 
 @NgModule({
-    imports: [
-        CommonModule
-    ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    InputTextareaModule,
+    CalendarModule,
+    RouterLink,
+    CustomDialogModule
+  ],
     declarations: [
         CreateProjectComponent
     ],
