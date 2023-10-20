@@ -1,10 +1,109 @@
-<div class="surface-ground flex align-items-center justify-content-center">
-    <div class="flex flex-column align-items-center justify-content-center">
-        <div>
-            <div class="w-full surface-card py-8 px-5 sm:px-8">
-                <h1>Crear proyecto</h1>
-                
+<div class="flex justify-content-center mt-5">
+    <div class="flex flex-column justify-content-center surface-card p-5 w-9">
+        <div class="text-3xl font-medium mb-3">Crear proyecto</div>
+        <form [formGroup]="registerProject">
+            <div class="mb-6">
+                <label
+                        for="project_name"
+                        class="block text-xl font-medium mb-2">Nombre proyecto</label>
+                <div class="w-full">
+                    <input
+                            id="project_name"
+                            type="text"
+                            placeholder="Nombre proyecto*"
+                            pInputText
+                            [class]="'w-full ' +
+                            (projectName.invalid && (projectName.dirty || projectName.touched) ? 'ng-dirty' : '')"
+                            style="padding:1rem"
+                            formControlName="projectName">
+                </div>
+
+                <div
+                        class="error-form"
+                        *ngIf="projectName.invalid && (projectName.dirty || projectName.touched)">
+                    <span *ngIf="projectName.errors.required">
+                        Campo obligatorio
+                    </span>
+                    <span *ngIf="projectName.errors.maxlength">
+                    El nombre debe ser de máximo 100 caracteres
+                </span>
+                </div>
             </div>
-        </div>
+
+            <div class="mb-6">
+                <label
+                        for="description"
+                        class="block text-xl font-medium mb-2">Descripción</label>
+                <div class="w-full">
+                            <textarea
+                                    class="w-full"
+                                    id="description"
+                                    pInputTextarea
+                                    formControlName="projectDescription"
+                                    required
+                                    placeholder="Descripción*"
+                            ></textarea>
+                </div>
+                <div
+                        class="error-form"
+                        *ngIf="projectDescription.invalid && (projectDescription.dirty || projectDescription.touched)">
+                            <span *ngIf="projectDescription.errors.required">
+                                Campo obligatorio
+                            </span>
+                    <span *ngIf="projectDescription.errors.maxlength">
+                                El nombre debe ser de máximo 200 caracteres
+                            </span>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label
+                        for="date"
+                        class="block text-xl font-medium mb-2">Fecha</label>
+                <div class="w-full">
+                    <div class="p-inputgroup w-full">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-user"></i>
+                        </span>
+                        <p-calendar styleClass="w-full p-component p-element"
+                                    id="date"
+                                    [minDate]="minDate"
+                                    formControlName="projectDate"
+                                    required
+                                    placeholder="Fecha*"></p-calendar>
+                    </div>
+                </div>
+                <div
+                        class="error-form"
+                        *ngIf="projectDate.invalid && (projectDate.dirty || projectDate.touched)">
+                            <span *ngIf="projectDate.errors.required">
+                                Campo obligatorio
+                            </span>
+                </div>
+            </div>
+            <div class="flex justify-content-end">
+                <button
+                        pButton
+                        pRipple
+                        type="button"
+                        label="Cancelar"
+                        class="p-button-outlined mr-5"
+                        [routerLink]="['/']">
+                </button>
+                <button
+                        pButton
+                        pRipple
+                        type="button"
+                        label="Guardar"
+                        [disabled]="registerProject.invalid"
+                        (click)="onSubmit()">
+                </button>
+            </div>
+        </form>
     </div>
 </div>
+
+<app-custom-dialog
+        [dataModal]="dataModal"
+        (closeModal)="closeModal($event)"
+        (confirmModal)="confirmModal($event)">
+</app-custom-dialog>
