@@ -21,17 +21,17 @@ export class LocationService {
 
   getCountries() {
     const options = { headers: this.headers }    
-    return this.http.get<any>(`${environment.url_commons}/countries`, options);
+    return this.http.get<any>(`${environment.url_api}/commons-app/countries`, options);
   }
 
   getRegions(countryId: number) {
     const options = { headers: this.headers }    
-    return this.http.get<any>(`${environment.url_commons}/regions/country/${countryId}`, options);
+    return this.http.get<any>(`${environment.url_api}/commons-app/regions/country/${countryId}`, options);
   }
 
   getCity(regionId: number) {
     const options = { headers: this.headers }    
-    return this.http.get<any>(`${environment.url_commons}/cities/region/${regionId}`, options);
+    return this.http.get<any>(`${environment.url_api}/commons-app/cities/region/${regionId}`, options);
   }
 
 }

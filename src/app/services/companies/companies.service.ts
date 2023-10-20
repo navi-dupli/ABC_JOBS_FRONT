@@ -22,7 +22,7 @@ export class CompaniesService {
 
   registerCompany(body: CompanyModel) {
     const options = { headers: this.headers };
-    return this.http.post<any>(environment.url_companies, body, options);
+    return this.http.post<any>(`${environment.url_api}/companies-app/companies`, body, options);
   }
 
 }
