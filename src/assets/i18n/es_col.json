@@ -1,0 +1,13 @@
+{
+  "ingreso": "Ingreso",
+  "correo": "Correo electrónico",
+  "contrasena":"Contraseña",
+  "recuerdame":"Recuerdame",
+  "olvide_contrasena":"Olvidé mi contraseña",
+  "registrarme":"Registrarme",
+  "ingresar":"Ingresar",
+  "campo_obligatorio": "Campo obligatorio",
+  "correo_incorrecto":"Formato incorrecto, formato esperado aa@dominio.co",
+  "minimo_contrasena":"La contraseña debe ser de mínimo 8 caracteres",
+  "error_inicio_sesion":"Hubo un error al iniciar sesión"
+}

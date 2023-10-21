@@ -4,9 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { HomeModule } from './home/home.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './guard/auth-guard';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslationModule } from './components/translation/translation.module';
+
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  }
 
 @NgModule({
     declarations: [
@@ -17,7 +24,15 @@ import { AuthGuard } from './guard/auth-guard';
         AppLayoutModule,
         HomeModule,
         HttpClientModule,
-        RouterModule
+        RouterModule,
+        TranslationModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: createTranslateLoader,
+            deps: [HttpClient]
+          }
+        }),
     ],
     providers: [
         AuthGuard

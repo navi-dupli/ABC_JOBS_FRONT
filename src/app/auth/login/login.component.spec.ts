@@ -4,6 +4,7 @@ import { of, throwError } from 'rxjs';
 import { AuthService } from '../../services/auth/auth.service';
 
 import { LoginComponent } from './login.component';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -12,7 +13,9 @@ describe('LoginComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot({
+        loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+      })],
       declarations: [LoginComponent],
       providers: [AuthService]
     });

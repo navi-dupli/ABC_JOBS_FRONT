@@ -1,0 +1,13 @@
+{
+  "ingreso": "Login",
+  "correo": "E-mail",
+  "contrasena":"Password",
+  "recuerdame":"Remember me",
+  "olvide_contrasena":"Forgot my password",
+  "registrarme":"Sing Up",
+  "ingresar":"Sing In",
+  "campo_obligatorio": "Required field",
+  "correo_incorrecto":"Incorrect format, expected format aa@domain.co",
+  "minimo_contrasena":"The password must be at least 8 characters",
+  "error_inicio_sesion":"There was an error logging in"
+}

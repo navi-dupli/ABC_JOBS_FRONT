@@ -18,19 +18,19 @@
                         src="assets/images/nombre.png" 
                         alt="Nombre empresa" 
                         class="mb-3">
-                    <div class="text-3xl font-medium mb-3">Ingreso</div>
+                    <div class="text-3xl font-medium mb-3">{{ 'ingreso' | translate }}</div>
                 </div>
 
                 <form [formGroup]="login">
                     <label 
                         for="login_email" 
-                        class="block text-xl font-medium mb-2">Correo electrónico</label>
+                        class="block text-xl font-medium mb-2">{{ 'correo' | translate }}*</label>
                     <div class="mb-5">
                         <div class="p-input-icon-right">
                             <input 
                                 id="login_email" 
                                 type="text" 
-                                placeholder="Correo electrónico*" 
+                                [placeholder]="'correo' | translate"
                                 pInputText 
                                 [class]="'w-full md:w-30rem ' + 
                                         (email.invalid && (email.dirty || email.touched) ? 'ng-dirty' : '')" 
@@ -43,22 +43,22 @@
                             class="error-form"
                             *ngIf="email.invalid && (email.dirty || email.touched)">
                             <span *ngIf="email.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
 
                             <span *ngIf="email.errors.pattern">
-                                Formato incorrecto se espera formato aa@dominio.co
+                                {{ 'correo_incorrecto' | translate }}
                             </span>
                         </div>
                     </div>
 
                     <label 
                         for="login_password" 
-                        class="block font-medium text-xl mb-2">Contraseña</label>
+                        class="block font-medium text-xl mb-2">{{ 'contrasena' | translate }}*</label>
                     <div class="p-input-icon-right mb-5">
                         <p-password 
                             id="login_password" 
-                            placeholder="Contraseña*" 
+                            [placeholder]="'Contraseña' | translate"
                             [toggleMask]="true" 
                             [class]="(password.invalid && (password.dirty || password.touched) ? 'ng-dirty' : '')" 
                             inputStyleClass="w-full p-3 md:w-30rem"
@@ -69,11 +69,11 @@
                             class="error-form"
                             *ngIf="password.invalid && (password.dirty || password.touched)">
                             <span *ngIf="password.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
 
                             <span *ngIf="password.errors.minlength">
-                                La contraseña debe ser de mínimo 8 caracteres
+                                {{ 'minimo_contrasena' | translate }}
                             </span>
                         </div>
                     </div>
@@ -84,9 +84,9 @@
                                 id="login_rememberme" 
                                 [binary]="true" 
                                 styleClass="mr-2"></p-checkbox>
-                            <label for="rememberme1">Recordarme</label>
+                            <label for="rememberme1">{{ 'recuerdame' | translate }}</label>
                         </div>
-                        <a id="login_forgot_password" class="font-medium ml-2 text-right cursor-pointer forgot">Olvide mi contraseña</a>
+                        <a id="login_forgot_password" class="font-medium ml-2 text-right cursor-pointer forgot">{{ 'olvide_contrasena' | translate }}</a>
                     </div>
 
                     <div class="login-container__btns">
@@ -94,7 +94,7 @@
                             pButton 
                             pRipple 
                             type="button" 
-                            label="Registrarme" 
+                            [label]="'registrarme' | translate"
                             class="p-button-outlined mr-5" 
                             [routerLink]="['/']">
                         </button>
@@ -102,7 +102,7 @@
                             pButton 
                             pRipple 
                             type="button" 
-                            label="Ingresar" 
+                            [label]="'ingresar' | translate" 
                             [disabled]="login.invalid"
                             (click)="onSubmit()">
                         </button>
