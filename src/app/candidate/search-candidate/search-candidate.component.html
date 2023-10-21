@@ -12,11 +12,13 @@
                         name="hability"
                         id="search-hability"
                         [options]="abilityOptions" 
-                        [(ngModel)]="selectedMulti" 
+                        [(ngModel)]="selectedAbility" 
                         placeholder="Seleccione cualquier opción" 
                         optionLabel="name" 
+                        optionValue="id"
                         class="multiselect-custom w-full" 
-                        display="chip">
+                        display="chip"
+                        (onChange)="onChangeFilter()">
                     </p-multiSelect>
                 </div>
     
@@ -28,11 +30,13 @@
                         name="language"
                         id="search-language"
                         [options]="languageOptions" 
-                        [(ngModel)]="selectedMulti2" 
+                        [(ngModel)]="selectedLanguage" 
                         placeholder="Seleccione cualquier opción" 
                         optionLabel="name" 
+                        optionValue="name"
                         class="multiselect-custom  w-full" 
-                        display="chip">
+                        display="chip"
+                        (onChange)="onChangeFilter()">
                     </p-multiSelect>
                 </div>
     
@@ -44,11 +48,13 @@
                         name="location"
                         id="search-location"
                         [options]="countriesOptions" 
-                        [(ngModel)]="selectedMulti3" 
+                        [(ngModel)]="selectedCountry" 
                         placeholder="Selecione cualquier opción" 
                         optionLabel="name" 
+                        optionValue="id"
                         class="multiselect-custom  w-full" 
-                        display="chip">
+                        display="chip"
+                        (onChange)="onChangeFilter()">
                     </p-multiSelect>
                 </div>
     
@@ -60,11 +66,13 @@
                         name="experience"
                         id="search-experience"
                         [options]="experienceOptions" 
-                        [(ngModel)]="selectedMulti4" 
+                        [(ngModel)]="selectedExperience" 
                         placeholder="Seleccione cualquier opción" 
                         optionLabel="name" 
+                        optionValue="id"
                         class="multiselect-custom  w-full" 
-                        display="chip">
+                        display="chip"
+                        (onChange)="onChangeFilter()">
                     </p-multiSelect>
                 </div>
     
@@ -76,11 +84,13 @@
                         name="education"
                         id="search-education"
                         [options]="educationTypeOptions" 
-                        [(ngModel)]="selectedMulti5" 
+                        [(ngModel)]="selectedEducation" 
                         placeholder="Seleccione cualquier opción" 
                         optionLabel="name" 
+                        optionValue="name"
                         class="multiselect-custom  w-full" 
-                        display="chip">
+                        display="chip"
+                        (onChange)="onChangeFilter()">
                     </p-multiSelect>
                 </div>
             </div>
@@ -88,18 +98,18 @@
 
         <div class="flex align-items-start justify-content-between mt-5">
             <div class="w-3 candidate-list">
-                <app-candidate-card></app-candidate-card>
-                <app-candidate-card></app-candidate-card>
-                <app-candidate-card></app-candidate-card>
-                <app-candidate-card></app-candidate-card>
-                <app-candidate-card></app-candidate-card>
-                <app-candidate-card></app-candidate-card>
-                <app-candidate-card></app-candidate-card>
-                <app-candidate-card></app-candidate-card>
+                <div *ngFor="let candidate of data">
+                    <app-candidate-card 
+                        [data]="candidate"
+                        [candidateSelectedId]="(candidateSelectedId == candidate.id)"
+                        (selectedCandidate)="selectedCandidate($event)"></app-candidate-card>
+                </div>
             </div>
 
             <div class="w-9">
-                <app-candidate-card-detail></app-candidate-card-detail>
+                <app-candidate-card-detail 
+                    *ngIf="candidateSelected"
+                    [candidateSelected]="candidateSelected"></app-candidate-card-detail>
             </div>
         </div>
     </div>

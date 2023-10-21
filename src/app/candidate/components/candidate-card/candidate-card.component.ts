@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-candidate-card',
@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidateCardComponent implements OnInit {
 
+  @Input() set data(data) {
+    this.candidate = data;
+  }
+  @Input() set candidateSelectedId(candidateSelectedId) {
+    this.candidateSelected = candidateSelectedId;
+    console.log('aaaaaaaa', this.candidateSelected);
+    
+  }
+
+  @Output() selectedCandidate = new EventEmitter();
+  candidate;
+  candidateSelected;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selectedCard(){
+    this.selectedCandidate.emit(this.candidate);
   }
 
 }
