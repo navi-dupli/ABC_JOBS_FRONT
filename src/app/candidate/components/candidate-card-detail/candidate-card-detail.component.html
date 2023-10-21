@@ -1,17 +1,17 @@
 <div class="surface-border p-3">
     <div class="flex justify-content-between align-items-start">
         <img 
-            src="https://s.gravatar.com/avatar/6e0bae138979e3e775e9831266c1116a?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fna.png" 
+            [src]="candidate.picture" 
             alt="imagen-perfil"
             class="w-2">
         
         <div class="w-9">
-            <h1>Flor Amapola Rojas</h1>
+            <h1>{{candidate.names}} {{candidate.surnames}}</h1>
             <div class="flex align-items-start">
                 <div class="w-6">
                     <p>
                         <span><i class="pi pi-user"></i></span>
-                        CC 31654897
+                        {{candidate.nameIdentification}} {{candidate.identification}}
                     </p>
     
                     <p>
@@ -21,24 +21,24 @@
     
                     <p>
                         <span><i class="pi pi-inbox"></i></span>
-                        a@jaron.com
+                        {{candidate.email}}
                     </p>
                 </div>
 
                 <div class="w-6">
                     <p>
                         <span><i class="pi pi-map-marker"></i></span>
-                        Bogota - Colombia
+                        {{candidate.location.nameCity}} - {{candidate.location.nameCountry}}
                     </p>
     
                     <p>
                         <span><i class="pi pi-flag-fill"></i></span>
-                        Ingles, Aleman, Español
+                        <span *ngFor="let languages of candidate.languages">{{languages.name}},</span>
                     </p>
     
                     <p>
                         <span><i class="pi pi-cog"></i></span>
-                        Java, Node, CSS, PHP
+                        <span *ngFor="let skills of candidate.skills">{{skills.name}},</span>
                     </p>
                 </div>
             </div>

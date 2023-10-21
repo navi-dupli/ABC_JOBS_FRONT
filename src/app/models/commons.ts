@@ -14,6 +14,7 @@ export interface LanguageModel {
 
 export interface ExperienceModel {
     name: String;
+    id: String;
 }
 
 export interface EducationTypeModel {
