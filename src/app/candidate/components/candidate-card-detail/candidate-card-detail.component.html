@@ -16,7 +16,7 @@
     
                     <p>
                         <span><i class="pi pi-phone"></i></span>
-                        3216549870
+                        {{candidate.phone}}
                     </p>
     
                     <p>
@@ -49,25 +49,19 @@
     <div>
         <p class="text-xl font-semibold">Educación</p>
 
-        <div class="flex">
-            <p class="w-6">Ingeniero de sistemas y computacion</p>
-            <p class="w-2">2010-09-13</p>
-            <p class="w-2">2015-09-13</p>
-        </div>
-
-        <div class="flex">
-            <p class="w-6">Magister en ingenieria de software</p>
-            <p class="w-2">2010-09-13</p>
-            <p class="w-2">2015-09-13</p>
+        <div class="flex" *ngFor="let education of candidate.education">
+            <p class="w-6">{{education.title}}</p>
+            <p class="w-2">{{education.dateInit}}</p>
+            <p class="w-2">{{education.dateEnd}}</p>
         </div>
 
         <p class="text-xl font-semibold mt-5">Experiencia laboral</p>
 
-        <div class="flex">
-            <p class="w-4">Desarrollador senior</p>
-            <p class="w-2">2015-09-13</p>
-            <p class="w-2">2017-09-13</p>
-            <p class="w-4">Amazon web service</p>
+        <div class="flex" *ngFor="let experience of candidate.experiences">
+            <p class="w-4">{{experience.job}}</p>
+            <p class="w-2">{{experience.dateInit}}</p>
+            <p class="w-2">{{experience.dateEnd}}</p>
+            <p class="w-4">{{experience.company}}</p>
         </div>
     </div>
 
