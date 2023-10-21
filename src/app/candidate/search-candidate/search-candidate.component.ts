@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AbilityModel, EducationTypeModel, ExperienceModel, LanguageModel } from '../../../app/models/commons';
+import { CountriesModel } from '../../../app/models/companies';
+import { CommonsService } from '../../../app/services/commons/commons.service';
+import { LocationService } from '../../../app/services/location/location.service';
 
 @Component({
   selector: 'app-search-candidate',
@@ -7,24 +11,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchCandidateComponent implements OnInit {
 
-  cities: any[];
+  countriesOptions: CountriesModel[];
+  abilityOptions: AbilityModel[];
+  languageOptions: LanguageModel[];
+  experienceOptions: ExperienceModel[];
+  educationTypeOptions: EducationTypeModel[];
   selectedMulti: any[] = [];
   selectedMulti2: any[] = [];
   selectedMulti3: any[] = [];
   selectedMulti4: any[] = [];
   selectedMulti5: any[] = [];
 
-  constructor() {
-    this.cities = [
-      {name: 'New York', code: 'NY'},
-      {name: 'Rome', code: 'RM'},
-      {name: 'London', code: 'LDN'},
-      {name: 'Istanbul', code: 'IST'},
-      {name: 'Paris', code: 'PRS'}
-  ];
-  }
+  constructor(
+    private locationService: LocationService,
+    private commonsService: CommonsService) {
 
+  }
+  
   ngOnInit(): void {
+    this.locationService.getCountries().subscribe(result => {
+      this.countriesOptions = result;
+    });
+
+    this.commonsService.getAbilities().subscribe(result => {
+      this.abilityOptions = result;
+    });
+
+    this.commonsService.getLanguages().subscribe(result => {
+      this.languageOptions = result;
+    });
+
+    this.experienceOptions = [
+      {name: "0 a 1 año"},
+      {name: "1 a 3 años"},
+      {name: "3 a 5 años"},
+      {name: "+ 5 años"}
+    ]
+
+    this.commonsService.getEducationType().subscribe(result => {
+      this.educationTypeOptions = result;
+    });
   }
 
 }
