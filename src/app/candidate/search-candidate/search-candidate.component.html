@@ -4,80 +4,80 @@
 
         <form>
             <div class="flex align-items-center justify-content-between">
-                <div class="flex w-2 flex-wrap">
+                <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
                         for="hability">Habilidades</label>
                     <p-multiSelect 
                         name="hability"
                         id="search-hability"
-                        [options]="cities" 
+                        [options]="abilityOptions" 
                         [(ngModel)]="selectedMulti" 
-                        placeholder="Select a Country" 
+                        placeholder="Seleccione cualquier opción" 
                         optionLabel="name" 
                         class="multiselect-custom w-full" 
                         display="chip">
                     </p-multiSelect>
                 </div>
     
-                <div class="flex w-2 flex-wrap">
+                <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
                         for="language">Idioma</label>
                     <p-multiSelect 
                         name="language"
                         id="search-language"
-                        [options]="cities" 
+                        [options]="languageOptions" 
                         [(ngModel)]="selectedMulti2" 
-                        placeholder="Select a Country" 
+                        placeholder="Seleccione cualquier opción" 
                         optionLabel="name" 
                         class="multiselect-custom  w-full" 
                         display="chip">
                     </p-multiSelect>
                 </div>
     
-                <div class="flex w-2 flex-wrap">
+                <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
                         for="location">Ubicación</label>
                     <p-multiSelect 
                         name="location"
                         id="search-location"
-                        [options]="cities" 
+                        [options]="countriesOptions" 
                         [(ngModel)]="selectedMulti3" 
-                        placeholder="Select a Country" 
+                        placeholder="Selecione cualquier opción" 
                         optionLabel="name" 
                         class="multiselect-custom  w-full" 
                         display="chip">
                     </p-multiSelect>
                 </div>
     
-                <div class="flex w-2 flex-wrap">
+                <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
                         for="experience">Experiencia</label>
                     <p-multiSelect 
                         name="experience"
                         id="search-experience"
-                        [options]="cities" 
+                        [options]="experienceOptions" 
                         [(ngModel)]="selectedMulti4" 
-                        placeholder="Select a Country" 
+                        placeholder="Seleccione cualquier opción" 
                         optionLabel="name" 
                         class="multiselect-custom  w-full" 
                         display="chip">
                     </p-multiSelect>
                 </div>
     
-                <div class="flex w-2 flex-wrap">
+                <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
                         for="education">Educación</label>
                     <p-multiSelect 
                         name="education"
                         id="search-education"
-                        [options]="cities" 
+                        [options]="educationTypeOptions" 
                         [(ngModel)]="selectedMulti5" 
-                        placeholder="Select a Country" 
+                        placeholder="Seleccione cualquier opción" 
                         optionLabel="name" 
                         class="multiselect-custom  w-full" 
                         display="chip">
