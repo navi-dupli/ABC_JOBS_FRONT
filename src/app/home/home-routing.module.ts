@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SearchCandidateComponent } from '../candidate/search-candidate/search-candidate.component';
 import { RegisterCompanyComponent } from '../companies/register-company/register-company.component';
 import { CreateProjectComponent } from '../projects/create-project/create-project.component';
 import { HomeComponent } from './home.component';
@@ -9,7 +10,8 @@ import { HomeComponent } from './home.component';
 		{ path: '', component: HomeComponent,
 			children: [
 				{ path: 'crear-proyecto', component: CreateProjectComponent },
-				{ path: 'registrar-empresa', component: RegisterCompanyComponent }
+				{ path: 'registrar-empresa', component: RegisterCompanyComponent },
+				{ path: 'buscar-candidato', component: SearchCandidateComponent }
 			] 
 		},
 	])],
