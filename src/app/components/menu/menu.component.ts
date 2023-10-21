@@ -27,6 +27,12 @@ export class MenuComponent {
       items: [
         { label: 'Registrar empresa', icon: 'pi pi-fw pi-id-card', routerLink: ['/registrar-empresa'], scope: ['register:company'] }
       ]
+    },
+    {
+      label: 'Buscador',
+      items: [
+        { label: 'Buscador', icon: 'pi pi-fw pi-id-card', routerLink: ['/buscar-candidato'], scope: ['search:candidate'] }
+      ]
     }
   ];
 

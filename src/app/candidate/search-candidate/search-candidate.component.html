@@ -1,0 +1,106 @@
+<div class="flex justify-content-center mt-5 search-candidate">
+    <div class="flex flex-column justify-content-center surface-card p-5 w-11">
+        <div class="text-3xl font-medium mb-3">Busqueda</div>
+
+        <form>
+            <div class="flex align-items-center justify-content-between">
+                <div class="flex w-2 flex-wrap">
+                    <label 
+                        class="w-full"
+                        for="hability">Habilidades</label>
+                    <p-multiSelect 
+                        name="hability"
+                        id="search-hability"
+                        [options]="cities" 
+                        [(ngModel)]="selectedMulti" 
+                        placeholder="Select a Country" 
+                        optionLabel="name" 
+                        class="multiselect-custom w-full" 
+                        display="chip">
+                    </p-multiSelect>
+                </div>
+    
+                <div class="flex w-2 flex-wrap">
+                    <label 
+                        class="w-full"
+                        for="language">Idioma</label>
+                    <p-multiSelect 
+                        name="language"
+                        id="search-language"
+                        [options]="cities" 
+                        [(ngModel)]="selectedMulti2" 
+                        placeholder="Select a Country" 
+                        optionLabel="name" 
+                        class="multiselect-custom  w-full" 
+                        display="chip">
+                    </p-multiSelect>
+                </div>
+    
+                <div class="flex w-2 flex-wrap">
+                    <label 
+                        class="w-full"
+                        for="location">Ubicación</label>
+                    <p-multiSelect 
+                        name="location"
+                        id="search-location"
+                        [options]="cities" 
+                        [(ngModel)]="selectedMulti3" 
+                        placeholder="Select a Country" 
+                        optionLabel="name" 
+                        class="multiselect-custom  w-full" 
+                        display="chip">
+                    </p-multiSelect>
+                </div>
+    
+                <div class="flex w-2 flex-wrap">
+                    <label 
+                        class="w-full"
+                        for="experience">Experiencia</label>
+                    <p-multiSelect 
+                        name="experience"
+                        id="search-experience"
+                        [options]="cities" 
+                        [(ngModel)]="selectedMulti4" 
+                        placeholder="Select a Country" 
+                        optionLabel="name" 
+                        class="multiselect-custom  w-full" 
+                        display="chip">
+                    </p-multiSelect>
+                </div>
+    
+                <div class="flex w-2 flex-wrap">
+                    <label 
+                        class="w-full"
+                        for="education">Educación</label>
+                    <p-multiSelect 
+                        name="education"
+                        id="search-education"
+                        [options]="cities" 
+                        [(ngModel)]="selectedMulti5" 
+                        placeholder="Select a Country" 
+                        optionLabel="name" 
+                        class="multiselect-custom  w-full" 
+                        display="chip">
+                    </p-multiSelect>
+                </div>
+            </div>
+        </form>
+
+        <div class="flex align-items-start justify-content-between mt-5">
+            <div class="w-3 candidate-list">
+                <app-candidate-card></app-candidate-card>
+                <app-candidate-card></app-candidate-card>
+                <app-candidate-card></app-candidate-card>
+                <app-candidate-card></app-candidate-card>
+                <app-candidate-card></app-candidate-card>
+                <app-candidate-card></app-candidate-card>
+                <app-candidate-card></app-candidate-card>
+                <app-candidate-card></app-candidate-card>
+            </div>
+
+            <div class="w-9">
+                <app-candidate-card-detail></app-candidate-card-detail>
+            </div>
+        </div>
+    </div>
+</div>
