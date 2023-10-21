@@ -3,13 +3,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomDialogModel } from '../../../app/models/custom-dialog.model';
 import { AuthService } from '../../services/auth/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
     login: FormGroup;
     valCheck: string[] = ['remember'];
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit{
 
     constructor(
         private authService: AuthService,
-        private router: Router) {
+        private router: Router,
+        private translate: TranslateService) {
     }
 
     ngOnInit() {
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit{
     }
 
     onSubmit() {
+        const textModal = this.translate.instant("error_inicio_sesion");
         this.authService.login(this.email.value, this.password.value).subscribe({
             next: (result) => {
                 if (result) {
@@ -40,7 +43,7 @@ export class LoginComponent implements OnInit{
             error: (e) => {
                 this.dataModal = {
                     displayModal: true,
-                    textModal: 'Hubo un error al iniciar sesión',
+                    textModal: textModal,
                     iconModal: 'pi-exclamation-circle',
                     typeModal: 'Error'
                 }

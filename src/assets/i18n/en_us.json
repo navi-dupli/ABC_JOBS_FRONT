@@ -9,5 +9,5 @@
   "campo_obligatorio": "Required field",
   "correo_incorrecto":"Incorrect format, expected format aa@domain.co",
   "minimo_contrasena":"The password must be at least 8 characters",
-  "error_inicio_sesión":"There was an error logging in"
+  "error_inicio_sesion":"There was an error logging in"
 }
