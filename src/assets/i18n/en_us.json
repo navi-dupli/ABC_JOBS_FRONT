@@ -25,7 +25,7 @@
   "error": "Error",
   "ok": "Ok",
   "crear": "Create",
-  "registro_empresa": "Company registration",
+  "registro_empresa": "Register company",
   "nombre_empresa": "Company name",
   "longitud_campo": "The name must be a maximum of 100 characters",
   "identificacion_empresa": "Unique identification",

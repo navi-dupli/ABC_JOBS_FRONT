@@ -25,7 +25,7 @@
   "error": "Error",
   "ok": "Ok",
   "crear": "Create",
-  "registro_empresa": "Registro Empresa",
+  "registro_empresa": "Registrar Empresa",
   "nombre_empresa": "Nombre empresa",
   "longitud_campo": "El nombre debe ser de máximo 100 caracteres",
   "identificacion_empresa": "Identificación unica",

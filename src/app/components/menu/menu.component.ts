@@ -11,27 +11,27 @@ export class MenuComponent {
 
   model: any[] = [
     {
-      label: 'Home',
+      label: 'home',
       items: [
-        { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'], scope: ['read:users'] }
+        { label: 'home', icon: 'pi pi-fw pi-home', routerLink: ['/'], scope: ['read:users', 'register:project', 'register:company', 'search:candidate'] }
       ]
     },
     {
-      label: 'Crear proyecto',
+      label: 'crear_proyecto',
       items: [
-        { label: 'Crear proyecto', icon: 'pi pi-fw pi-id-card', routerLink: ['/crear-proyecto'], scope: ['register:project'] }
+        { label: 'crear_proyecto', icon: 'pi pi-fw pi-book', routerLink: ['/crear-proyecto'], scope: ['register:project'] }
       ]
     },
     {
-      label: 'Registrar empresa',
+      label: 'registro_empresa',
       items: [
-        { label: 'Registrar empresa', icon: 'pi pi-fw pi-id-card', routerLink: ['/registrar-empresa'], scope: ['register:company'] }
+        { label: 'registro_empresa', icon: 'pi pi-fw pi-briefcase', routerLink: ['/registrar-empresa'], scope: ['register:company'] }
       ]
     },
     {
-      label: 'Buscador',
+      label: 'buscador',
       items: [
-        { label: 'Buscador', icon: 'pi pi-fw pi-id-card', routerLink: ['/buscar-candidato'], scope: ['search:candidate'] }
+        { label: 'buscador', icon: 'pi pi-fw pi-search', routerLink: ['/buscar-candidato'], scope: ['search:candidate'] }
       ]
     }
   ];
