@@ -24,8 +24,7 @@
   "exito": "Éxito",
   "error": "Error",
   "ok": "Ok",
-  "crear": "Create"
-  "error_inicio_sesion":"Hubo un error al iniciar sesión",
+  "crear": "Create",
   "registro_empresa": "Registro Empresa",
   "nombre_empresa": "Nombre empresa",
   "longitud_campo": "El nombre debe ser de máximo 100 caracteres",

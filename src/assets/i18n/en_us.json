@@ -24,8 +24,7 @@
   "exito": "Success",
   "error": "Error",
   "ok": "Ok",
-  "crear": "Create"
-  "error_inicio_sesion":"There was an error logging in",
+  "crear": "Create",
   "registro_empresa": "Company registration",
   "nombre_empresa": "Company name",
   "longitud_campo": "The name must be a maximum of 100 characters",
