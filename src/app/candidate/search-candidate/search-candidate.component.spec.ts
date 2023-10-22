@@ -41,10 +41,7 @@ describe('SearchCandidateComponent', () => {
         { provide: LocationService, useValue: locationService },
         { provide: CommonsService, useValue: commonsService },
         { provide: CandidateService, useValue: candidateService },
-      ],
-      imports: [TranslateModule.forRoot({
-        loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-      })]
+      ]
     }).compileComponents();
     
   }));
