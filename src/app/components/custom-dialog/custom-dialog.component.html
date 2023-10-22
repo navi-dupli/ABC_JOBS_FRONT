@@ -16,15 +16,16 @@
         </p>
     </div>
     <ng-template pTemplate="footer">
-        <button 
-            pButton 
-            (click)="closeDialog()" 
-            [class]="data.typeModal === 'Confirmación' ? 'p-button-outlined' : ''"
-            [label]="data.typeModal === 'Confirmación' ? ('cancelar'|translate) : ('ok'| translate)"></button>
-        <button 
-            *ngIf="data.typeModal === 'Confirmación'"
-            pButton 
-            (click)="confirmDialog()" 
-            [label]="'aceptar'|translate"></button>
+        <button
+          pButton
+          (click)="closeDialog()"
+          [class]="data.typeModal === 'Confirmación' ? 'p-button-outlined' : ''"
+          [label]="data.typeModal === 'Confirmación' ? ('cancelar'|translate) : ('ok'| translate)"></button>
+        <button
+          id="btnConfirm"
+          *ngIf="data.typeModal === 'Confirmación'"
+          pButton
+          (click)="confirmDialog()"
+          [label]="'aceptar'|translate"></button>
     </ng-template>
 </p-dialog>

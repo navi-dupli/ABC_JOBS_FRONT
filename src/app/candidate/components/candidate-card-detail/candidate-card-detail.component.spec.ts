@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CandidateCardDetailComponent } from './candidate-card-detail.component';
-import {TranslateFakeLoader, TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 
 describe('CandidateCardDetailComponent', () => {
     let component: CandidateCardDetailComponent;
     let fixture: ComponentFixture<CandidateCardDetailComponent>;
+    let translate: TranslateService;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
@@ -104,5 +105,14 @@ describe('CandidateCardDetailComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should translate p-education', () => {
+        translate = TestBed.inject(TranslateService);
+        translate.setTranslation('es', { 'educacion': 'Educación' });
+        translate.use('es');
+        fixture.detectChanges();
+        const compiled = fixture.nativeElement;
+        expect(compiled.querySelector('#p-education').textContent).toContain('Educación');
     });
 });
