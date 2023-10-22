@@ -6,6 +6,7 @@ import { CandidateService } from '../../../app/services/candidates/candidate.ser
 import { SearchCandidateComponent } from './search-candidate.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+
 describe('SearchCandidateComponent', () => {
   let component: SearchCandidateComponent;
   let fixture: ComponentFixture<SearchCandidateComponent>;
@@ -32,6 +33,9 @@ describe('SearchCandidateComponent', () => {
     };
 
     TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot({
+        loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+      })],
       declarations: [SearchCandidateComponent],
       providers: [
         { provide: LocationService, useValue: locationService },

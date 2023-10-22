@@ -55,5 +55,7 @@
   "idioma": "Language",
   "ubicacion": "Location",
   "experiencia": "Experience",
-  "educacion": "Education"
+  "educacion": "Education",
+  "imagen_perfil": "profile image",
+  "experiencia_laboral": "work experience"
 }
