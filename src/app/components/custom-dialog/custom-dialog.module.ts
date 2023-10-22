@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { DialogModule } from 'primeng/dialog';
 import { CustomDialogComponent } from "./custom-dialog.component";
 import { ButtonModule } from 'primeng/button';
+import {TranslationModule} from "../translation/translation.module";
 
 @NgModule({
     imports: [
         CommonModule,
         DialogModule,
-        ButtonModule
+        ButtonModule,
+        TranslationModule,
     ],
     declarations: [CustomDialogComponent],
     exports: [CustomDialogComponent],

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CustomDialogModel } from 'src/app/models/custom-dialog.model';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import {TranslateService} from "@ngx-translate/core";
 @Component({
   selector: 'app-custom-dialog',
   templateUrl: './custom-dialog.component.html',
@@ -14,7 +15,7 @@ export class CustomDialogComponent implements OnInit {
   @Output() confirmModal = new EventEmitter<boolean>();
   ref: DynamicDialogRef;
   data: CustomDialogModel;
-  constructor() { }
+  constructor(private translate: TranslateService) { }
   ngOnInit(): void {
 
   }

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CustomDialogComponent } from './custom-dialog.component';
+import {TranslateFakeLoader, TranslateLoader, TranslateModule} from "@ngx-translate/core";
 
 describe('CustomDialogComponent', () => {
   let component: CustomDialogComponent;
@@ -8,6 +9,9 @@ describe('CustomDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot({
+        loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+      })],
       declarations: [ CustomDialogComponent ]
     })
     .compileComponents();

@@ -22,5 +22,7 @@
   "fecha": "Fecha",
   "proyecto_registrado_correctamente": "El proyecto se ha registrado correctamente",
   "exito": "Éxito",
-  "error": "Error"
+  "error": "Error",
+  "ok": "Ok",
+  "crear": "Create"
 }
