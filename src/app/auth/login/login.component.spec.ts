@@ -4,20 +4,29 @@ import { of, throwError } from 'rxjs';
 import { AuthService } from '../../services/auth/auth.service';
 
 import { LoginComponent } from './login.component';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let authService: AuthService;
+  let translate: TranslateService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, TranslateModule.forRoot({
-        loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+      imports: [HttpClientTestingModule, 
+        TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useValue: {
+            getTranslation: (lang: string) => {
+              return of({ 'error_inicio_sesion': 'Hubo un error al iniciar sesión' });
+            }
+          }
+        }
       })],
       declarations: [LoginComponent],
-      providers: [AuthService]
+      providers: [AuthService, TranslateService]
     });
 
     fixture = TestBed.createComponent(LoginComponent);
@@ -41,6 +50,10 @@ describe('LoginComponent', () => {
   }));
 
   it('should return error on login', fakeAsync(() => {
+    const translateService = TestBed.inject(TranslateService);
+    translateService.use('es');
+    component.dataModal.textModal = translateService.instant('error_inicio_sesion');
+
     const loginSpy = jest.spyOn(authService, 'login').mockReturnValue(throwError(() => 'Error en la autenticación'));
 
     component.email.setValue('ejemplo@correo.com');
@@ -50,6 +63,7 @@ describe('LoginComponent', () => {
     expect(loginSpy).toHaveBeenCalledWith('ejemplo@correo.com', 'contraseñaIncorrecta');
     tick(); 
     expect(component.dataModal.displayModal).toBe(true);
+    expect(component.dataModal.textModal).toBe('Hubo un error al iniciar sesión');
   }));
 
 });

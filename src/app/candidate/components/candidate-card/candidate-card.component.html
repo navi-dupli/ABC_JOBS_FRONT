@@ -6,7 +6,7 @@
     
     <div class="w-9 pl-2">
         <p class="text-xl text-primary font-semibold m-0">{{candidate.names}} {{candidate.surnames}}</p>
-        <p class="font-semibold m-0">Ingenieria de software</p>
+        <p class="font-semibold m-0">{{candidate.education[0].title}}</p>
         <p class="text-sm font-normal m-0">
             <span *ngFor="let skills of candidate.skills">{{skills.name}},</span>
         </p>
