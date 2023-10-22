@@ -32,23 +32,33 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        const textModal = this.translate.instant("error_inicio_sesion");
-        this.authService.login(this.email.value, this.password.value).subscribe({
-            next: (result) => {
-                if (result) {
-                    localStorage.setItem('currentUser', JSON.stringify(result));
-                    this.router.navigate(['/']);
+        if (this.login.valid) {
+            const textModal = this.translate.instant("error_inicio_sesion");
+            this.authService.login(this.email.value, this.password.value).subscribe({
+                next: (result) => {
+                    if (result) {
+                        localStorage.setItem('currentUser', JSON.stringify(result));
+                        this.router.navigate(['/']);
+                    }
+                },
+                error: (e) => {
+                    this.dataModal = {
+                        displayModal: true,
+                        textModal: textModal,
+                        iconModal: 'pi-exclamation-circle',
+                        typeModal: 'Error'
+                    }
                 }
-            },
-            error: (e) => {
-                this.dataModal = {
-                    displayModal: true,
-                    textModal: textModal,
-                    iconModal: 'pi-exclamation-circle',
-                    typeModal: 'Error'
-                }
+            });
+        } else {
+            const textModal = this.translate.instant("campos_incompletos");
+            this.dataModal = {
+                displayModal: true,
+                textModal: textModal,
+                iconModal: 'pi-exclamation-circle',
+                typeModal: 'Error'
             }
-        });
+        }
     }
 
     get email() { return this.login.get('email'); }

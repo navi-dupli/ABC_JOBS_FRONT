@@ -59,5 +59,6 @@
   "imagen_perfil": "profile image",
   "experiencia_laboral": "work experience",
   "buscador": "Searcher",
-  "home": "Home"
+  "home": "Home",
+  "campos_incompletos": "The form has empty required fields"
 }

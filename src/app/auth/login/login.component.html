@@ -21,7 +21,7 @@
                     <div class="text-3xl font-medium mb-3">{{ 'ingreso' | translate }}</div>
                 </div>
 
-                <form [formGroup]="login">
+                <form [formGroup]="login" (ngSubmit)="onSubmit()">
                     <label 
                         for="login_email" 
                         class="block text-xl font-medium mb-2">{{ 'correo' | translate }}*</label>
@@ -103,7 +103,6 @@
                             pRipple 
                             type="button" 
                             [label]="'ingresar' | translate" 
-                            [disabled]="login.invalid"
                             (click)="onSubmit()">
                         </button>
                     </div>

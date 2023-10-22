@@ -1,7 +1,7 @@
 <div class="flex justify-content-center mt-5">
     <div class="flex flex-column justify-content-center surface-card p-5 w-9">
         <div class="text-3xl font-medium mb-3">{{'crear_proyecto' | translate}}</div>
-        <form [formGroup]="registerProject">
+        <form [formGroup]="registerProject" (ngSubmit)="onSubmit()">
             <div class="mb-6">
                 <label
                         for="project_name"
@@ -94,7 +94,6 @@
                         pRipple
                         type="button"
                         [label]="'crear'|translate"
-                        [disabled]="registerProject.invalid"
                         (click)="onSubmit()">
                 </button>
             </div>

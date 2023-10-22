@@ -55,26 +55,36 @@ export class CreateProjectComponent {
 
   confirmModal(event: boolean) {
     if (event) {
-      this.projectService.registerProject({...this.registerProject.value, companyId: 1}).subscribe( {
-        next: (result) => {
-          if (result) {
+      if (this.registerProject.valid) {
+        this.projectService.registerProject({...this.registerProject.value, companyId: 1}).subscribe( {
+          next: (result) => {
+            if (result) {
+              this.dataModal = {
+                displayModal: true,
+                textModal: this.translate.instant("proyecto_registrado_correctamente"),
+                iconModal: 'pi-check',
+                typeModal: this.translate.instant("exito")
+              }
+            }
+          },
+          error: (e) => {
             this.dataModal = {
               displayModal: true,
-              textModal: this.translate.instant("proyecto_registrado_correctamente"),
-              iconModal: 'pi-check',
-              typeModal: this.translate.instant("exito")
+              textModal: e.error.message,
+              iconModal: 'pi-times',
+              typeModal: this.translate.instant("error")
             }
           }
-        },
-        error: (e) => {
-          this.dataModal = {
+        });
+      } else {
+        const textModal = this.translate.instant("campos_incompletos");
+        this.dataModal = {
             displayModal: true,
-            textModal: e.error.message,
-            iconModal: 'pi-times',
-            typeModal: this.translate.instant("error")
-          }
+            textModal: textModal,
+            iconModal: 'pi-exclamation-circle',
+            typeModal: 'Error'
         }
-      });
+      }
     }
   }
 }

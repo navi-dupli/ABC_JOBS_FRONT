@@ -2,7 +2,7 @@
     <div class="flex flex-column justify-content-center surface-card p-5 register-company-container">
         <div class="text-3xl font-medium mb-3">{{ 'registro_empresa' | translate }}</div>
 
-        <form [formGroup]="registerCompany">
+        <form [formGroup]="registerCompany" (ngSubmit)="onSubmit()">
             <label 
                 for="company_name" 
                 class="block text-xl font-medium mb-2">{{ 'nombre_empresa' | translate }}</label>
@@ -362,7 +362,6 @@
                     pRipple 
                     type="button" 
                     [label]="('guardar' | translate)" 
-                    [disabled]="registerCompany.invalid"
                     (click)="onSubmit()">
                 </button>
             </div>
