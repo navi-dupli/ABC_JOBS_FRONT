@@ -12,8 +12,6 @@ export class CandidateCardComponent implements OnInit {
   }
   @Input() set candidateSelectedId(candidateSelectedId) {
     this.candidateSelected = candidateSelectedId;
-    console.log('aaaaaaaa', this.candidateSelected);
-    
   }
 
   @Output() selectedCandidate = new EventEmitter();
