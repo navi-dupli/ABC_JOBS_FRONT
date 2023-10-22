@@ -4,6 +4,7 @@ import { CreateProjectComponent } from './create-project.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {ProjectsService} from "../../services/projects/projects.service";
 import {of, throwError} from "rxjs";
+import {TranslateFakeLoader, TranslateLoader, TranslateModule} from "@ngx-translate/core";
 
 describe('CreateProjectComponent', () => {
   let component: CreateProjectComponent;
@@ -19,7 +20,9 @@ describe('CreateProjectComponent', () => {
     };
     TestBed.configureTestingModule({
       declarations: [CreateProjectComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot({
+      loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+    })],
       providers: [
         { provide: ProjectsService, useValue: mockProjectsService }
       ]
@@ -48,7 +51,7 @@ describe('CreateProjectComponent', () => {
     component.onSubmit();
 
     expect(component.dataModal.displayModal).toBe(true);
-    expect(component.dataModal.textModal).toBe('¿Desea registrar un nuevo proyecto?');
+    expect(component.dataModal.textModal).toBe('confirmacion_registrar_proyecto');
   });
 
   it('form should be valid when filled out correctly', () => {
@@ -70,7 +73,7 @@ describe('CreateProjectComponent', () => {
 
     expect(mockProjectsService.registerProject).toHaveBeenCalled();
     expect(component.dataModal.displayModal).toBe(true);
-    expect(component.dataModal.textModal).toBe('El proyecto se ha registrado correctamente');
+    expect(component.dataModal.textModal).toBe('proyecto_registrado_correctamente');
   });
 
   it('should display error modal when ProjectsService throws error', () => {
@@ -81,7 +84,7 @@ describe('CreateProjectComponent', () => {
     component.confirmModal(true);
 
     expect(component.dataModal.textModal).toBe('Error from server');
-    expect(component.dataModal.typeModal).toBe('Error');
+    expect(component.dataModal.typeModal).toBe('error');
   });
 
   it('should handle confirmModal with event false', () => {

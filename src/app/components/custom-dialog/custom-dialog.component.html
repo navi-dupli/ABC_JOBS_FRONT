@@ -20,11 +20,11 @@
             pButton 
             (click)="closeDialog()" 
             [class]="data.typeModal === 'Confirmación' ? 'p-button-outlined' : ''"
-            [label]="data.typeModal === 'Confirmación' ? 'Cancelar' : 'Ok'"></button>
+            [label]="data.typeModal === 'Confirmación' ? ('cancelar'|translate) : ('ok'| translate)"></button>
         <button 
             *ngIf="data.typeModal === 'Confirmación'"
             pButton 
             (click)="confirmDialog()" 
-            label="Aceptar"></button>
+            [label]="'aceptar'|translate"></button>
     </ng-template>
 </p-dialog>
