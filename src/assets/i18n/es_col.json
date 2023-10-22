@@ -55,5 +55,7 @@
   "idioma": "Idioma",
   "ubicacion": "Ubicación",
   "experiencia": "Experiencia",
-  "educacion": "Educación"
+  "educacion": "Educación",
+  "imagen_perfil": "Imagen de perfil",
+  "experiencia_laboral": "Experiencia laboral"
 }

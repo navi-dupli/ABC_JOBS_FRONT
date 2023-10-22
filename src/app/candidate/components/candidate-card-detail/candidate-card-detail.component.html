@@ -2,7 +2,7 @@
     <div class="flex justify-content-between align-items-start">
         <img 
             [src]="candidate.picture" 
-            alt="imagen-perfil"
+            alt="{{'imagen_perfil'|translate}}"
             class="w-2">
         
         <div class="w-9">
@@ -47,7 +47,7 @@
     </div>
 
     <div>
-        <p class="text-xl font-semibold">Educación</p>
+        <p class="text-xl font-semibold">{{'educacion'| translate}}</p>
 
         <div class="flex" *ngFor="let education of candidate.education">
             <p class="w-6">{{education.title}}</p>
@@ -55,7 +55,7 @@
             <p class="w-2">{{education.dateEnd}}</p>
         </div>
 
-        <p class="text-xl font-semibold mt-5">Experiencia laboral</p>
+        <p class="text-xl font-semibold mt-5">{{'experiencia_laboral'|translate}}</p>
 
         <div class="flex" *ngFor="let experience of candidate.experiences">
             <p class="w-4">{{experience.job}}</p>

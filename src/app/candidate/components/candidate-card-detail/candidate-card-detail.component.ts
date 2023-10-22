@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-candidate-card-detail',
@@ -12,7 +13,7 @@ export class CandidateCardDetailComponent implements OnInit {
   }
   candidate;
 
-  constructor() { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit(): void {
     console.log(this.candidate);
