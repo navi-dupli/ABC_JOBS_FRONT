@@ -25,7 +25,7 @@
   "error": "Error",
   "ok": "Ok",
   "crear": "Create",
-  "registro_empresa": "Company registration",
+  "registro_empresa": "Register company",
   "nombre_empresa": "Company name",
   "longitud_campo": "The name must be a maximum of 100 characters",
   "identificacion_empresa": "Unique identification",
@@ -49,5 +49,6 @@
   "registrar_empresa_confirmacion": "Do you want to register a new company?",
   "registrar_empresa_exitoso": "Successfully registered company",
   "registrar_empresa_fallido": "There was an error when registering the company",
-  "salir": "Exit"
+  "salir": "Exit",
+  "buscador": "Searcher"
 }
