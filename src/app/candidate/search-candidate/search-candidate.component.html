@@ -1,6 +1,6 @@
 <div class="flex justify-content-center mt-5 search-candidate">
     <div class="flex flex-column justify-content-center surface-card p-5 w-11">
-        <div class="text-3xl font-medium mb-3">{{'busqueda'|translate}}</div>
+        <div class="text-3xl font-medium mb-3" id="search-title">{{'busqueda'|translate}}</div>
 
         <form>
             <div class="flex align-items-center justify-content-between">
@@ -16,7 +16,7 @@
                         [placeholder]="'seleccionar_opcion'|translate"
                         optionLabel="name" 
                         optionValue="id"
-                        class="multiselect-custom w-full" 
+                        class="multiselect-custom w-full"
                         display="chip"
                         (onChange)="onChangeFilter()">
                     </p-multiSelect>
