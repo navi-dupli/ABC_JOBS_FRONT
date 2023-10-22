@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 import { LocationService } from '../../../app/services/location/location.service';
 import { CompaniesService } from '../../../app/services/companies/companies.service';
 import { RegisterCompanyComponent } from './register-company.component';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
 describe('RegisterCompanyComponent', () => {
   let component: RegisterCompanyComponent;
@@ -14,16 +15,28 @@ describe('RegisterCompanyComponent', () => {
   let companiesService: CompaniesService;
   const currentUser = { access_token: 'your-access-token' };
   localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  let translate: TranslateService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RegisterCompanyComponent],
-      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useValue: {
+              getTranslation: (lang: string) => {
+                return of({ 'registrar_empresa_confirmacion': '¿Desea registrar una nueva empresa?', "registrar_empresa_exitoso": "Empresa registrada con éxito" });
+              }
+            }
+          }
+        })],
       providers: [LocationService, CompaniesService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RegisterCompanyComponent);
     component = fixture.componentInstance;
+    translate = TestBed.inject(TranslateService);
     locationService = TestBed.inject(LocationService);
     companiesService = TestBed.inject(CompaniesService);
   });
@@ -46,6 +59,10 @@ describe('RegisterCompanyComponent', () => {
   });
 
   it('should handle onSubmit', () => {
+    const translateService = TestBed.inject(TranslateService);
+    translateService.use('es');
+    component.dataModal.textModal = translateService.instant('registrar_empresa_confirmacion');
+
     component.onSubmit();
 
     expect(component.dataModal.displayModal).toBe(true);
@@ -53,6 +70,10 @@ describe('RegisterCompanyComponent', () => {
   });
 
   it('should handle confirmModal with event true', () => {
+    const translateService = TestBed.inject(TranslateService);
+    translateService.use('es');
+    component.dataModal.textModal = translateService.instant('registrar_empresa_exitoso');
+
     jest.spyOn(companiesService, 'registerCompany').mockReturnValue(of({ success: true }));
     component.confirmModal(true);
 

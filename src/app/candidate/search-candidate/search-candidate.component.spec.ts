@@ -4,6 +4,7 @@ import { LocationService } from '../../../app/services/location/location.service
 import { CommonsService } from '../../../app/services/commons/commons.service';
 import { CandidateService } from '../../../app/services/candidates/candidate.service';
 import { SearchCandidateComponent } from './search-candidate.component';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('SearchCandidateComponent', () => {
   let component: SearchCandidateComponent;
@@ -37,6 +38,9 @@ describe('SearchCandidateComponent', () => {
         { provide: CommonsService, useValue: commonsService },
         { provide: CandidateService, useValue: candidateService },
       ],
+      imports: [TranslateModule.forRoot({
+        loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+      })]
     }).compileComponents();
     
   }));
