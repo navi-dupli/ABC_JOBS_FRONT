@@ -12,6 +12,7 @@ import { SearchCandidateComponent } from './search-candidate.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CandidateCardModule } from '../components/candidate-card/candidate-card.module';
 import { CandidateCardDetailModule } from '../components/candidate-card-detail/candidate-card-detail.module';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { CandidateCardDetailModule } from '../components/candidate-card-detail/c
         CustomDialogModule,
         MultiSelectModule,
         CandidateCardModule,
-        CandidateCardDetailModule
+        CandidateCardDetailModule,
+      TranslateModule
     ],
     declarations: [SearchCandidateComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],

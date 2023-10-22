@@ -50,6 +50,10 @@
   "registrar_empresa_exitoso": "Successfully registered company",
   "registrar_empresa_fallido": "There was an error when registering the company",
   "salir": "Exit",
-  "buscador": "Searcher",
-  "home": "Home"
+  "busqueda": "Search",
+  "habilidades": "Skills",
+  "idioma": "Language",
+  "ubicacion": "Location",
+  "experiencia": "Experience",
+  "educacion": "Education"
 }
