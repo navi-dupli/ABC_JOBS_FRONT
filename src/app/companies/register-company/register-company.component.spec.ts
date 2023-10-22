@@ -28,7 +28,10 @@ describe('RegisterCompanyComponent', () => {
             provide: TranslateLoader,
             useValue: {
               getTranslation: (lang: string) => {
-                return of({ 'registrar_empresa_confirmacion': '¿Desea registrar una nueva empresa?', "registrar_empresa_exitoso": "Empresa registrada con éxito", "registro_empresa": "Registro empresa" });
+                return of({ 'registrar_empresa_confirmacion': '¿Desea registrar una nueva empresa?', 
+                "registrar_empresa_exitoso": "Empresa registrada con éxito", 
+                "registro_empresa": "Registro empresa",
+                "campos_incompletos": "El formulario tiene campos obligatorios vacios" });
               }
             }
           }
@@ -75,13 +78,13 @@ describe('RegisterCompanyComponent', () => {
   it('should handle confirmModal with event true', () => {
     const translateService = TestBed.inject(TranslateService);
     translateService.use('es');
-    component.dataModal.textModal = translateService.instant('registrar_empresa_exitoso');
+    component.dataModal.textModal = translateService.instant('campos_incompletos');
 
     jest.spyOn(companiesService, 'registerCompany').mockReturnValue(of({ success: true }));
     component.confirmModal(true);
 
     expect(component.dataModal.displayModal).toBe(true);
-    expect(component.dataModal.textModal).toBe('Empresa registrada con éxito');
+    expect(component.dataModal.textModal).toBe('El formulario tiene campos obligatorios vacios');
   });
 
   it('should handle confirmModal with event false', () => {
