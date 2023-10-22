@@ -1,7 +1,7 @@
 <div [class]="'border-1 surface-border p-3 flex justify-content-between align-items-start mb-3 ' + (candidateSelected ? 'selected' : '')" (click)="selectedCard()">
     <img 
         [src]="candidate.picture" 
-        alt="imagen-perfil"
+        alt="{{'imagen_perfil'|translate}}"
         class="w-3">
     
     <div class="w-9 pl-2">
