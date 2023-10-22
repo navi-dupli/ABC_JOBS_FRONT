@@ -1,16 +1,16 @@
 <div class="flex justify-content-center mt-5">
     <div class="flex flex-column justify-content-center surface-card p-5 w-9">
-        <div class="text-3xl font-medium mb-3">Crear proyecto</div>
+        <div class="text-3xl font-medium mb-3">{{'crear_proyecto' | translate}}</div>
         <form [formGroup]="registerProject">
             <div class="mb-6">
                 <label
                         for="project_name"
-                        class="block text-xl font-medium mb-2">Nombre proyecto</label>
+                        class="block text-xl font-medium mb-2">{{'nombre_proyecto' | translate}}</label>
                 <div class="w-full">
                     <input
                             id="project_name"
                             type="text"
-                            placeholder="Nombre proyecto*"
+                            [placeholder]="('nombre_proyecto' | translate)+'*'"
                             pInputText
                             [class]="'w-full ' +
                             (projectName.invalid && (projectName.dirty || projectName.touched) ? 'ng-dirty' : '')"
@@ -22,10 +22,10 @@
                         class="error-form"
                         *ngIf="projectName.invalid && (projectName.dirty || projectName.touched)">
                     <span *ngIf="projectName.errors.required">
-                        Campo obligatorio
+                        {{'campo_obligatorio' | translate}}
                     </span>
                     <span *ngIf="projectName.errors.maxlength">
-                    El nombre debe ser de máximo 100 caracteres
+                    {{'nombre_proyecto_maximo_100_caracteres'| translate}}
                 </span>
                 </div>
             </div>
@@ -33,7 +33,7 @@
             <div class="mb-6">
                 <label
                         for="description"
-                        class="block text-xl font-medium mb-2">Descripción</label>
+                        class="block text-xl font-medium mb-2">{{'descripcion'|translate}}</label>
                 <div class="w-full">
                             <textarea
                                     class="w-full"
@@ -41,24 +41,24 @@
                                     pInputTextarea
                                     formControlName="projectDescription"
                                     required
-                                    placeholder="Descripción*"
+                                    [placeholder]="('descripcion'|translate)+'*'"
                             ></textarea>
                 </div>
                 <div
                         class="error-form"
                         *ngIf="projectDescription.invalid && (projectDescription.dirty || projectDescription.touched)">
                             <span *ngIf="projectDescription.errors.required">
-                                Campo obligatorio
+                                {{'campo_obligatorio' | translate}}
                             </span>
                     <span *ngIf="projectDescription.errors.maxlength">
-                                El nombre debe ser de máximo 200 caracteres
+                                {{'descripcion_maximo_200_caracteres'| translate}}
                             </span>
                 </div>
             </div>
             <div class="mb-6">
                 <label
                         for="date"
-                        class="block text-xl font-medium mb-2">Fecha</label>
+                        class="block text-xl font-medium mb-2">{{'fecha'|translate}}</label>
                 <div class="w-full">
                     <div class="p-inputgroup w-full">
                         <span class="p-inputgroup-addon">
@@ -69,14 +69,14 @@
                                     [minDate]="minDate"
                                     formControlName="projectDate"
                                     required
-                                    placeholder="Fecha*"></p-calendar>
+                                    [placeholder]="('fecha'|translate)+'*'"></p-calendar>
                     </div>
                 </div>
                 <div
                         class="error-form"
                         *ngIf="projectDate.invalid && (projectDate.dirty || projectDate.touched)">
                             <span *ngIf="projectDate.errors.required">
-                                Campo obligatorio
+                                {{'campo_obligatorio' | translate}}
                             </span>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                         pButton
                         pRipple
                         type="button"
-                        label="Cancelar"
+                        [label]="'cancelar'|translate"
                         class="p-button-outlined mr-5"
                         [routerLink]="['/']">
                 </button>
@@ -93,7 +93,7 @@
                         pButton
                         pRipple
                         type="button"
-                        label="Guardar"
+                        [label]="'crear'|translate"
                         [disabled]="registerProject.invalid"
                         (click)="onSubmit()">
                 </button>
