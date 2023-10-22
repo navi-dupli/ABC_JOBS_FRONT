@@ -4,7 +4,8 @@ import { LocationService } from '../../../app/services/location/location.service
 import { CommonsService } from '../../../app/services/commons/commons.service';
 import { CandidateService } from '../../../app/services/candidates/candidate.service';
 import { SearchCandidateComponent } from './search-candidate.component';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {MultiSelectModule} from "primeng/multiselect";
 
 
 describe('SearchCandidateComponent', () => {
@@ -12,7 +13,8 @@ describe('SearchCandidateComponent', () => {
   let fixture: ComponentFixture<SearchCandidateComponent>;
   let locationService: any; 
   let commonsService: any; 
-  let candidateService: any; 
+  let candidateService: any;
+  let translate: TranslateService;
 
   beforeEach(waitForAsync(() => {
     
@@ -33,7 +35,9 @@ describe('SearchCandidateComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot({
+      imports: [
+        MultiSelectModule,
+        TranslateModule.forRoot({
         loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
       })],
       declarations: [SearchCandidateComponent],
@@ -106,5 +110,14 @@ describe('SearchCandidateComponent', () => {
 
     expect(component.candidateSelected).toEqual(candidate);
     expect(component.candidateSelectedId).toEqual('2');
+  });
+
+  it('should translate search-title', () => {
+    translate = TestBed.inject(TranslateService);
+    translate.setTranslation('es', { 'busqueda': 'Búsqueda' });
+    translate.use('es');
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('#search-title').textContent).toContain('Búsqueda');
   });
 });

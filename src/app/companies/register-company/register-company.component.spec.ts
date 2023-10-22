@@ -7,6 +7,8 @@ import { LocationService } from '../../../app/services/location/location.service
 import { CompaniesService } from '../../../app/services/companies/companies.service';
 import { RegisterCompanyComponent } from './register-company.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import {PasswordModule} from "primeng/password";
+import {DropdownModule} from "primeng/dropdown";
 
 describe('RegisterCompanyComponent', () => {
   let component: RegisterCompanyComponent;
@@ -20,13 +22,13 @@ describe('RegisterCompanyComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RegisterCompanyComponent],
-      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule,
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule, PasswordModule, DropdownModule,
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
             useValue: {
               getTranslation: (lang: string) => {
-                return of({ 'registrar_empresa_confirmacion': '¿Desea registrar una nueva empresa?', "registrar_empresa_exitoso": "Empresa registrada con éxito" });
+                return of({ 'registrar_empresa_confirmacion': '¿Desea registrar una nueva empresa?', "registrar_empresa_exitoso": "Empresa registrada con éxito", "registro_empresa": "Registro empresa" });
               }
             }
           }
@@ -39,6 +41,7 @@ describe('RegisterCompanyComponent', () => {
     translate = TestBed.inject(TranslateService);
     locationService = TestBed.inject(LocationService);
     companiesService = TestBed.inject(CompaniesService);
+    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -111,6 +114,15 @@ describe('RegisterCompanyComponent', () => {
 
   it('should clear the form', () => {
     expect(component.clearForm()).toBeUndefined();
+  });
+
+  it('should translate title-form', () => {
+    const translateService = TestBed.inject(TranslateService);
+    translate.setTranslation('es', { 'registro_empresa': 'Registro empresa' });
+    translateService.use('es');
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('#title-form').textContent).toContain('Registro empresa');
   });
 
 });
