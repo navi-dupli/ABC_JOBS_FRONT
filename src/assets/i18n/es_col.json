@@ -50,5 +50,6 @@
   "registrar_empresa_exitoso": "Empresa registrada con éxito",
   "registrar_empresa_fallido": "Hubo un error al registrar la empresa",
   "salir": "Salir",
-  "buscador": "Buscador"
+  "buscador": "Buscador",
+  "home": "Home"
 }

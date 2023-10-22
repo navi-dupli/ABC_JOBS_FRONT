@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import jwt_decode from "jwt-decode";
 import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
-import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -10,55 +9,46 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class MenuComponent {
 
-  model: any[] = [];
+  model: any[] = [
+    {
+      label: 'home',
+      items: [
+        { label: 'home', icon: 'pi pi-fw pi-home', routerLink: ['/'], scope: ['read:users', 'register:project', 'register:company', 'search:candidate'] }
+      ]
+    },
+    {
+      label: 'crear_proyecto',
+      items: [
+        { label: 'crear_proyecto', icon: 'pi pi-fw pi-book', routerLink: ['/crear-proyecto'], scope: ['register:project'] }
+      ]
+    },
+    {
+      label: 'registro_empresa',
+      items: [
+        { label: 'registro_empresa', icon: 'pi pi-fw pi-briefcase', routerLink: ['/registrar-empresa'], scope: ['register:company'] }
+      ]
+    },
+    {
+      label: 'buscador',
+      items: [
+        { label: 'buscador', icon: 'pi pi-fw pi-search', routerLink: ['/buscar-candidato'], scope: ['search:candidate'] }
+      ]
+    }
+  ];
 
-  constructor(
-    private authService: AuthService, 
-    private router: Router,
-    private translate: TranslateService) {
-      console.log(this.translate.instant("registro_empresa"));
-    
-    this.model = [
-      {
-        label: 'Home',
-        items: [
-          { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'], scope: ['read:users', 'register:project', 'register:company', 'search:candidate'] }
-        ]
-      },
-      {
-        label: this.translate.instant("crear_proyecto"),
-        items: [
-          { label: this.translate.instant("crear_proyecto"), icon: 'pi pi-fw pi-id-card', routerLink: ['/crear-proyecto'], scope: ['register:project'] }
-        ]
-      },
-      {
-        label: this.translate.instant("pais"),
-        items: [
-          { label: this.translate.instant("pais"), icon: 'pi pi-fw pi-id-card', routerLink: ['/registrar-empresa'], scope: ['register:company'] }
-        ]
-      },
-      {
-        label: this.translate.instant("buscador"),
-        items: [
-          { label: this.translate.instant("buscador"), icon: 'pi pi-fw pi-id-card', routerLink: ['/buscar-candidato'], scope: ['search:candidate'] }
-        ]
-      }
-    ]
-     }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.filterMenu();
   }
 
   getScopes(){
-    console.log(this.translate.instant("registro_empresa"));
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const decodeToken = jwt_decode(currentUser.access_token);
     return decodeToken["permissions"] as string[];
   }
 
   filterMenu() {
-    console.log(this.translate.instant("registro_empresa"));
     const permissions = this.getScopes();
     this.model = this.model.map((item) => {
       if (item.items) {
