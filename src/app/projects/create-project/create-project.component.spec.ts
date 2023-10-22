@@ -26,7 +26,9 @@ describe('CreateProjectComponent', () => {
           provide: TranslateLoader,
           useValue: {
             getTranslation: (lang: string) => {
-              return of({ 'confirmacion_registrar_proyecto': '¿Desea registrar un nuevo proyecto?', 'proyecto_registrado_correctamente':'El proyecto se ha registrado correctamente' });
+              return of({ 'confirmacion_registrar_proyecto': '¿Desea registrar un nuevo proyecto?', 
+              'proyecto_registrado_correctamente':'El proyecto se ha registrado correctamente',
+              "campos_incompletos": "El formulario tiene campos obligatorios vacios" });
             }
           }
         }
@@ -94,14 +96,17 @@ describe('CreateProjectComponent', () => {
   });
 
   it('should display error modal when ProjectsService throws error', () => {
-    const errorResponse = { error: { message: 'Error from server' } };
+    const translateService = TestBed.inject(TranslateService);
+    translateService.use('es');
+    component.dataModal.textModal = translateService.instant('campos_incompletos');
+    const errorResponse = { error: { message: 'El formulario tiene campos obligatorios vacios' } };
 
     (mockProjectsService.registerProject as jest.Mock).mockReturnValueOnce(throwError(() => errorResponse));
 
     component.confirmModal(true);
 
-    expect(component.dataModal.textModal).toBe('Error from server');
-    expect(component.dataModal.typeModal).toBe('error');
+    expect(component.dataModal.textModal).toBe('El formulario tiene campos obligatorios vacios');
+    expect(component.dataModal.typeModal).toBe('Error');
   });
 
   it('should handle confirmModal with event false', () => {
