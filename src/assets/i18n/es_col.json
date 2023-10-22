@@ -59,5 +59,6 @@
   "imagen_perfil": "Imagen de perfil",
   "experiencia_laboral": "Experiencia laboral",
   "buscador": "Buscador",
-  "home": "Inicio"
+  "home": "Inicio",
+  "campos_incompletos": "El formulario tiene campos obligatorios vacios"
 }

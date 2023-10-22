@@ -62,39 +62,49 @@ export class RegisterCompanyComponent implements OnInit {
 
   confirmModal(event: boolean) {
     if (event) {
-      this.companyService.registerCompany(this.registerCompany.value).subscribe({
-        next: (result) => {
-          if (result) {
-            const textModal = this.translate.instant("registrar_empresa_exitoso");
-            const typeModal = this.translate.instant("exito");
-            this.dataModal = {
-              displayModal: true,
-              textModal: textModal,
-              iconModal: 'pi-check',
-              typeModal: typeModal
+      if (this.registerCompany.valid) {
+        this.companyService.registerCompany(this.registerCompany.value).subscribe({
+          next: (result) => {
+            if (result) {
+              const textModal = this.translate.instant("registrar_empresa_exitoso");
+              const typeModal = this.translate.instant("exito");
+              this.dataModal = {
+                displayModal: true,
+                textModal: textModal,
+                iconModal: 'pi-check',
+                typeModal: typeModal
+              }
+            }
+          },
+          error: (e) => {
+            console.log(e)
+            if (e.status === 400) {
+              this.dataModal = {
+                displayModal: true,
+                textModal: e.error.message,
+                iconModal: 'pi-exclamation-circle',
+                typeModal: 'Error'
+              }
+            } else {
+              const textModal = this.translate.instant("registrar_empresa_fallido");
+              this.dataModal = {
+                displayModal: true,
+                textModal: textModal,
+                iconModal: 'pi-exclamation-circle',
+                typeModal: 'Error'
+              }
             }
           }
-        },
-        error: (e) => {
-          console.log(e)
-          if (e.status === 400) {
-            this.dataModal = {
-              displayModal: true,
-              textModal: e.error.message,
-              iconModal: 'pi-exclamation-circle',
-              typeModal: 'Error'
-            }
-          } else {
-            const textModal = this.translate.instant("registrar_empresa_fallido");
-            this.dataModal = {
-              displayModal: true,
-              textModal: textModal,
-              iconModal: 'pi-exclamation-circle',
-              typeModal: 'Error'
-            }
-          }
+        });
+      } else {
+        const textModal = this.translate.instant("campos_incompletos");
+        this.dataModal = {
+            displayModal: true,
+            textModal: textModal,
+            iconModal: 'pi-exclamation-circle',
+            typeModal: 'Error'
         }
-      });
+      }
     }
   }
 

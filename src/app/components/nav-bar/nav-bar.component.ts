@@ -14,10 +14,11 @@ export class NavBarComponent {
 
   ngOnInit() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const decodeToken = jwt_decode(currentUser.id_token);
+    
     this.user = {
-      name: decodeToken["name"],
-      picture: decodeToken["picture"]
+      name: `${currentUser.names} ${currentUser.surnames}`,
+      picture: currentUser.picture,
+      rol: currentUser.rol.replace('_', ' ')
     }
   }
 
