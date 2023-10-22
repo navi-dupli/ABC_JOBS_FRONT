@@ -49,5 +49,11 @@
   "registrar_empresa_confirmacion": "¿Desea registrar una nueva empresa?",
   "registrar_empresa_exitoso": "Empresa registrada con éxito",
   "registrar_empresa_fallido": "Hubo un error al registrar la empresa",
-  "salir": "Salir"
+  "salir": "Salir",
+  "busqueda": "Búsqueda",
+  "habilidades": "Habilidades",
+  "idioma": "Idioma",
+  "ubicacion": "Ubicación",
+  "experiencia": "Experiencia",
+  "educacion": "Educación"
 }

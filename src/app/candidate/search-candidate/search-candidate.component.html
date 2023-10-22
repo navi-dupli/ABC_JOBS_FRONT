@@ -1,19 +1,19 @@
 <div class="flex justify-content-center mt-5 search-candidate">
     <div class="flex flex-column justify-content-center surface-card p-5 w-11">
-        <div class="text-3xl font-medium mb-3">Busqueda</div>
+        <div class="text-3xl font-medium mb-3">{{'busqueda'|translate}}</div>
 
         <form>
             <div class="flex align-items-center justify-content-between">
                 <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
-                        for="hability">Habilidades</label>
+                        for="search-hability">{{'habilidades'|translate}}</label>
                     <p-multiSelect 
                         name="hability"
                         id="search-hability"
                         [options]="abilityOptions" 
                         [(ngModel)]="selectedAbility" 
-                        placeholder="Seleccione cualquier opción" 
+                        [placeholder]="'seleccionar_opcion'|translate"
                         optionLabel="name" 
                         optionValue="id"
                         class="multiselect-custom w-full" 
@@ -25,13 +25,13 @@
                 <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
-                        for="language">Idioma</label>
+                        for="search-language">{{'idioma'| translate}}</label>
                     <p-multiSelect 
                         name="language"
                         id="search-language"
                         [options]="languageOptions" 
-                        [(ngModel)]="selectedLanguage" 
-                        placeholder="Seleccione cualquier opción" 
+                        [(ngModel)]="selectedLanguage"
+                        [placeholder]="'seleccionar_opcion'|translate"
                         optionLabel="name" 
                         optionValue="name"
                         class="multiselect-custom  w-full" 
@@ -43,13 +43,13 @@
                 <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
-                        for="location">Ubicación</label>
+                        for="search-location">{{'ubicacion'|translate}}</label>
                     <p-multiSelect 
                         name="location"
                         id="search-location"
                         [options]="countriesOptions" 
-                        [(ngModel)]="selectedCountry" 
-                        placeholder="Selecione cualquier opción" 
+                        [(ngModel)]="selectedCountry"
+                        [placeholder]="'seleccionar_opcion'|translate"
                         optionLabel="name" 
                         optionValue="id"
                         class="multiselect-custom  w-full" 
@@ -61,13 +61,13 @@
                 <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
-                        for="experience">Experiencia</label>
+                        for="search-experience">{{'experiencia'|translate}}</label>
                     <p-multiSelect 
                         name="experience"
                         id="search-experience"
                         [options]="experienceOptions" 
-                        [(ngModel)]="selectedExperience" 
-                        placeholder="Seleccione cualquier opción" 
+                        [(ngModel)]="selectedExperience"
+                        [placeholder]="'seleccionar_opcion'|translate"
                         optionLabel="name" 
                         optionValue="id"
                         class="multiselect-custom  w-full" 
@@ -79,13 +79,13 @@
                 <div class="flex flex-wrap search-candidate-option">
                     <label 
                         class="w-full"
-                        for="education">Educación</label>
+                        for="search-education">{{'educacion'|translate}}</label>
                     <p-multiSelect 
                         name="education"
                         id="search-education"
                         [options]="educationTypeOptions" 
-                        [(ngModel)]="selectedEducation" 
-                        placeholder="Seleccione cualquier opción" 
+                        [(ngModel)]="selectedEducation"
+                        [placeholder]="'seleccionar_opcion'|translate"
                         optionLabel="name" 
                         optionValue="name"
                         class="multiselect-custom  w-full" 

@@ -4,6 +4,7 @@ import { CountriesModel } from '../../../app/models/companies';
 import { CommonsService } from '../../../app/services/commons/commons.service';
 import { LocationService } from '../../../app/services/location/location.service';
 import {CandidateService} from "../../services/candidates/candidate.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-search-candidate',
@@ -29,7 +30,9 @@ export class SearchCandidateComponent implements OnInit {
   constructor(
     private locationService: LocationService,
     private commonsService: CommonsService,
-    private candidateService: CandidateService) {
+    private candidateService: CandidateService,
+    private translate: TranslateService
+  ) {
 
   }
   
