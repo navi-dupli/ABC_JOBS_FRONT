@@ -49,5 +49,11 @@
   "registrar_empresa_confirmacion": "Do you want to register a new company?",
   "registrar_empresa_exitoso": "Successfully registered company",
   "registrar_empresa_fallido": "There was an error when registering the company",
-  "salir": "Exit"
+  "salir": "Exit",
+  "busqueda": "Search",
+  "habilidades": "Skills",
+  "idioma": "Language",
+  "ubicacion": "Location",
+  "experiencia": "Experience",
+  "educacion": "Education"
 }
