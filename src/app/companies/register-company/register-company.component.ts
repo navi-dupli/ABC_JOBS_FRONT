@@ -5,6 +5,7 @@ import { LocationService } from '../../../app/services/location/location.service
 import { CityModel, CountriesModel, RegionModel } from '../../../app/models/companies';
 import { CustomDialogModel } from '../../../app/models/custom-dialog.model';
 import { CompaniesService } from '../../../app/services/companies/companies.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register-company',
@@ -24,7 +25,8 @@ export class RegisterCompanyComponent implements OnInit {
   constructor(
     private companyService: CompaniesService,
     private router: Router,
-    private locationService: LocationService) { 
+    private locationService: LocationService,
+    private translate: TranslateService) { 
     this.registerCompany = new FormGroup({
       companyName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       uniqueIdentification: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -48,11 +50,13 @@ export class RegisterCompanyComponent implements OnInit {
     
   }
   onSubmit() {
+    const textModal = this.translate.instant("registrar_empresa_confirmacion");
+    const typeModal = this.translate.instant("confirmacion");
     this.dataModal = {
       displayModal: true,
-      textModal: '¿Desea registrar una nueva empresa?',
+      textModal: textModal,
       iconModal: 'pi-exclamation-triangle',
-      typeModal: 'Confirmación'
+      typeModal: typeModal
     }
   }
 
@@ -61,11 +65,13 @@ export class RegisterCompanyComponent implements OnInit {
       this.companyService.registerCompany(this.registerCompany.value).subscribe({
         next: (result) => {
           if (result) {
+            const textModal = this.translate.instant("registrar_empresa_exitoso");
+            const typeModal = this.translate.instant("exito");
             this.dataModal = {
               displayModal: true,
-              textModal: 'Empresa registrada con éxito',
+              textModal: textModal,
               iconModal: 'pi-check',
-              typeModal: 'Éxito'
+              typeModal: typeModal
             }
           }
         },
@@ -79,9 +85,10 @@ export class RegisterCompanyComponent implements OnInit {
               typeModal: 'Error'
             }
           } else {
+            const textModal = this.translate.instant("registrar_empresa_fallido");
             this.dataModal = {
               displayModal: true,
-              textModal: 'Hubo un error al registrar la empresa',
+              textModal: textModal,
               iconModal: 'pi-exclamation-circle',
               typeModal: 'Error'
             }
