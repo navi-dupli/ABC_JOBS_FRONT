@@ -9,5 +9,18 @@
   "campo_obligatorio": "Campo obligatorio",
   "correo_incorrecto":"Formato incorrecto, formato esperado aa@dominio.co",
   "minimo_contrasena":"La contraseña debe ser de mínimo 8 caracteres",
-  "error_inicio_sesion":"Hubo un error al iniciar sesión"
+  "error_inicio_sesion":"Hubo un error al iniciar sesión",
+  "confirmacion_registrar_proyecto":"¿Desea registrar un nuevo proyecto?",
+  "confirmacion": "Confirmación",
+  "cancelar": "Cancelar",
+  "aceptar": "Aceptar",
+  "crear_proyecto": "Crear proyecto",
+  "nombre_proyecto": "Nombre del proyecto",
+  "nombre_proyecto_maximo_100_caracteres": "El nombre debe ser de máximo 100 caracteres",
+  "descripcion": "Descripción",
+  "descripcion_maximo_200_caracteres": "La descripción debe ser de máximo 200 caracteres",
+  "fecha": "Fecha",
+  "proyecto_registrado_correctamente": "El proyecto se ha registrado correctamente",
+  "exito": "Éxito",
+  "error": "Error"
 }

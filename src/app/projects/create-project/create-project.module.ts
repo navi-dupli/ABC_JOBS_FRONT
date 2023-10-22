@@ -7,6 +7,7 @@ import {InputTextareaModule} from "primeng/inputtextarea";
 import {CalendarModule} from "primeng/calendar";
 import {RouterLink} from "@angular/router";
 import {CustomDialogModule} from "../../components/custom-dialog/custom-dialog.module";
+import {TranslationModule} from "../../components/translation/translation.module";
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {CustomDialogModule} from "../../components/custom-dialog/custom-dialog.m
     InputTextareaModule,
     CalendarModule,
     RouterLink,
-    CustomDialogModule
+    CustomDialogModule,
+    TranslationModule
   ],
     declarations: [
         CreateProjectComponent

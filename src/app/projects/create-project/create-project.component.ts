@@ -3,6 +3,7 @@ import {FormGroup, Validators} from "@angular/forms";
 import {FormControl} from "@angular/forms";
 import {CustomDialogModel} from "../../models/custom-dialog.model";
 import {ProjectsService} from "../../services/projects/projects.service";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-project',
@@ -16,7 +17,10 @@ export class CreateProjectComponent {
     displayModal: false
   }
 
-  constructor(private projectService: ProjectsService) {
+  constructor(
+    private projectService: ProjectsService,
+    private translate: TranslateService
+  ) {
     this.minDate = new Date();
     this.registerProject = new FormGroup({
       projectName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -26,11 +30,12 @@ export class CreateProjectComponent {
   }
 
   onSubmit() {
+    const textModal = this.translate.instant("confirmacion_registrar_proyecto");
     this.dataModal = {
       displayModal: true,
-      textModal: '¿Desea registrar un nuevo proyecto?',
+      textModal: textModal,
       iconModal: 'pi-exclamation-triangle',
-      typeModal: 'Confirmación'
+      typeModal: this.translate.instant("confirmacion")
     }
   }
 
@@ -55,9 +60,9 @@ export class CreateProjectComponent {
           if (result) {
             this.dataModal = {
               displayModal: true,
-              textModal: 'El proyecto se ha registrado correctamente',
+              textModal: this.translate.instant("proyecto_registrado_correctamente"),
               iconModal: 'pi-check',
-              typeModal: 'Éxito'
+              typeModal: this.translate.instant("exito")
             }
           }
         },
@@ -66,7 +71,7 @@ export class CreateProjectComponent {
             displayModal: true,
             textModal: e.error.message,
             iconModal: 'pi-times',
-            typeModal: 'Error'
+            typeModal: this.translate.instant("error")
           }
         }
       });
