@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
 
     routes = [{
         url: '/',
-        scope: ['read:users', 'register:project', 'register:company', 'search:candidate']
+        scope: ['read:users', 'register:project', 'register:company', 'search:candidate','register:technical-test']
     },
     {
         url: '/crear-proyecto',
@@ -16,6 +16,10 @@ export class AuthGuard implements CanActivate {
     {
         url: '/registrar-empresa',
         scope: ['register:company']
+    },
+    {
+        url: '/registar-resultados-prueba-tecnica',
+        scope: ['register:technical-test']
     },
     {
         url: '/buscar-candidato',
@@ -30,7 +34,6 @@ export class AuthGuard implements CanActivate {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             const decodeToken = jwt_decode(currentUser.access_token);
             const permissions = decodeToken["permissions"] as string[];
-
             const routeFound = this.routes.find((item) => {
                 const scopes = item.scope.find(scope => permissions.includes(scope));
                 return item.url === state.url && scopes

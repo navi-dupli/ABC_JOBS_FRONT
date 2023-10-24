@@ -29,6 +29,12 @@ export class MenuComponent {
       ]
     },
     {
+      label: 'registar_resultado',
+      items: [
+        { label: 'registar_resultado', icon: 'pi pi-fw pi-check-square', routerLink: ['/registar-resultados-prueba-tecnica'], scope: ['register:technical-test'] }
+      ]
+    },
+    {
       label: 'buscador',
       items: [
         { label: 'buscador', icon: 'pi pi-fw pi-search', routerLink: ['/buscar-candidato'], scope: ['search:candidate'] }

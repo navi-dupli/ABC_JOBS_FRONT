@@ -60,5 +60,18 @@
   "experiencia_laboral": "Experiencia laboral",
   "buscador": "Buscador",
   "home": "Inicio",
-  "campos_incompletos": "El formulario tiene campos obligatorios vacios"
+  "campos_incompletos": "El formulario tiene campos obligatorios vacios",
+  "registar_resultados_prueba_tecnica": "Registar resultados prueba técnica",
+  "calificacion": "Calificación",
+  "observaciones": "Observaciones",
+  "prueba_tecnica": "Prueba técnica",
+  "candidato": "Candidato",
+  "estado": "Estado",
+  "maximo_minimo_calificacion": "La calificación debe estar entre 0 y 10 puntos",
+  "maximo_observaciones":"Las observaciones pueden ser máximo de 500 caracteres",
+  "error_formato_calificacion":"Formato incorrecto, el valor debe ser numerico",
+  "confirma_registar_resultados_prueba_tecnica": "¿Desea registrar el resultado de una prueba técnica?",
+  "resultado_prueba_tecnica_almacenado_con_exito": "Resultado de prueba técnica almacenado con exito",
+  "error_almacenando_resultado_prueba_tecnica": "Error almacenando resultado prueba técnica",
+  "registar_resultado":"Registar resultados"
 }

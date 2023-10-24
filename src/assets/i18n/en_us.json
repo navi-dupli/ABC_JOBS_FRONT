@@ -60,5 +60,18 @@
   "experiencia_laboral": "work experience",
   "buscador": "Searcher",
   "home": "Home",
-  "campos_incompletos": "The form has empty required fields"
+  "campos_incompletos": "The form has empty required fields",
+  "registar_resultados_prueba_tecnica": "Register technical test results",
+  "calificacion": "qualification",
+  "observaciones": "Observations",
+  "prueba_tecnica": "Technical test",
+  "candidato": "Candidate",
+  "estado": "State",
+  "maximo_minimo_calificacion": "The qualification must be between 0 and 10 points",
+  "maximo_observaciones": "Observations can be a maximum of 500 characters",
+  "error_formato_calificacion": "Incorrect format, value must be numeric",
+  "confirma_registar_resultados_prueba_tecnica": "Do you want to record the result of a technical test?",
+  "resultado_prueba_tecnica_almacenado_con_exito": "Technical test result stored successfully",
+  "error_almacenando_resultado_prueba_tecnica": "Error storing technical test result",
+  "registar_resultado":"Register result"
 }

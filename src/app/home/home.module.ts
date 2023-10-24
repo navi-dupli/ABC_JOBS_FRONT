@@ -7,6 +7,7 @@ import { NavBarModule } from '../components/nav-bar/nav-bar.module';
 import { CreateProjectModule } from '../projects/create-project/create-project.module';
 import { RegisterCompanyModule } from '../companies/register-company/register-company.module';
 import { SearchCandidateModule } from '../candidate/search-candidate/search-candidate.module';
+import { RegisterTechnicalTestModule } from '../test/register-technical-test/register-technical-test.module';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { SearchCandidateModule } from '../candidate/search-candidate/search-cand
         NavBarModule,
         CreateProjectModule,
         RegisterCompanyModule,
+        RegisterTechnicalTestModule,
         SearchCandidateModule
     ],
     declarations: [
