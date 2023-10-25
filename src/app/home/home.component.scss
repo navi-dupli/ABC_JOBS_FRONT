@@ -5,7 +5,7 @@
     &__menu {
         width: 20%;
         min-height: 100vh;
-        position: fixed;
+        position: absolute;
         background-color: var(--surface-menu);
     }
 
