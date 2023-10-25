@@ -38,5 +38,10 @@ export class SessionService {
     getUser(): CurrentUser {
         return this.currentUser;
     }
+
+    logout() {
+        this.currentUser = null;
+        this.decodedToken = null;
+    }
 }
 
