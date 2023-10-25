@@ -24,7 +24,7 @@
   "exito": "Éxito",
   "error": "Error",
   "ok": "Ok",
-  "crear": "Create",
+  "crear": "Crear",
   "registro_empresa": "Registrar Empresa",
   "nombre_empresa": "Nombre empresa",
   "longitud_campo": "El nombre debe ser de máximo 100 caracteres",
@@ -60,5 +60,12 @@
   "experiencia_laboral": "Experiencia laboral",
   "buscador": "Buscador",
   "home": "Inicio",
-  "campos_incompletos": "El formulario tiene campos obligatorios vacios"
+  "campos_incompletos": "El formulario tiene campos obligatorios vacios",
+  "equipos": "Equipos",
+  "asignar_candidatos": "Asignar candidatos",
+  "proyecto": "Proyecto",
+  "equipo": "Equipo",
+  "sin_equipos": "El proyecto seleccionado no tiene equipos relacionados",
+  "asignar_candidatos_confirmacion": "¿Desea asignar los candidatos a un equipo?",
+  "asignar_candidatos_correctamente": "Los candidatos se han asignado correctamente"
 }

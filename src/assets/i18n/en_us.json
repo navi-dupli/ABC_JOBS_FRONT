@@ -60,5 +60,12 @@
   "experiencia_laboral": "work experience",
   "buscador": "Searcher",
   "home": "Home",
-  "campos_incompletos": "The form has empty required fields"
+  "campos_incompletos": "The form has empty required fields",
+  "equipos": "Teams",
+  "asignar_candidatos": "Assign applicants",
+  "proyecto": "Project",
+  "equipo": "Team",
+  "sin_equipos": "The selected project has no related equipment",
+  "asignar_candidatos_confirmacion": "Do you want to assign candidates to a team?",
+  "asignar_candidatos_correctamente": "Candidates have been correctly assigned"
 }

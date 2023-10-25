@@ -55,6 +55,17 @@ export class MenuComponent {
                     scope: ['search:candidate']
                 }
             ]
+        },
+        {
+            label: 'equipos',
+            items: [
+                {
+                    label: 'equipos',
+                    icon: 'pi pi-fw pi-users',
+                    routerLink: ['/asignar-candidato-equipo'],
+                    scope: ['register:candidate']
+                }
+            ]
         }
     ];
 
