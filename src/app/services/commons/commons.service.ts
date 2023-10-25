@@ -7,31 +7,19 @@ import { environment } from '../../../environments/environment';
 })
 export class CommonsService {
 
-  headers: HttpHeaders;
-
   constructor(private http: HttpClient) {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${currentUser.access_token}`
-      }
-    );
   }
 
   getAbilities() {
-    const options = { headers: this.headers }    
-    return this.http.get<any>(`${environment.url_api}/commons-app/skills`, options);
+    return this.http.get<any>(`${environment.url_api}/commons-app/skills`);
   }
 
   getLanguages() {
-    const options = { headers: this.headers }    
-    return this.http.get<any>(`${environment.url_api}/commons-app/languages`, options);
+    return this.http.get<any>(`${environment.url_api}/commons-app/languages`);
   }
 
   getEducationType() {
-    const options = { headers: this.headers }    
-    return this.http.get<any>(`${environment.url_api}/commons-app/education-types`, options);
+    return this.http.get<any>(`${environment.url_api}/commons-app/education-types`);
   }
 
 }

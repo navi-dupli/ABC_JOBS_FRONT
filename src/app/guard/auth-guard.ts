@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
-import jwt_decode from "jwt-decode";
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import {SessionService} from "../services/auth/session.service";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -22,15 +22,12 @@ export class AuthGuard implements CanActivate {
         scope: ['search:candidate']
     }]
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private sessionService:SessionService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (localStorage.getItem('currentUser')) {
+        if (this.sessionService.isAuthenticated()) {
             // ususario logueado
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            const decodeToken = jwt_decode(currentUser.access_token);
-            const permissions = decodeToken["permissions"] as string[];
-
+            const permissions = this.sessionService.getScopes();
             const routeFound = this.routes.find((item) => {
                 const scopes = item.scope.find(scope => permissions.includes(scope));
                 return item.url === state.url && scopes
@@ -43,7 +40,6 @@ export class AuthGuard implements CanActivate {
                 return false;
             }
         }
-
         // usuario no logueado
         this.router.navigate(['/iniciar-sesion']);
         return false;
