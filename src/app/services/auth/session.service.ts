@@ -6,24 +6,35 @@ import {CurrentUser, TokenInfo} from "./current-user.interface";
     providedIn: 'root'
 })
 export class SessionService {
-    private  currentUser: CurrentUser;
-    private  decodedToken: TokenInfo;
+    private currentUser: CurrentUser;
+    private decodedToken: TokenInfo;
 
     constructor() {
         this.loadSession();
     }
 
-    public loadSession():void {
-        this.currentUser= JSON.parse(localStorage.getItem('currentUser')) as CurrentUser;
-        this.decodedToken = jwt_decode(this.currentUser.access_token) as TokenInfo;
+    private loadSession(): void {
+        try {
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser')) as CurrentUser;
+            this.decodedToken = jwt_decode(this.currentUser.access_token) as TokenInfo;
+
+        } catch (error) {
+            this.currentUser = null;
+            this.decodedToken = null;
+        }
     }
 
     isAuthenticated(): boolean {
         return !!this.currentUser && !!this.decodedToken && this.decodedToken.exp > Date.now() / 1000;
     }
+
     getScopes(): string[] {
+        if (!this.decodedToken) {
+            return [];
+        }
         return this.decodedToken.permissions as string[];
     }
+
     getUser(): CurrentUser {
         return this.currentUser;
     }
