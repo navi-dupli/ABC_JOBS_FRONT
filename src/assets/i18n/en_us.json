@@ -60,5 +60,7 @@
   "experiencia_laboral": "work experience",
   "buscador": "Searcher",
   "home": "Home",
-  "campos_incompletos": "The form has empty required fields"
+  "campos_incompletos": "The form has empty required fields",
+  "equipos": "Teams",
+  "asignar_candidatos": "Assign applicants"
 }

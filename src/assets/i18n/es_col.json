@@ -60,5 +60,7 @@
   "experiencia_laboral": "Experiencia laboral",
   "buscador": "Buscador",
   "home": "Inicio",
-  "campos_incompletos": "El formulario tiene campos obligatorios vacios"
+  "campos_incompletos": "El formulario tiene campos obligatorios vacios",
+  "equipos": "Equipos",
+  "asignar_candidatos": "Asignar candidatos"
 }
