@@ -4,6 +4,7 @@ import {FormControl} from "@angular/forms";
 import {CustomDialogModel} from "../../models/custom-dialog.model";
 import {ProjectsService} from "../../services/projects/projects.service";
 import { TranslateService } from '@ngx-translate/core';
+import { SessionService } from '../../../app/services/auth/session.service';
 
 @Component({
   selector: 'app-create-project',
@@ -16,10 +17,12 @@ export class CreateProjectComponent {
   dataModal: CustomDialogModel = {
     displayModal: false
   }
+  user: any;
 
   constructor(
     private projectService: ProjectsService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private sessionService: SessionService
   ) {
     this.minDate = new Date();
     this.registerProject = new FormGroup({
@@ -27,6 +30,8 @@ export class CreateProjectComponent {
       projectDescription: new FormControl('', [Validators.required, Validators.maxLength(200)]),
       projectDate: new FormControl('', [Validators.required]),
     });
+
+    this.user = this.sessionService.getUser();
   }
 
   onSubmit() {
@@ -56,7 +61,7 @@ export class CreateProjectComponent {
   confirmModal(event: boolean) {
     if (event) {
       if (this.registerProject.valid) {
-        this.projectService.registerProject({...this.registerProject.value, companyId: 1}).subscribe( {
+        this.projectService.registerProject({...this.registerProject.value, companyId: this.user.company_id}).subscribe( {
           next: (result) => {
             if (result) {
               this.dataModal = {

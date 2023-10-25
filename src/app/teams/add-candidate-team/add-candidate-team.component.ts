@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { CustomDialogModel } from 'src/app/models/custom-dialog.model';
+import { Candidate } from '../../../app/models/candidate';
+import { CustomDialogModel } from '../../../app/models/custom-dialog.model';
+import { TeamsModel } from '../../../app/models/teams';
+import { SessionService } from '../../../app/services/auth/session.service';
+import { CandidateService } from '../../../app/services/candidates/candidate.service';
+import { ProjectsService } from '../../../app/services/projects/projects.service';
+import { TeamsService } from '../../../app/services/teams/teams.service';
+import { ProjectModel } from "../../models/projects";
 
 @Component({
   selector: 'app-add-candidate-team',
@@ -14,27 +21,103 @@ export class AddCandidateTeamComponent implements OnInit {
   dataModal: CustomDialogModel = {
     displayModal: false
   }
+  user: any;
+  projectOptions: ProjectModel[] = [];
+  teamsOptions: TeamsModel[] = [];
+  cadidateOptions: Candidate[] = [];
 
   constructor(
-    private translate: TranslateService
+    private translate: TranslateService,
+    private sessionService: SessionService,
+    private projectService: ProjectsService,
+    private teamsService: TeamsService,
+    private candidateService: CandidateService
   ) {
+    this.user = this.sessionService.getUser();
+
     this.addMember = new FormGroup({
       projectId: new FormControl('', [Validators.required]),
       teamId: new FormControl('', [Validators.required]),
-      candidate: new FormControl('', [Validators.required]),
+      userId: new FormControl('', [Validators.required]),
     });
   }
   ngOnInit(): void {
+    this.projectService.getProjectsByCompany(this.user.company_id).subscribe(result => {
+      this.projectOptions = result;
+    });
+
+    this.candidateService.getCandidates().subscribe(result => {
+      this.cadidateOptions = result.map(candidate => {
+        candidate.fullName = `${candidate.names} ${candidate.surnames}`;
+        return candidate;
+      });
+    });
   }
 
   onSubmit() {
-
+    const textModal = this.translate.instant("asignar_candidatos_confirmacion");
+    const typeModal = this.translate.instant("confirmacion");
+    this.dataModal = {
+      displayModal: true,
+      textModal: textModal,
+      iconModal: 'pi-exclamation-triangle',
+      typeModal: typeModal
+    }
   }
 
-  closeModal(event) {
+  confirmDialog(event: boolean) {
+    if (event) {
+      if (this.addMember.valid) {
+        this.teamsService.addMemberToTeam(this.addMember.value).subscribe( {
+          next: (result) => {
+            if (result) {
+              this.dataModal = {
+                displayModal: true,
+                textModal: this.translate.instant("asignar_candidatos_correctamente"),
+                iconModal: 'pi-check',
+                typeModal: this.translate.instant("exito")
+              }
+            }
+          },
+          error: (e) => {
+            this.dataModal = {
+              displayModal: true,
+              textModal: e.error.message,
+              iconModal: 'pi-times',
+              typeModal: this.translate.instant("error")
+            }
+          }
+        });
+      } else {
+        const textModal = this.translate.instant("campos_incompletos");
+        this.dataModal = {
+            displayModal: true,
+            textModal: textModal,
+            iconModal: 'pi-exclamation-circle',
+            typeModal: 'Error'
+        }
+      }
+    }
+  }
 
+  clearForm() {
+    this.addMember.reset();
+  }
+
+  closeModal(event: boolean) {
+    if (event) {
+      this.clearForm();
+    }
+  }
+
+  onChangeProject(projectId: number) {
+    this.teamsService.getTeamsByproject(projectId).subscribe(result => {
+      this.teamsOptions = result;
+    });
   }
 
   get projectId() { return this.addMember.get('projectId'); }
+  get teamId() { return this.addMember.get('teamId'); }
+  get userId() { return this.addMember.get('userId'); }
 
 }

@@ -25,7 +25,8 @@ describe('ProjectsService', () => {
       projectName: "Mi Proyecto",
       projectDescription: "Descripción de mi proyecto",
       projectDate: new Date(),
-      companyId: 0
+      companyId: 0,
+      id: 1
     };
 
     service.registerProject(registerProjectValue).subscribe((data) => {

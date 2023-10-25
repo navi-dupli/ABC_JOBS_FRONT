@@ -16,4 +16,8 @@ export class ProjectsService {
         return this.http.post<any>(`${environment.url_api}/projects-app/projects`, body);
     }
 
+    getProjectsByCompany(companyId: number) {
+        return this.http.get<any>(`${environment.url_api}/projects-app/projects/${companyId}`);
+    }
+
 }

@@ -7,6 +7,7 @@ import {TranslationModule} from "../../components/translation/translation.module
 import { AddCandidateTeamComponent } from './add-candidate-team.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { DropdownModule } from 'primeng/dropdown';
     CustomDialogModule,
     TranslationModule,
     MultiSelectModule,
-    DropdownModule
+    DropdownModule,
+    ButtonModule
   ],
     declarations: [
         AddCandidateTeamComponent
