@@ -104,6 +104,7 @@ export class MenuComponent {
 
     logout() {
         this.authService.logout();
+        this.sessionService.logout();
         this.router.navigate(['/iniciar-sesion']);
     }
 }
