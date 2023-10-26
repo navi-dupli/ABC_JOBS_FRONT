@@ -3,4 +3,5 @@ export interface ProjectModel {
     projectDescription: String;
     projectDate: Date;
     companyId: Number;
+    id: Number;
 }

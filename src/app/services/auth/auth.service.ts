@@ -6,19 +6,16 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
-    this.headers = new HttpHeaders({'Content-Type': 'application/json'});
   }
 
   login(username: string, password: string) {
-    const headers = this.headers;
     const body = {
       email: username,
       password
     };
-    return this.http.post<any>(`${environment.url_api}/login`, body, { headers });
+    return this.http.post<any>(`${environment.url_api}/login`, body);
   }
 
   logout() {

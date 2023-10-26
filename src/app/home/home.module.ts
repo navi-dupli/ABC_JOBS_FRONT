@@ -8,6 +8,7 @@ import { CreateProjectModule } from '../projects/create-project/create-project.m
 import { RegisterCompanyModule } from '../companies/register-company/register-company.module';
 import { SearchCandidateModule } from '../candidate/search-candidate/search-candidate.module';
 import { RegisterTechnicalTestModule } from '../test/register-technical-test/register-technical-test.module';
+import { AddCandidateTeamModule } from '../teams/add-candidate-team/add-candidate-team.module';
 
 @NgModule({
     imports: [
@@ -17,8 +18,8 @@ import { RegisterTechnicalTestModule } from '../test/register-technical-test/reg
         NavBarModule,
         CreateProjectModule,
         RegisterCompanyModule,
-        RegisterTechnicalTestModule,
-        SearchCandidateModule
+        SearchCandidateModule,
+        AddCandidateTeamModule
     ],
     declarations: [
         HomeComponent,

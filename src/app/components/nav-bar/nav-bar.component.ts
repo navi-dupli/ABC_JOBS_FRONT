@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
 import jwt_decode from "jwt-decode";
+import {SessionService} from "../../services/auth/session.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,11 +10,11 @@ import jwt_decode from "jwt-decode";
 })
 export class NavBarComponent {
   user: any;
-  constructor(private authService: AuthService) {
+  constructor(private sessionService: SessionService) {
   }
 
   ngOnInit() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser =this.sessionService.getUser();
     
     this.user = {
       name: `${currentUser.names} ${currentUser.surnames}`,

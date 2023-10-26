@@ -5,8 +5,6 @@ import { CandidateService } from './candidate.service';
 
 describe('CandidateService', () => {
   let service: CandidateService;
-  const currentUser = { access_token: 'your-access-token' };
-  localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
   beforeEach(() => {
     TestBed.configureTestingModule({

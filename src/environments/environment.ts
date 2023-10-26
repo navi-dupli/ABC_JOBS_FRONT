@@ -14,6 +14,7 @@ export const environment = {
   url_commons: "https://microservice-commons-zipu7fiszq-uc.a.run.app",
   url_companies: "https://microservice-companies-zipu7fiszq-uc.a.run.app/companies",
   url_api: "https://api-gateway-zipu7fiszq-uc.a.run.app"
+  //url_api: "http://localhost:4000"
 };
 
 /*
