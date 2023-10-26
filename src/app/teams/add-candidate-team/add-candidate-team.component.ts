@@ -82,7 +82,7 @@ export class AddCandidateTeamComponent implements OnInit {
           error: (e) => {
             this.dataModal = {
               displayModal: true,
-              textModal: e.error.message,
+              textModal: this.translate.instant("error_asignar_candidatos"),
               iconModal: 'pi-times',
               typeModal: this.translate.instant("error")
             }

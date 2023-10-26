@@ -67,5 +67,6 @@
   "equipo": "Equipo",
   "sin_equipos": "El proyecto seleccionado no tiene equipos relacionados",
   "asignar_candidatos_confirmacion": "¿Desea asignar los candidatos a un equipo?",
-  "asignar_candidatos_correctamente": "Los candidatos se han asignado correctamente"
+  "asignar_candidatos_correctamente": "Los candidatos se han asignado correctamente",
+  "error_asignar_candidatos":"Hubo un error al asignar los candidatos a un equipo"
 }
