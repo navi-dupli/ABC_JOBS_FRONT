@@ -19,7 +19,7 @@ export class MenuComponent {
                     label: 'home',
                     icon: 'pi pi-fw pi-home',
                     routerLink: ['/'],
-                    scope: ['read:users', 'register:project', 'register:company', 'search:candidate', 'register:technical-test']
+                    scope: ['read:users', 'register:project', 'register:company', 'search:candidate', 'register:technical-test', 'register:candidate']
                 }
             ]
         },
