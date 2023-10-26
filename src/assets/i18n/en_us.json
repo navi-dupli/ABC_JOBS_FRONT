@@ -68,6 +68,7 @@
   "sin_equipos": "The selected project has no related equipment",
   "asignar_candidatos_confirmacion": "Do you want to assign candidates to a team?",
   "asignar_candidatos_correctamente": "Candidates have been correctly assigned",
+  "error_asignar_candidatos":"There was an error in assigning candidates to a team",
   "registar_resultados_prueba_tecnica": "Register technical test results",
   "calificacion": "qualification",
   "observaciones": "Observations",
