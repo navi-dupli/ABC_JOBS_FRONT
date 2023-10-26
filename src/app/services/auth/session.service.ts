@@ -13,7 +13,7 @@ export class SessionService {
         this.loadSession();
     }
 
-    private loadSession(): void {
+    loadSession(): void {
         try {
             this.currentUser = JSON.parse(localStorage.getItem('currentUser')) as CurrentUser;
             this.decodedToken = jwt_decode(this.currentUser.access_token) as TokenInfo;

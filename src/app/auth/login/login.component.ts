@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomDialogModel } from '../../../app/models/custom-dialog.model';
+import { CustomDialogModel } from '../../models/custom-dialog.model';
 import { AuthService } from '../../services/auth/auth.service';
 import { TranslateService } from '@ngx-translate/core';
+import {SessionService} from "../../services/auth/session.service";
 
 @Component({
     selector: 'app-login',
@@ -21,8 +22,9 @@ export class LoginComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private router: Router,
-        private translate: TranslateService) {
-    }
+        private translate: TranslateService,
+        private sessionService: SessionService
+    ){}
 
     ngOnInit() {
         this.login = new FormGroup({
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
                 next: (result) => {
                     if (result) {
                         localStorage.setItem('currentUser', JSON.stringify(result));
+                        this.sessionService.loadSession();
                         this.router.navigate(['/']);
                     }
                 },
