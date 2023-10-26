@@ -19,7 +19,8 @@ import { AddCandidateTeamModule } from '../teams/add-candidate-team/add-candidat
         CreateProjectModule,
         RegisterCompanyModule,
         SearchCandidateModule,
-        AddCandidateTeamModule
+        AddCandidateTeamModule,
+        RegisterTechnicalTestModule
     ],
     declarations: [
         HomeComponent,

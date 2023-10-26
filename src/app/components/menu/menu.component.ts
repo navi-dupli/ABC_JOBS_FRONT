@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import jwt_decode from "jwt-decode";
-import {AuthService} from "../../services/auth/auth.service";
-import {Router} from "@angular/router";
-import {SessionService} from "../../services/auth/session.service";
+import { AuthService } from "../../services/auth/auth.service";
+import { Router } from "@angular/router";
+import { SessionService } from "../../services/auth/session.service";
 
 @Component({
     selector: 'app-menu',
@@ -19,7 +19,7 @@ export class MenuComponent {
                     label: 'home',
                     icon: 'pi pi-fw pi-home',
                     routerLink: ['/'],
-                    scope: ['read:users', 'register:project', 'register:company', 'search:candidate']
+                    scope: ['read:users', 'register:project', 'register:company', 'search:candidate', 'register:technical-test']
                 }
             ]
         },
@@ -46,12 +46,17 @@ export class MenuComponent {
             ]
         },
         {
-      label: 'registar_resultado',
-      items: [
-        { label: 'registar_resultado', icon: 'pi pi-fw pi-check-square', routerLink: ['/registar-resultados-prueba-tecnica'], scope: ['register:technical-test'] }
-      ]
-    },
-    {
+            label: 'registar_resultado',
+            items: [
+                {
+                    label: 'registar_resultado',
+                    icon: 'pi pi-fw pi-check-square',
+                    routerLink: ['/registar-resultados-prueba-tecnica'],
+                    scope: ['register:technical-test']
+                }
+            ]
+        },
+        {
             label: 'buscador',
             items: [
                 {
