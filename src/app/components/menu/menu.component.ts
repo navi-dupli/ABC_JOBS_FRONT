@@ -35,17 +35,6 @@ export class MenuComponent {
             ]
         },
         {
-            label: 'registro_empresa',
-            items: [
-                {
-                    label: 'registro_empresa',
-                    icon: 'pi pi-fw pi-briefcase',
-                    routerLink: ['/registrar-empresa'],
-                    scope: ['register:company']
-                }
-            ]
-        },
-        {
             label: 'registar_resultado',
             items: [
                 {
@@ -53,6 +42,17 @@ export class MenuComponent {
                     icon: 'pi pi-fw pi-check-square',
                     routerLink: ['/registar-resultados-prueba-tecnica'],
                     scope: ['register:technical-test']
+                }
+            ]
+        },
+        {
+            label: 'registro_empresa',
+            items: [
+                {
+                    label: 'registro_empresa',
+                    icon: 'pi pi-fw pi-briefcase',
+                    routerLink: ['/registrar-empresa'],
+                    scope: ['register:company']
                 }
             ]
         },

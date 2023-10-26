@@ -6,7 +6,7 @@
             <div class="mb-5">
                 <div class="w-full">
                     <p-dropdown [placeholder]="'seleccionar_opcion' | translate " [options]="technicalTestOptions"
-                        optionValue="id" optionLabel="name" formControlName="technicalTest"
+                        optionValue="id" optionLabel="name" formControlName="technicalTest" (onChange)="onChangeTest(technicalTest.value)"
                         [class]="(technicalTest!.invalid && (technicalTest!.dirty || technicalTest!.touched) ? 'ng-dirty' : '')"></p-dropdown>
                 </div>
                 <div class="error-form"
