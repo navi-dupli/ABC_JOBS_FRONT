@@ -11,6 +11,7 @@ import { SelectLanguageModule } from 'src/app/components/select-language/select-
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomDialogModule } from 'src/app/components/custom-dialog/custom-dialog.module';
 import { TranslationModule } from 'src/app/components/translation/translation.module';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { TranslationModule } from 'src/app/components/translation/translation.mo
         SelectLanguageModule,
         ReactiveFormsModule,
         CustomDialogModule,
-        TranslationModule
+        TranslationModule,
+        ProgressBarModule
     ],
     declarations: [LoginComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],

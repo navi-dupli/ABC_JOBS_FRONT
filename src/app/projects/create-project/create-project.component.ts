@@ -18,6 +18,7 @@ export class CreateProjectComponent {
     displayModal: false
   }
   user: any;
+  loading = false;
 
   constructor(
     private projectService: ProjectsService,
@@ -53,6 +54,7 @@ export class CreateProjectComponent {
   }
 
   closeModal(event: boolean) {
+    this.loading = false;
     if (event) {
       this.clearForm();
     }
@@ -61,7 +63,10 @@ export class CreateProjectComponent {
   confirmModal(event: boolean) {
     if (event) {
       if (this.registerProject.valid) {
-        this.projectService.registerProject({...this.registerProject.value, companyId: this.user.company_id}).subscribe( {
+        this.loading = true;
+        console.log(this.user.company_id);
+        
+        this.projectService.registerProject({...this.registerProject.value, companyId: parseInt(this.user.company_id)}).subscribe( {
           next: (result) => {
             if (result) {
               this.dataModal = {

@@ -25,6 +25,7 @@ export class AddCandidateTeamComponent implements OnInit {
   projectOptions: ProjectModel[] = [];
   teamsOptions: TeamsModel[] = [];
   cadidateOptions: Candidate[] = [];
+  loading = false;
 
   constructor(
     private translate: TranslateService,
@@ -68,6 +69,7 @@ export class AddCandidateTeamComponent implements OnInit {
   confirmDialog(event: boolean) {
     if (event) {
       if (this.addMember.valid) {
+        this.loading = true;
         this.teamsService.addMemberToTeam(this.addMember.value).subscribe( {
           next: (result) => {
             if (result) {
@@ -105,6 +107,7 @@ export class AddCandidateTeamComponent implements OnInit {
   }
 
   closeModal(event: boolean) {
+    this.loading = false;
     if (event) {
       this.clearForm();
     }
