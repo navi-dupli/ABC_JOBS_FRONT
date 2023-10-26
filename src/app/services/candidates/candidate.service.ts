@@ -11,8 +11,12 @@ export class CandidateService {
 
   getCandidates(params?: any) {
     let queryParams = new HttpParams({ fromObject: params });
-    const options = {   params: queryParams }
+    const options = { params: queryParams }
     return this.http.get<any>(`${environment.url_api}/users-app/candidate`, options);
   }
- 
+
+  getTestCandidates(idTest: number) {
+    return this.http.get<any>(`${environment.url_api}/users-app/user-test/${idTest}`);
+  }
+
 }

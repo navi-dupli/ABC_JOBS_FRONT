@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
 
     routes = [{
         url: '/',
-        scope: ['read:users', 'register:project', 'register:company', 'search:candidate']
+        scope: ['read:users', 'register:project', 'register:company', 'search:candidate','register:technical-test']
     },
     {
         url: '/crear-proyecto',
@@ -16,6 +16,10 @@ export class AuthGuard implements CanActivate {
     {
         url: '/registrar-empresa',
         scope: ['register:company']
+    },
+    {
+        url: '/registar-resultados-prueba-tecnica',
+        scope: ['register:technical-test']
     },
     {
         url: '/buscar-candidato',
