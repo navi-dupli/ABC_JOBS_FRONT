@@ -7,6 +7,7 @@ import { NavBarModule } from '../components/nav-bar/nav-bar.module';
 import { CreateProjectModule } from '../projects/create-project/create-project.module';
 import { RegisterCompanyModule } from '../companies/register-company/register-company.module';
 import { SearchCandidateModule } from '../candidate/search-candidate/search-candidate.module';
+import { RegisterTechnicalTestModule } from '../test/register-technical-test/register-technical-test.module';
 import { AddCandidateTeamModule } from '../teams/add-candidate-team/add-candidate-team.module';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AddCandidateTeamModule } from '../teams/add-candidate-team/add-candidat
         CreateProjectModule,
         RegisterCompanyModule,
         SearchCandidateModule,
-        AddCandidateTeamModule
+        AddCandidateTeamModule,
+        RegisterTechnicalTestModule
     ],
     declarations: [
         HomeComponent,

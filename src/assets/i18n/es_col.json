@@ -68,5 +68,18 @@
   "sin_equipos": "El proyecto seleccionado no tiene equipos relacionados",
   "asignar_candidatos_confirmacion": "¿Desea asignar los candidatos a un equipo?",
   "asignar_candidatos_correctamente": "Los candidatos se han asignado correctamente",
-  "error_asignar_candidatos":"Hubo un error al asignar los candidatos a un equipo"
+  "error_asignar_candidatos":"Hubo un error al asignar los candidatos a un equipo",
+  "registar_resultados_prueba_tecnica": "Registar resultados prueba técnica",
+  "calificacion": "Calificación",
+  "observaciones": "Observaciones",
+  "prueba_tecnica": "Prueba técnica",
+  "candidato": "Candidato",
+  "estado": "Estado",
+  "maximo_minimo_calificacion": "La calificación debe estar entre 0 y 10 puntos",
+  "maximo_observaciones":"Las observaciones pueden ser máximo de 500 caracteres",
+  "error_formato_calificacion":"Formato incorrecto, el valor debe ser numerico",
+  "confirma_registar_resultados_prueba_tecnica": "¿Desea registrar el resultado de una prueba técnica?",
+  "resultado_prueba_tecnica_almacenado_con_exito": "Resultado de prueba técnica almacenado con exito",
+  "error_almacenando_resultado_prueba_tecnica": "Error almacenando resultado prueba técnica",
+  "registar_resultado":"Registar resultados"
 }
