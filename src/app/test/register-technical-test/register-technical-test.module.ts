@@ -8,6 +8,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TranslationModule } from '../../components/translation/translation.module';
 import { RegisterTechnicalTestComponent } from './register-technical-test.component';
 import { RouterModule } from '@angular/router';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 
 
@@ -22,7 +23,8 @@ import { RouterModule } from '@angular/router';
     DropdownModule,
     TranslationModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    ProgressBarModule
   ],
   exports: [RegisterTechnicalTestComponent],
 })

@@ -20,6 +20,8 @@ export class RegisterTechnicalTestComponent {
   dataModal: CustomDialogModel = {
     displayModal: false
   }
+  loading = false;
+
   constructor(private candidateService: CandidateService,
     private technicalTestService: TechnicalTestService,
     private translate: TranslateService) { }
@@ -70,6 +72,7 @@ export class RegisterTechnicalTestComponent {
         test_id: this.registerTechnicalTest.get("technicalTest")?.value,
         user_id: currentUser.id
       }
+      this.loading = true;
       this.technicalTestService.registerResultTechnicalTest(form).subscribe({
         next: (result) => {
           if (result) {
@@ -127,6 +130,7 @@ export class RegisterTechnicalTestComponent {
   }
 
   closeModal(event: boolean) {
+    this.loading = false;
     if (event) {
       this.clearForm();
     }

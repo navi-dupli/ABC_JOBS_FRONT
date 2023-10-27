@@ -8,6 +8,7 @@ import { AddCandidateTeamComponent } from './add-candidate-team.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ButtonModule } from 'primeng/button';
     TranslationModule,
     MultiSelectModule,
     DropdownModule,
-    ButtonModule
+    ButtonModule,
+    ProgressBarModule
   ],
     declarations: [
         AddCandidateTeamComponent

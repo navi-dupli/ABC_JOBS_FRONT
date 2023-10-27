@@ -99,6 +99,12 @@
                         (click)="onSubmit()">
                 </button>
             </div>
+
+            <div 
+                class="mx-auto mt-3 w-6"
+                *ngIf="loading">
+                <p-progressBar mode="indeterminate"></p-progressBar>
+            </div>
         </form>
     </div>
 </div>

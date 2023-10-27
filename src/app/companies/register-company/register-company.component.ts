@@ -21,6 +21,7 @@ export class RegisterCompanyComponent implements OnInit {
   dataModal: CustomDialogModel = {
     displayModal: false
   }
+  loading = false;
 
   constructor(
     private companyService: CompaniesService,
@@ -63,6 +64,7 @@ export class RegisterCompanyComponent implements OnInit {
   confirmModal(event: boolean) {
     if (event) {
       if (this.registerCompany.valid) {
+        this.loading = true;
         this.companyService.registerCompany(this.registerCompany.value).subscribe({
           next: (result) => {
             if (result) {
@@ -109,6 +111,7 @@ export class RegisterCompanyComponent implements OnInit {
   }
 
   closeModal(event: boolean) {
+    this.loading = false;
     if (event) {
       this.clearForm();
     }
