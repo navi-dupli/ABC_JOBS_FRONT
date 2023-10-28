@@ -5,6 +5,7 @@ import { LocationService } from '../../../app/services/location/location.service
 import { CityModel, CountriesModel, RegionModel } from '../../../app/models/companies';
 import { CustomDialogModel } from '../../../app/models/custom-dialog.model';
 import { CompaniesService } from '../../../app/services/companies/companies.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register-company',
@@ -20,18 +21,20 @@ export class RegisterCompanyComponent implements OnInit {
   dataModal: CustomDialogModel = {
     displayModal: false
   }
+  loading = false;
 
   constructor(
     private companyService: CompaniesService,
     private router: Router,
-    private locationService: LocationService) { 
+    private locationService: LocationService,
+    private translate: TranslateService) { 
     this.registerCompany = new FormGroup({
       companyName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       uniqueIdentification: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       businessActivity: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      companyEmail: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      companyEmail: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$")]),
       representativeName: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      representativeEmail: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      representativeEmail: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$")]),
       representativePassword: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$._ %^&*-]).{8,}$")]),
       phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       country: new FormControl('', [Validators.required]),
@@ -48,50 +51,67 @@ export class RegisterCompanyComponent implements OnInit {
     
   }
   onSubmit() {
+    const textModal = this.translate.instant("registrar_empresa_confirmacion");
+    const typeModal = this.translate.instant("confirmacion");
     this.dataModal = {
       displayModal: true,
-      textModal: '¿Desea registrar una nueva empresa?',
+      textModal: textModal,
       iconModal: 'pi-exclamation-triangle',
-      typeModal: 'Confirmación'
+      typeModal: typeModal
     }
   }
 
   confirmModal(event: boolean) {
     if (event) {
-      this.companyService.registerCompany(this.registerCompany.value).subscribe({
-        next: (result) => {
-          if (result) {
-            this.dataModal = {
-              displayModal: true,
-              textModal: 'Empresa registrada con éxito',
-              iconModal: 'pi-check',
-              typeModal: 'Éxito'
+      if (this.registerCompany.valid) {
+        this.loading = true;
+        this.companyService.registerCompany(this.registerCompany.value).subscribe({
+          next: (result) => {
+            if (result) {
+              const textModal = this.translate.instant("registrar_empresa_exitoso");
+              const typeModal = this.translate.instant("exito");
+              this.dataModal = {
+                displayModal: true,
+                textModal: textModal,
+                iconModal: 'pi-check',
+                typeModal: typeModal
+              }
+            }
+          },
+          error: (e) => {
+            console.log(e)
+            if (e.status === 400) {
+              this.dataModal = {
+                displayModal: true,
+                textModal: e.error.message,
+                iconModal: 'pi-exclamation-circle',
+                typeModal: 'Error'
+              }
+            } else {
+              const textModal = this.translate.instant("registrar_empresa_fallido");
+              this.dataModal = {
+                displayModal: true,
+                textModal: textModal,
+                iconModal: 'pi-exclamation-circle',
+                typeModal: 'Error'
+              }
             }
           }
-        },
-        error: (e) => {
-          console.log(e)
-          if (e.status === 400) {
-            this.dataModal = {
-              displayModal: true,
-              textModal: e.error.message,
-              iconModal: 'pi-exclamation-circle',
-              typeModal: 'Error'
-            }
-          } else {
-            this.dataModal = {
-              displayModal: true,
-              textModal: 'Hubo un error al registrar la empresa',
-              iconModal: 'pi-exclamation-circle',
-              typeModal: 'Error'
-            }
-          }
+        });
+      } else {
+        const textModal = this.translate.instant("campos_incompletos");
+        this.dataModal = {
+            displayModal: true,
+            textModal: textModal,
+            iconModal: 'pi-exclamation-circle',
+            typeModal: 'Error'
         }
-      });
+      }
     }
   }
 
   closeModal(event: boolean) {
+    this.loading = false;
     if (event) {
       this.clearForm();
     }

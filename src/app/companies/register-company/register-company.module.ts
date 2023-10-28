@@ -8,6 +8,8 @@ import { CustomDialogModule } from 'src/app/components/custom-dialog/custom-dial
 import { RegisterCompanyComponent } from './register-company.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { RouterModule } from '@angular/router';
+import { TranslationModule } from 'src/app/components/translation/translation.module';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
     imports: [
@@ -19,7 +21,9 @@ import { RouterModule } from '@angular/router';
         ReactiveFormsModule,
         CustomDialogModule,
         DropdownModule,
-        RouterModule
+        RouterModule,
+        TranslationModule,
+        ProgressBarModule
     ],
     declarations: [RegisterCompanyComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],

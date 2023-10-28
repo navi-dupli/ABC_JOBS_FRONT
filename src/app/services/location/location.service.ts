@@ -1,37 +1,27 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LocationService {
 
-  headers: HttpHeaders;
+    headers: HttpHeaders;
 
-  constructor(private http: HttpClient) {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${currentUser.access_token}`
-      }
-    );
-  }
+    constructor(private http: HttpClient) {
+    }
 
-  getCountries() {
-    const options = { headers: this.headers }    
-    return this.http.get<any>(`${environment.url_commons}/countries`, options);
-  }
+    getCountries() {
+        return this.http.get<any>(`${environment.url_api}/commons-app/countries`);
+    }
 
-  getRegions(countryId: number) {
-    const options = { headers: this.headers }    
-    return this.http.get<any>(`${environment.url_commons}/regions/country/${countryId}`, options);
-  }
+    getRegions(countryId: number) {
+        return this.http.get<any>(`${environment.url_api}/commons-app/regions/country/${countryId}`);
+    }
 
-  getCity(regionId: number) {
-    const options = { headers: this.headers }    
-    return this.http.get<any>(`${environment.url_commons}/cities/region/${regionId}`, options);
-  }
+    getCity(regionId: number) {
+        return this.http.get<any>(`${environment.url_api}/commons-app/cities/region/${regionId}`);
+    }
 
 }

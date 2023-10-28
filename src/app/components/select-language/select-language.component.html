@@ -1,1 +1,1 @@
-<p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="name"></p-dropdown>
+<p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="name" (ngModelChange)="onLanguageChange($event)"></p-dropdown>

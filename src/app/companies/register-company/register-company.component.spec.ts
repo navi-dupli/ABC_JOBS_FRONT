@@ -6,6 +6,9 @@ import { of } from 'rxjs';
 import { LocationService } from '../../../app/services/location/location.service';
 import { CompaniesService } from '../../../app/services/companies/companies.service';
 import { RegisterCompanyComponent } from './register-company.component';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import {PasswordModule} from "primeng/password";
+import {DropdownModule} from "primeng/dropdown";
 
 describe('RegisterCompanyComponent', () => {
   let component: RegisterCompanyComponent;
@@ -14,18 +17,34 @@ describe('RegisterCompanyComponent', () => {
   let companiesService: CompaniesService;
   const currentUser = { access_token: 'your-access-token' };
   localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  let translate: TranslateService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RegisterCompanyComponent],
-      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule, PasswordModule, DropdownModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useValue: {
+              getTranslation: (lang: string) => {
+                return of({ 'registrar_empresa_confirmacion': '¿Desea registrar una nueva empresa?', 
+                "registrar_empresa_exitoso": "Empresa registrada con éxito", 
+                "registro_empresa": "Registro empresa",
+                "campos_incompletos": "El formulario tiene campos obligatorios vacios" });
+              }
+            }
+          }
+        })],
       providers: [LocationService, CompaniesService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RegisterCompanyComponent);
     component = fixture.componentInstance;
+    translate = TestBed.inject(TranslateService);
     locationService = TestBed.inject(LocationService);
     companiesService = TestBed.inject(CompaniesService);
+    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -46,6 +65,10 @@ describe('RegisterCompanyComponent', () => {
   });
 
   it('should handle onSubmit', () => {
+    const translateService = TestBed.inject(TranslateService);
+    translateService.use('es');
+    component.dataModal.textModal = translateService.instant('registrar_empresa_confirmacion');
+
     component.onSubmit();
 
     expect(component.dataModal.displayModal).toBe(true);
@@ -53,11 +76,15 @@ describe('RegisterCompanyComponent', () => {
   });
 
   it('should handle confirmModal with event true', () => {
+    const translateService = TestBed.inject(TranslateService);
+    translateService.use('es');
+    component.dataModal.textModal = translateService.instant('campos_incompletos');
+
     jest.spyOn(companiesService, 'registerCompany').mockReturnValue(of({ success: true }));
     component.confirmModal(true);
 
     expect(component.dataModal.displayModal).toBe(true);
-    expect(component.dataModal.textModal).toBe('Empresa registrada con éxito');
+    expect(component.dataModal.textModal).toBe('El formulario tiene campos obligatorios vacios');
   });
 
   it('should handle confirmModal with event false', () => {
@@ -90,6 +117,15 @@ describe('RegisterCompanyComponent', () => {
 
   it('should clear the form', () => {
     expect(component.clearForm()).toBeUndefined();
+  });
+
+  it('should translate title-form', () => {
+    const translateService = TestBed.inject(TranslateService);
+    translate.setTranslation('es', { 'registro_empresa': 'Registro empresa' });
+    translateService.use('es');
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('#title-form').textContent).toContain('Registro empresa');
   });
 
 });

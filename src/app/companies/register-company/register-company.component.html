@@ -1,17 +1,17 @@
 <div class="flex justify-content-center mt-5">
     <div class="flex flex-column justify-content-center surface-card p-5 register-company-container">
-        <div class="text-3xl font-medium mb-3">Registro Empresa</div>
+        <div class="text-3xl font-medium mb-3" id="title-form">{{ 'registro_empresa' | translate }}</div>
 
-        <form [formGroup]="registerCompany">
+        <form [formGroup]="registerCompany" (ngSubmit)="onSubmit()">
             <label 
                 for="company_name" 
-                class="block text-xl font-medium mb-2">Nombre empresa</label>
+                class="block text-xl font-medium mb-2">{{ 'nombre_empresa' | translate }}</label>
             <div class="mb-5">
                 <div class="w-full">
                     <input 
                         id="company_name" 
                         type="text" 
-                        placeholder="Nombre empresa*" 
+                        [placeholder]="('nombre_empresa' | translate) + '*'" 
                         pInputText 
                         [class]="'w-full ' + 
                                 (companyName.invalid && (companyName.dirty || companyName.touched) ? 'ng-dirty' : '')" 
@@ -23,10 +23,10 @@
                     class="error-form"
                     *ngIf="companyName.invalid && (companyName.dirty || companyName.touched)">
                     <span *ngIf="companyName.errors.required">
-                        Campo obligatorio
+                        {{ 'campo_obligatorio' | translate }}
                     </span>
-                    <span *ngIf="companyName.errors.minlength">
-                        El nombre debe ser de máximo 100 caracteres
+                    <span *ngIf="companyName.errors.maxlength">
+                        {{ 'longitud_campo' | translate }}
                     </span>
                 </div>
             </div>
@@ -35,13 +35,13 @@
                 <div class="w-6">
                     <label 
                         for="company_id" 
-                        class="block text-xl font-medium mb-2">Identificación unica</label>
+                        class="block text-xl font-medium mb-2">{{ 'identificacion_empresa' | translate }}</label>
                     <div class="mb-5">
                         <div class="w-full">
                             <input 
                                 id="company_id" 
                                 type="text" 
-                                placeholder="Identificación unica*" 
+                                [placeholder]="('identificacion_empresa' | translate) + '*'" 
                                 pInputText 
                                 [class]="'w-full ' + 
                                         (uniqueIdentification.invalid && (uniqueIdentification.dirty || uniqueIdentification.touched) ? 'ng-dirty' : '')" 
@@ -53,10 +53,10 @@
                             class="error-form"
                             *ngIf="uniqueIdentification.invalid && (uniqueIdentification.dirty || uniqueIdentification.touched)">
                             <span *ngIf="uniqueIdentification.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
                             <span *ngIf="uniqueIdentification.errors.minlength">
-                                La Identificación unica debe ser de máximo 100 caracteres
+                                {{ 'identificacion_empresa_longitud' | translate }}
                             </span>
                         </div>
                     </div>
@@ -65,13 +65,13 @@
                 <div class="w-6">
                     <label 
                         for="company_business" 
-                        class="block text-xl font-medium mb-2">Actividad comercial</label>
+                        class="block text-xl font-medium mb-2">{{ 'actividad_comercial' | translate }}</label>
                     <div class="mb-5">
                         <div class="w-full">
                             <input 
                                 id="company_business" 
                                 type="text" 
-                                placeholder="Actividad comercial*" 
+                                [placeholder]="('actividad_comercial' | translate) + '*'" 
                                 pInputText 
                                 [class]="'w-full ' + 
                                         (businessActivity.invalid && (businessActivity.dirty || businessActivity.touched) ? 'ng-dirty' : '')" 
@@ -83,10 +83,10 @@
                             class="error-form"
                             *ngIf="businessActivity.invalid && (businessActivity.dirty || businessActivity.touched)">
                             <span *ngIf="businessActivity.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
                             <span *ngIf="businessActivity.errors.minlength">
-                                La Identificación unica debe ser de máximo 100 caracteres
+                                {{ 'actividad_comercial_longitud' | translate }}
                             </span>
                         </div>
                     </div>
@@ -95,13 +95,13 @@
 
             <label 
                 for="company_email" 
-                class="block text-xl font-medium mb-2">Correo electrónico</label>
+                class="block text-xl font-medium mb-2">{{ 'correo' | translate }}</label>
             <div class="mb-5">
                 <div class="w-full">
                     <input 
                         id="company_email" 
                         type="text" 
-                        placeholder="Correo electrónico*" 
+                        [placeholder]="('correo' | translate) + '*'" 
                         pInputText 
                         [class]="'w-full ' + 
                                 (companyEmail.invalid && (companyEmail.dirty || companyEmail.touched) ? 'ng-dirty' : '')" 
@@ -113,24 +113,24 @@
                     class="error-form"
                     *ngIf="companyEmail.invalid && (companyEmail.dirty || companyEmail.touched)">
                     <span *ngIf="companyEmail.errors.required">
-                        Campo obligatorio
+                        {{ 'campo_obligatorio' | translate }}
                     </span>
 
                     <span *ngIf="companyEmail.errors.pattern">
-                        Formato incorrecto se espera formato aa@dominio.co
+                        {{ 'correo_incorrecto' | translate }}
                     </span>
                 </div>
             </div>
 
             <label 
                 for="company_name_representative" 
-                class="block text-xl font-medium mb-2">Nombre representante</label>
+                class="block text-xl font-medium mb-2">{{ 'nombre_representate' | translate }}</label>
             <div class="mb-5">
                 <div class="w-full">
                     <input 
                         id="company_name_representative" 
                         type="text" 
-                        placeholder="Nombre representante*" 
+                        [placeholder]="('nombre_representate' | translate) + '*'" 
                         pInputText 
                         [class]="'w-full ' + 
                                 (representativeName.invalid && (representativeName.dirty || representativeName.touched) ? 'ng-dirty' : '')" 
@@ -142,10 +142,10 @@
                     class="error-form"
                     *ngIf="representativeName.invalid && (representativeName.dirty || representativeName.touched)">
                     <span *ngIf="representativeName.errors.required">
-                        Campo obligatorio
+                        {{ 'campo_obligatorio' | translate }}
                     </span>
                     <span *ngIf="representativeName.errors.minlength">
-                        El nombre del representante debe ser de máximo 100 caracteres
+                        {{ 'nombre_representate_longitud' | translate }}
                     </span>
                 </div>
             </div>
@@ -154,13 +154,13 @@
                 <div class="w-6">
                     <label 
                         for="company_email_representative" 
-                        class="block text-xl font-medium mb-2">Correo electrónico representante</label>
+                        class="block text-xl font-medium mb-2">{{ 'correo_representante' | translate}}</label>
                     <div class="mb-5">
                         <div class="w-full">
                             <input 
                                 id="company_email_representative" 
                                 type="text" 
-                                placeholder="Correo electrónico representante*" 
+                                [placeholder]="('correo_representante' | translate) + '*'" 
                                 pInputText 
                                 [class]="'w-full ' + 
                                         (representativeEmail.invalid && (representativeEmail.dirty || representativeEmail.touched) ? 'ng-dirty' : '')" 
@@ -172,10 +172,10 @@
                             class="error-form"
                             *ngIf="representativeEmail.invalid && (representativeEmail.dirty || representativeEmail.touched)">
                             <span *ngIf="representativeEmail.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
                             <span *ngIf="representativeEmail.errors.pattern">
-                                Formato incorrecto se espera formato aa@dominio.co
+                                {{ 'correo_incorrecto' | translate }}
                             </span>
                         </div>
                     </div>
@@ -184,11 +184,11 @@
                 <div class="w-6">
                     <label 
                         for="company_representative_password" 
-                        class="block font-medium text-xl mb-2">Contraseña representante</label>
+                        class="block font-medium text-xl mb-2">{{ 'contraseña_representante' | translate}}</label>
                     <div class="mb-5 w-full">
                         <p-password 
                             id="company_representative_password" 
-                            placeholder="Contraseña representante*" 
+                            [placeholder]="('contraseña_representante' | translate) + '*'" 
                             [toggleMask]="true" 
                             [class]="'company-password w-full' + (representativePassword.invalid && (representativePassword.dirty || representativePassword.touched) ? 'ng-dirty' : '')" 
                             formControlName="representativePassword">
@@ -198,13 +198,13 @@
                             class="error-form"
                             *ngIf="representativePassword.invalid && (representativePassword.dirty || representativePassword.touched)">
                             <span *ngIf="representativePassword.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
                             <span *ngIf="representativePassword.errors.minlength">
-                                La contraseña del representante debe ser de mínimo 8 caracteres
+                                {{ 'contraseña_representante_longitud' | translate }}
                             </span>
                             <span *ngIf="representativePassword.errors.pattern">
-                                La contraseña debe tener mínimo una mayúscula y un número y un caracter especial
+                                {{ 'contraseña_representante_formato' | translate }}
                             </span>
                         </div>
                     </div>
@@ -213,13 +213,13 @@
 
             <label 
                 for="company_phone" 
-                class="block text-xl font-medium mb-2">Teléfono</label>
+                class="block text-xl font-medium mb-2">{{'telefono' | translate}}</label>
             <div class="mb-5">
                 <div class="w-full">
                     <input 
                         id="company_phone" 
                         type="text" 
-                        placeholder="Teléfono*" 
+                        [placeholder]="('telefono' | translate) + '*'" 
                         pInputText 
                         [class]="'w-full ' + 
                                 (phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched) ? 'ng-dirty' : '')" 
@@ -231,10 +231,10 @@
                     class="error-form"
                     *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
                     <span *ngIf="phoneNumber.errors.required">
-                        Campo obligatorio
+                        {{ 'campo_obligatorio' | translate }}
                     </span>
-                    <span *ngIf="password.errors.minlength">
-                        El nombre del representante debe ser de máximo 50 caracteres
+                    <span *ngIf="phoneNumber.errors.maxlength">
+                        {{'telefono_longitud' | translate}}
                     </span>
                 </div>
             </div>
@@ -243,11 +243,11 @@
                 <div class="w-6">
                     <label 
                         for="company_country" 
-                        class="block text-xl font-medium mb-2">País</label>
+                        class="block text-xl font-medium mb-2">{{'pais' | translate}}</label>
                     <div class="mb-5">
                         <div class="w-full">
                             <p-dropdown 
-                                placeholder="Seleccione una opción"
+                                [placeholder]="('seleccionar_opcion' | translate)"
                                 [options]="countriesOptions"
                                 optionValue="id"
                                 optionLabel="name"
@@ -260,7 +260,7 @@
                             class="error-form"
                             *ngIf="country.invalid && (country.dirty || country.touched)">
                             <span *ngIf="country.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
                         </div>
                     </div>
@@ -269,11 +269,11 @@
                 <div class="w-6">
                     <label 
                         for="company_region" 
-                        class="block text-xl font-medium mb-2">Región</label>
+                        class="block text-xl font-medium mb-2">{{'region' | translate}}</label>
                     <div class="mb-5">
                         <div class="w-full">
                             <p-dropdown 
-                                placeholder="Seleccione una opción"
+                                [placeholder]="('seleccionar_opcion' | translate)"
                                 [options]="regionOptions"
                                 optionValue="id"
                                 optionLabel="name"
@@ -286,7 +286,7 @@
                             class="error-form"
                             *ngIf="region.invalid && (region.dirty || region.touched)">
                             <span *ngIf="region.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
                         </div>
                     </div>
@@ -297,11 +297,11 @@
                 <div class="w-6">
                     <label 
                         for="company_city" 
-                        class="block text-xl font-medium mb-2">Ciudad</label>
+                        class="block text-xl font-medium mb-2">{{'ciudad' | translate}}</label>
                     <div class="mb-5">
                         <div class="w-full">
                             <p-dropdown 
-                                placeholder="Seleccione una opción"
+                                [placeholder]="('seleccionar_opcion' | translate)"
                                 [options]="cityOptions"
                                 optionValue="id"
                                 optionLabel="name"
@@ -313,7 +313,7 @@
                             class="error-form"
                             *ngIf="city.invalid && (city.dirty || city.touched)">
                             <span *ngIf="city.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
                         </div>
                     </div>
@@ -322,13 +322,13 @@
                 <div class="w-6">
                     <label 
                         for="company_address" 
-                        class="block text-xl font-medium mb-2">Dirección</label>
+                        class="block text-xl font-medium mb-2">{{'direccion' | translate}}</label>
                     <div class="mb-5">
                         <div class="w-full">
                             <input 
                                 id="company_address" 
                                 type="text" 
-                                placeholder="Dirección*" 
+                                [placeholder]="('direccion' | translate) + '*'" 
                                 pInputText 
                                 [class]="'w-full ' + 
                                         (address.invalid && (address.dirty || address.touched) ? 'ng-dirty' : '')" 
@@ -340,7 +340,7 @@
                             class="error-form"
                             *ngIf="address.invalid && (address.dirty || address.touched)">
                             <span *ngIf="address.errors.required">
-                                Campo obligatorio
+                                {{ 'campo_obligatorio' | translate }}
                             </span>
                         </div>
                     </div>
@@ -353,7 +353,7 @@
                     pButton 
                     pRipple 
                     type="button" 
-                    label="Cancelar" 
+                    [label]="('cancelar' | translate)" 
                     class="p-button-outlined mr-5" 
                     [routerLink]="['/']">
                 </button>
@@ -361,10 +361,15 @@
                     pButton 
                     pRipple 
                     type="button" 
-                    label="Guardar" 
-                    [disabled]="registerCompany.invalid"
+                    [label]="('guardar' | translate)" 
                     (click)="onSubmit()">
                 </button>
+            </div>
+
+            <div 
+                class="mx-auto mt-3 w-6"
+                *ngIf="loading">
+                <p-progressBar mode="indeterminate"></p-progressBar>
             </div>
 
         </form>

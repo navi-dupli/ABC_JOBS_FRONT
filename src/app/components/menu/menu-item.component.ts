@@ -17,7 +17,7 @@ import { LayoutService } from '../../layout/service/app.layout.service';
                [skipLocationChange]="item.skipLocationChange" [replaceUrl]="item.replaceUrl" [state]="item.state" [queryParams]="item.queryParams"
                [attr.target]="item.target" tabindex="0" pRipple class="m-0">
 				<i [ngClass]="item.icon" class="layout-menuitem-icon"></i>
-				<span class="layout-menuitem-text">{{item.label}}</span>
+				<span class="layout-menuitem-text">{{item.label | translate}}</span>
 				<i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="item.items"></i>
 			</a>
 

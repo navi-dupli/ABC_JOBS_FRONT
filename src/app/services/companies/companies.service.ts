@@ -8,21 +8,11 @@ import { environment } from '../../../environments/environment';
 })
 export class CompaniesService {
 
-  headers: HttpHeaders;
-
   constructor(private http: HttpClient) {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.headers = new HttpHeaders(
-        {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${currentUser.access_token}`
-        }
-    );
   }
 
   registerCompany(body: CompanyModel) {
-    const options = { headers: this.headers };
-    return this.http.post<any>(environment.url_companies, body, options);
+    return this.http.post<any>(`${environment.url_api}/companies`, body);
   }
 
 }
