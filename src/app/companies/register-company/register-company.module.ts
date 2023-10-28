@@ -9,6 +9,7 @@ import { RegisterCompanyComponent } from './register-company.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { RouterModule } from '@angular/router';
 import { TranslationModule } from 'src/app/components/translation/translation.module';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { TranslationModule } from 'src/app/components/translation/translation.mo
         CustomDialogModule,
         DropdownModule,
         RouterModule,
-        TranslationModule
+        TranslationModule,
+        ProgressBarModule
     ],
     declarations: [RegisterCompanyComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],

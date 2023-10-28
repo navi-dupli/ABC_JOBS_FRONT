@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     dataModal: CustomDialogModel = {
         displayModal: false
     }
+    loading = false;
 
     constructor(
         private authService: AuthService,
@@ -35,10 +36,12 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         if (this.login.valid) {
+            this.loading = true;
             const textModal = this.translate.instant("error_inicio_sesion");
             this.authService.login(this.email.value, this.password.value).subscribe({
                 next: (result) => {
                     if (result) {
+                        this.loading = false;
                         localStorage.setItem('currentUser', JSON.stringify(result));
                         this.sessionService.loadSession();
                         this.router.navigate(['/']);

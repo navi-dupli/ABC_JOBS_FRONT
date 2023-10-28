@@ -8,6 +8,7 @@ import {CalendarModule} from "primeng/calendar";
 import {RouterLink} from "@angular/router";
 import {CustomDialogModule} from "../../components/custom-dialog/custom-dialog.module";
 import {TranslationModule} from "../../components/translation/translation.module";
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {TranslationModule} from "../../components/translation/translation.module
     CalendarModule,
     RouterLink,
     CustomDialogModule,
-    TranslationModule
+    TranslationModule,
+    ProgressBarModule
   ],
     declarations: [
         CreateProjectComponent
