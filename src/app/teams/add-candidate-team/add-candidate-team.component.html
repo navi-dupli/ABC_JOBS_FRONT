@@ -5,7 +5,7 @@
             <div class="mb-6">
                 <label 
                     class="w-full block text-xl font-medium mb-2"
-                    for="search-education">{{'proyecto'|translate}}</label>
+                    for="project">{{'proyecto'|translate}}</label>
 
                 <div class="w-full">
                     <p-dropdown 
@@ -31,7 +31,7 @@
             <div class="mb-6">
                 <label 
                     class="w-full block text-xl font-medium mb-2"
-                    for="search-education">{{'equipo'|translate}}</label>
+                    for="team">{{'equipo'|translate}}</label>
 
                 <div class="w-full">
                     <p-dropdown 
@@ -57,17 +57,16 @@
             <div class="mb-6">
                 <label 
                     class="w-full block text-xl font-medium mb-2"
-                    for="search-education">{{'candidato'|translate}}</label>
+                    for="search-candidate">{{'candidato'|translate}}</label>
                 
                 <div class="w-full">
                     <p-multiSelect 
-                        name="education"
-                        id="search-education"
+                        name="candidate"
+                        id="search-candidate"
                         [options]="cadidateOptions" 
-                        formControlName="userId"
+                        formControlName="users"
                         [placeholder]="'seleccionar_opcion'| translate"
                         optionLabel="fullName" 
-                        optionValue="id"
                         class="multiselect-custom  w-full" 
                         display="chip">
                     </p-multiSelect>
@@ -75,8 +74,8 @@
 
                 <div
                     class="error-form"
-                    *ngIf="userId.invalid && (userId.dirty || userId.touched)">
-                    <span *ngIf="userId.errors.required">
+                    *ngIf="users.invalid && (users.dirty || users.touched)">
+                    <span *ngIf="users.errors.required">
                         {{'campo_obligatorio' | translate}}
                     </span>
                 </div>
