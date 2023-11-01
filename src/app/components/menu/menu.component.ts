@@ -68,6 +68,12 @@ export class MenuComponent {
             ]
         },
         {
+            label: 'citas',
+            items: [
+                { label: 'citas', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/listar-citas'], scope: ['view:appointment'] }
+            ]
+        },
+        {
             label: 'equipos',
             items: [
                 {

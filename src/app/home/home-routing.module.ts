@@ -6,17 +6,20 @@ import { CreateProjectComponent } from '../projects/create-project/create-projec
 import { AddCandidateTeamComponent } from '../teams/add-candidate-team/add-candidate-team.component';
 import { HomeComponent } from './home.component';
 import { RegisterTechnicalTestComponent } from '../test/register-technical-test/register-technical-test.component';
+import { ListAppointmentsComponent } from '../appointments/list-appointments/list-appointments.component';
 
 @NgModule({
 	imports: [RouterModule.forChild([
-		{ path: '', component: HomeComponent,
+		{
+			path: '', component: HomeComponent,
 			children: [
 				{ path: 'crear-proyecto', component: CreateProjectComponent },
 				{ path: 'registrar-empresa', component: RegisterCompanyComponent },
 				{ path: 'registar-resultados-prueba-tecnica', component: RegisterTechnicalTestComponent },
 				{ path: 'buscar-candidato', component: SearchCandidateComponent },
-				{ path: 'asignar-candidato-equipo', component: AddCandidateTeamComponent }
-			] 
+				{ path: 'asignar-candidato-equipo', component: AddCandidateTeamComponent },
+				{ path: 'listar-citas', component: ListAppointmentsComponent }
+			]
 		},
 	])],
 	exports: [RouterModule]

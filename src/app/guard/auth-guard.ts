@@ -28,6 +28,10 @@ export class AuthGuard implements CanActivate {
     {
         url: '/asignar-candidato-equipo',
         scope: ['register:candidate']
+    },
+    {
+      url: '/listar-citas',
+      scope: ['view:appointment']
     }]
 
     constructor(private router: Router, private sessionService:SessionService) { }
