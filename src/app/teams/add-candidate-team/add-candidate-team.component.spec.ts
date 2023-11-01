@@ -72,7 +72,7 @@ describe('AddCandidateTeamComponent', () => {
     component.dataModal.textModal = translateService.instant('asignar_candidatos_correctamente');
 
     component.teamId?.setValue(1);
-    component.userId?.setValue([1,2,3]);
+    component.users?.setValue([{id: 1, fullName: 'Pepito Perez'}]);
     component.projectId?.setValue(1);
 
     (mockTeamService.addMemberToTeam as jest.Mock).mockReturnValue(of(true));
