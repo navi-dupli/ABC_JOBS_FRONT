@@ -81,5 +81,10 @@
   "confirma_registar_resultados_prueba_tecnica": "Do you want to record the result of a technical test?",
   "resultado_prueba_tecnica_almacenado_con_exito": "Technical test result stored successfully",
   "error_almacenando_resultado_prueba_tecnica": "Error storing technical test result",
-  "registar_resultado":"Register result"
+  "registar_resultado":"Register result",
+  "resultado_entrevista": "Result of interview",
+  "nombre_candidato": "Candidate name",
+  "notas": "Notes",
+  "conclusiones": "Conclusions",
+  "volver": "Back"
 }

@@ -6,6 +6,7 @@ import { CreateProjectComponent } from '../projects/create-project/create-projec
 import { AddCandidateTeamComponent } from '../teams/add-candidate-team/add-candidate-team.component';
 import { HomeComponent } from './home.component';
 import { RegisterTechnicalTestComponent } from '../test/register-technical-test/register-technical-test.component';
+import {InterviewDetailComponent} from "../interview-detail/interview-detail.component";
 
 @NgModule({
 	imports: [RouterModule.forChild([
@@ -15,7 +16,8 @@ import { RegisterTechnicalTestComponent } from '../test/register-technical-test/
 				{ path: 'registrar-empresa', component: RegisterCompanyComponent },
 				{ path: 'registar-resultados-prueba-tecnica', component: RegisterTechnicalTestComponent },
 				{ path: 'buscar-candidato', component: SearchCandidateComponent },
-				{ path: 'asignar-candidato-equipo', component: AddCandidateTeamComponent }
+				{ path: 'asignar-candidato-equipo', component: AddCandidateTeamComponent },
+				{ path: 'detalle-entrevista/:id', component: InterviewDetailComponent }
 			] 
 		},
 	])],
