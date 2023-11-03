@@ -30,6 +30,10 @@ export class AuthGuard implements CanActivate {
         scope: ['register:candidate']
     },
     {
+      url: '/listar-citas',
+      scope: ['view:appointment']
+    },
+    {
         url: '/detalle-entrevista',
         scope: ['view:appointment']
     }]
