@@ -6,6 +6,7 @@ import { CreateProjectComponent } from '../projects/create-project/create-projec
 import { AddCandidateTeamComponent } from '../teams/add-candidate-team/add-candidate-team.component';
 import { HomeComponent } from './home.component';
 import { RegisterTechnicalTestComponent } from '../test/register-technical-test/register-technical-test.component';
+import {InterviewDetailComponent} from "../interview-detail/interview-detail.component";
 import { ListAppointmentsComponent } from '../appointments/list-appointments/list-appointments.component';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ListAppointmentsComponent } from '../appointments/list-appointments/lis
 				{ path: 'registar-resultados-prueba-tecnica', component: RegisterTechnicalTestComponent },
 				{ path: 'buscar-candidato', component: SearchCandidateComponent },
 				{ path: 'asignar-candidato-equipo', component: AddCandidateTeamComponent },
+				{ path: 'detalle-entrevista/:id', component: InterviewDetailComponent },
 				{ path: 'listar-citas', component: ListAppointmentsComponent }
 			]
 		},

@@ -9,21 +9,27 @@ import { RegisterCompanyModule } from '../companies/register-company/register-co
 import { SearchCandidateModule } from '../candidate/search-candidate/search-candidate.module';
 import { RegisterTechnicalTestModule } from '../test/register-technical-test/register-technical-test.module';
 import { AddCandidateTeamModule } from '../teams/add-candidate-team/add-candidate-team.module';
+import {InterviewDetailComponent} from "../interview-detail/interview-detail.component";
+import {TranslateModule} from "@ngx-translate/core";
+import {ButtonModule} from "primeng/button";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        HomeRoutingModule,
-        MenuModule,
-        NavBarModule,
-        CreateProjectModule,
-        RegisterCompanyModule,
-        SearchCandidateModule,
-        AddCandidateTeamModule,
-        RegisterTechnicalTestModule
-    ],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    MenuModule,
+    NavBarModule,
+    CreateProjectModule,
+    RegisterCompanyModule,
+    SearchCandidateModule,
+    AddCandidateTeamModule,
+    RegisterTechnicalTestModule,
+    TranslateModule,
+    ButtonModule
+  ],
     declarations: [
         HomeComponent,
+        InterviewDetailComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

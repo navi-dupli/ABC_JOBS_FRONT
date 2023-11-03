@@ -90,5 +90,10 @@
   "titulo": "Título",
   "fecha_y_hora": "Fecha y hora",
   "proceso": "Proceso",
-  "participantes": "Participantes"
+  "participantes": "Participantes",
+  "resultado_entrevista": "Resultado de entrevista",
+  "nombre_candidato": "Nombre candidato",
+  "notas": "Notas",
+  "conclusiones": "Conclusiones",
+  "volver": "Volver"
 }

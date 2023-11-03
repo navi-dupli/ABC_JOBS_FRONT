@@ -39,7 +39,7 @@ export class AddCandidateTeamComponent implements OnInit {
     this.addMember = new FormGroup({
       projectId: new FormControl('', [Validators.required]),
       teamId: new FormControl('', [Validators.required]),
-      userId: new FormControl('', [Validators.required]),
+      users: new FormControl('', [Validators.required]),
     });
   }
   ngOnInit(): void {
@@ -121,6 +121,6 @@ export class AddCandidateTeamComponent implements OnInit {
 
   get projectId() { return this.addMember.get('projectId'); }
   get teamId() { return this.addMember.get('teamId'); }
-  get userId() { return this.addMember.get('userId'); }
+  get users() { return this.addMember.get('users'); }
 
 }

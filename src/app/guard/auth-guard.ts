@@ -32,6 +32,10 @@ export class AuthGuard implements CanActivate {
     {
       url: '/listar-citas',
       scope: ['view:appointment']
+    },
+    {
+        url: '/detalle-entrevista',
+        scope: ['view:appointment']
     }]
 
     constructor(private router: Router, private sessionService:SessionService) { }
@@ -41,8 +45,8 @@ export class AuthGuard implements CanActivate {
             // ususario logueado
             const permissions = this.sessionService.getScopes();
             const routeFound = this.routes.find((item) => {
-                const scopes = item.scope.find(scope => permissions.includes(scope));
-                return item.url === state.url && scopes
+                const scopes = item.scope.find(scope => permissions.indexOf(scope) > 0);
+                return state.url.indexOf(item.url) && scopes
             });
 
             if (routeFound) {

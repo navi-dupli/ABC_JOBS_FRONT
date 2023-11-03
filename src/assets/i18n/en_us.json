@@ -90,5 +90,10 @@
   "titulo": "Title",
   "fecha_y_hora": "Date and Time",
   "proceso": "Process",
-  "participantes": "Participants"
+  "participantes": "Participants",
+  "resultado_entrevista": "Result of interview",
+  "nombre_candidato": "Candidate name",
+  "notas": "Notes",
+  "conclusiones": "Conclusions",
+  "volver": "Back"
 }
