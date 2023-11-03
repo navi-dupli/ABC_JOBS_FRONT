@@ -89,5 +89,6 @@
   "sin_citas": "You don't have any appointment yet",
   "titulo": "Title",
   "fecha_y_hora": "Date and Time",
-  "proceso": "Process"
+  "proceso": "Process",
+  "participantes": "Participants"
 }
