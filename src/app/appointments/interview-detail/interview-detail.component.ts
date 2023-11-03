@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {DetailInterviewService} from "../services/detail-interview/detail-interview.service";
+import {DetailInterviewService} from "../../services/detail-interview/detail-interview.service";
 import {ActivatedRoute} from "@angular/router";
-import {DetailInterviewModel} from "../models/detail-interview";
+import {DetailInterviewModel} from "../../models/detail-interview";
 
 @Component({
   selector: 'app-interview-detail',
@@ -19,7 +19,6 @@ export class InterviewDetailComponent {
     this.route.params.subscribe(params => {
       const idInterview = params['id'];
       this.detailInterviewService.getDetailInterview(idInterview).subscribe((response: any) => {
-        console.log(response)
         this.detailInterview = response;
       });
     });

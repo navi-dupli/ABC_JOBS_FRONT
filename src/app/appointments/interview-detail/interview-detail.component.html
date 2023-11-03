@@ -23,7 +23,7 @@
         </p>
 
         <p class="mb-0">
-          {{detailInterview?.appointment.date}}
+          {{detailInterview?.appointment.date | date: 'dd-MM-yyyy hh:mm a'}}
         </p>
       </div>
     </div>
@@ -63,9 +63,9 @@
               pButton
               pRipple
               type="button"
-              [label]="'cancelar'|translate"
+              [label]="'volver'|translate"
               class="p-button-outlined"
-              [routerLink]="['/']">
+              [routerLink]="['/listar-citas']">
       </button>
     </div>
 

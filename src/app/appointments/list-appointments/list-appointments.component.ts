@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppointmentsService } from '../../services/appointments/appointments.service'
 import * as moment from 'moment';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-appointments',
@@ -10,7 +11,7 @@ import * as moment from 'moment';
 export class ListAppointmentsComponent {
   totalAppointments: any = [];
   columns = [];
-  constructor(private appointmentsService: AppointmentsService) { }
+  constructor(private appointmentsService: AppointmentsService, private router: Router) { }
 
   ngOnInit() {
     this.getListAppointments()
@@ -80,4 +81,7 @@ export class ListAppointmentsComponent {
     }
   }
 
+  goDetail(data: any) {
+    this.router.navigate(['/detalle-entrevista', data.id]);
+  }
 }

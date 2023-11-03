@@ -9,7 +9,7 @@ import { RegisterCompanyModule } from '../companies/register-company/register-co
 import { SearchCandidateModule } from '../candidate/search-candidate/search-candidate.module';
 import { RegisterTechnicalTestModule } from '../test/register-technical-test/register-technical-test.module';
 import { AddCandidateTeamModule } from '../teams/add-candidate-team/add-candidate-team.module';
-import {InterviewDetailComponent} from "../interview-detail/interview-detail.component";
+import {InterviewDetailComponent} from "../appointments/interview-detail/interview-detail.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {ButtonModule} from "primeng/button";
 
