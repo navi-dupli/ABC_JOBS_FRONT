@@ -81,5 +81,10 @@
   "confirma_registar_resultados_prueba_tecnica": "¿Desea registrar el resultado de una prueba técnica?",
   "resultado_prueba_tecnica_almacenado_con_exito": "Resultado de prueba técnica almacenado con exito",
   "error_almacenando_resultado_prueba_tecnica": "Error almacenando resultado prueba técnica",
-  "registar_resultado":"Registar resultados"
+  "registar_resultado":"Registar resultados",
+  "resultado_entrevista": "Resultado de entrevista",
+  "nombre_candidato": "Nombre candidato",
+  "notas": "Notas",
+  "conclusiones": "Conclusiones",
+  "volver": "Volver"
 }
