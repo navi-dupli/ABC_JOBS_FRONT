@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { InterviewDetailComponent } from './interview-detail.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {ActivatedRoute} from "@angular/router";
-import {DetailInterviewService} from "../services/detail-interview/detail-interview.service";
+import {DetailInterviewService} from "../../services/detail-interview/detail-interview.service";
 import {of} from "rxjs";
 import {TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 
