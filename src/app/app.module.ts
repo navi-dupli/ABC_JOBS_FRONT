@@ -11,6 +11,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslationModule } from './components/translation/translation.module';
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
+import { ListAppointmentsModule } from './appointments/list-appointments/list-appointments.module';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -27,6 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
         HttpClientModule,
         RouterModule,
         TranslationModule,
+        ListAppointmentsModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

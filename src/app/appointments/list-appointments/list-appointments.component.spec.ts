@@ -46,4 +46,14 @@ describe('ListAppointmentsComponent', () => {
 
     expect(tralateTittle).toBe('Citas entrevistas');
   });
+
+  it('should get list of appointments', () => {
+    const mockAppointments: any = [
+      { date: '2023-10-30T12:00:00', candidateName: 'John', interviewerName: 'Interviewer' },
+    ];
+    jest.spyOn(appointmentsService, 'getAppointmentsUser').mockReturnValue(of(mockAppointments));
+    component.getListAppointments();
+    expect(component.totalAppointments.length).toBeGreaterThan(0);
+  });
+
 });
