@@ -96,5 +96,6 @@
   "notas": "Notes",
   "conclusiones": "Conclusions",
   "volver": "Back",
-  "entrevistador": "Interviewer"
+  "entrevistador": "Interviewer",
+  "sin_notas": "No results have been recorded for this interview"
 }
