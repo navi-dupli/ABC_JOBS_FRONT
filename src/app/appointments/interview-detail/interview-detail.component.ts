@@ -11,6 +11,8 @@ import {DetailInterviewModel} from "../../models/detail-interview";
 export class InterviewDetailComponent {
 
   detailInterview: DetailInterviewModel;
+  showError = false;
+
   constructor(private detailInterviewService: DetailInterviewService,
               private route: ActivatedRoute) {
   }
@@ -18,9 +20,17 @@ export class InterviewDetailComponent {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const idInterview = params['id'];
-      this.detailInterviewService.getDetailInterview(idInterview).subscribe((response: any) => {
-        this.detailInterview = response;
-      });
+      this.detailInterviewService.getDetailInterview(idInterview).subscribe(
+        {
+          next: (response: any) => {
+            this.detailInterview = response;
+            this.showError = false;
+          },
+          error: (error) => {
+            this.showError = true;
+          } 
+        }
+      );
     });
   }
 }
