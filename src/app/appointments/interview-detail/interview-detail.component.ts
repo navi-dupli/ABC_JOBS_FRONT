@@ -28,7 +28,7 @@ export class InterviewDetailComponent {
           },
           error: (error) => {
             this.showError = true;
-          } 
+          }
         }
       );
     });
