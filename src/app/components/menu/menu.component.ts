@@ -19,7 +19,7 @@ export class MenuComponent {
                     label: 'home',
                     icon: 'pi pi-fw pi-home',
                     routerLink: ['/'],
-                    scope: ['read:users', 'register:project', 'register:company', 'search:candidate', 'register:technical-test', 'register:candidate']
+                    scope: ['read:users', 'register:project', 'register:company', 'search:candidate', 'register:technical-test', 'register:candidate, register:performance-evaluation']
                 }
             ]
         },
@@ -83,7 +83,13 @@ export class MenuComponent {
                     scope: ['register:candidate']
                 }
             ]
-        }
+        },
+        {
+            label: 'eva_desempenio',
+            items: [
+                { label: 'eva_desempenio', icon: 'pi pi-fw pi-check-circle', routerLink: ['/evaluar-desempeño'], scope: ['register:performance-evaluation'] }
+            ]
+        },
     ];
 
     constructor(private authService: AuthService, private router: Router, private sessionService: SessionService) {

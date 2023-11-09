@@ -5,38 +5,44 @@ import {SessionService} from "../services/auth/session.service";
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    routes = [{
-        url: '/',
-        scope: ['read:users', 'register:project', 'register:company', 'search:candidate','register:technical-test', 'register:candidate']
-    },
-    {
-        url: '/crear-proyecto',
-        scope: ['register:project']
-    },
-    {
-        url: '/registrar-empresa',
-        scope: ['register:company']
-    },
-    {
-        url: '/registar-resultados-prueba-tecnica',
-        scope: ['register:technical-test']
-    },
-    {
-        url: '/buscar-candidato',
-        scope: ['search:candidate']
-    },
-    {
-        url: '/asignar-candidato-equipo',
-        scope: ['register:candidate']
-    },
-    {
-      url: '/listar-citas',
-      scope: ['view:appointment']
-    },
-    {
-        url: '/detalle-entrevista',
+    routes = [
+        {
+            url: '/',
+            scope: ['read:users', 'register:project', 'register:company', 'search:candidate','register:technical-test', 'register:candidate']
+        },
+        {
+            url: '/crear-proyecto',
+            scope: ['register:project']
+        },
+        {
+            url: '/registrar-empresa',
+            scope: ['register:company']
+        },
+        {
+            url: '/registar-resultados-prueba-tecnica',
+            scope: ['register:technical-test']
+        },
+        {
+            url: '/buscar-candidato',
+            scope: ['search:candidate']
+        },
+        {
+            url: '/asignar-candidato-equipo',
+            scope: ['register:candidate']
+        },
+        {
+        url: '/listar-citas',
         scope: ['view:appointment']
-    }]
+        },
+        {
+            url: '/detalle-entrevista',
+            scope: ['view:appointment']
+        },
+        {
+            url: '/evaluar-desempeño',
+            scope: ['register:performance-evaluation']
+        }
+    ]
 
     constructor(private router: Router, private sessionService:SessionService) { }
 

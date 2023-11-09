@@ -69,6 +69,7 @@ export class CreateProjectComponent {
         this.projectService.registerProject({...this.registerProject.value, companyId: parseInt(this.user.company_id)}).subscribe( {
           next: (result) => {
             if (result) {
+              this.loading = false;
               this.dataModal = {
                 displayModal: true,
                 textModal: this.translate.instant("proyecto_registrado_correctamente"),
@@ -78,6 +79,7 @@ export class CreateProjectComponent {
             }
           },
           error: (e) => {
+            this.loading = false;
             this.dataModal = {
               displayModal: true,
               textModal: e.error.message,
@@ -87,6 +89,7 @@ export class CreateProjectComponent {
           }
         });
       } else {
+        this.loading = false;
         const textModal = this.translate.instant("campos_incompletos");
         this.dataModal = {
             displayModal: true,

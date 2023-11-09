@@ -8,6 +8,7 @@ import { HomeComponent } from './home.component';
 import { RegisterTechnicalTestComponent } from '../test/register-technical-test/register-technical-test.component';
 import {InterviewDetailComponent} from "../appointments/interview-detail/interview-detail.component";
 import { ListAppointmentsComponent } from '../appointments/list-appointments/list-appointments.component';
+import { PerformanceEvaluationComponent } from '../test/performance-evaluation/performance-evaluation.component';
 
 @NgModule({
 	imports: [RouterModule.forChild([
@@ -20,7 +21,8 @@ import { ListAppointmentsComponent } from '../appointments/list-appointments/lis
 				{ path: 'buscar-candidato', component: SearchCandidateComponent },
 				{ path: 'asignar-candidato-equipo', component: AddCandidateTeamComponent },
 				{ path: 'detalle-entrevista/:id', component: InterviewDetailComponent },
-				{ path: 'listar-citas', component: ListAppointmentsComponent }
+				{ path: 'listar-citas', component: ListAppointmentsComponent },
+				{ path: 'evaluar-desempeño', component: PerformanceEvaluationComponent }
 			]
 		},
 	])],

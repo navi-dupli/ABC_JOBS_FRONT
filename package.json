@@ -7,7 +7,7 @@
         "start": "ng serve",
         "build": "ng build",
         "test": "jest --silent",
-        "test:coverage": "jest --coverage",
+        "test:coverage": "jest --coverage --silent",
         "test:watch": "jest --watch",
         "lint": "ng lint",
         "e2e": "ng e2e"

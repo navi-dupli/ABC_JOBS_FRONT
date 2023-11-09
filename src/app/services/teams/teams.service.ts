@@ -20,4 +20,8 @@ export class TeamsService {
     return this.http.post<any>(`${environment.url_api}/projects-app/teams/add-member-team`, body);
   }
 
+  getCandidateByTeam(teamId: number) {
+    return this.http.get<any>(`${environment.url_api}/projects-app/teams/candidates/${teamId}`);
+  }
+
 }

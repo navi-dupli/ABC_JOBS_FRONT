@@ -76,6 +76,7 @@ export class RegisterTechnicalTestComponent {
       this.technicalTestService.registerResultTechnicalTest(form).subscribe({
         next: (result) => {
           if (result) {
+            this.loading = false;
             const textModal = this.translate.instant("resultado_prueba_tecnica_almacenado_con_exito");
             this.dataModal = {
               displayModal: true,
@@ -87,6 +88,7 @@ export class RegisterTechnicalTestComponent {
         },
         error: (e) => {
           console.log(e)
+          this.loading = false;
           if (e.status === 400) {
             this.dataModal = {
               displayModal: true,
@@ -95,6 +97,7 @@ export class RegisterTechnicalTestComponent {
               typeModal: 'Error'
             }
           } else {
+            this.loading = false;
             const textModal = this.translate.instant("error_almacenando_resultado_prueba_tecnica");
             this.dataModal = {
               displayModal: true,
