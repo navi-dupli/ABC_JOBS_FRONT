@@ -12,6 +12,7 @@ import { AddCandidateTeamModule } from '../teams/add-candidate-team/add-candidat
 import {InterviewDetailComponent} from "../appointments/interview-detail/interview-detail.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {ButtonModule} from "primeng/button";
+import { PerformanceEvaluationModule } from '../test/performance-evaluation/performance-evaluation.module';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import {ButtonModule} from "primeng/button";
     AddCandidateTeamModule,
     RegisterTechnicalTestModule,
     TranslateModule,
-    ButtonModule
+    ButtonModule,
+    PerformanceEvaluationModule
   ],
     declarations: [
         HomeComponent,

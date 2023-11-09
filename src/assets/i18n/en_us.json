@@ -97,5 +97,13 @@
   "conclusiones": "Conclusions",
   "volver": "Back",
   "entrevistador": "Interviewer",
-  "sin_notas": "No results have been recorded for this interview"
+  "sin_notas": "No results have been recorded for this interview",
+  "eva_desempenio": "Performance evaluation",
+  "evaluacion_desempenio": "Performance evaluation",
+  "dimension": "Dimension",
+  "desempenio": "Performance",
+  "evaluacion_desempenio_confirmacion": "Do you want to record the candidate's performance evaluation?",
+  "evaluacion_desempenio_correctamente": "The candidate's performance evaluation has been recorded correctly",
+  "error_evaluacion_desempenio": "There was an error in recording the candidate's performance evaluation",
+  "sin_candidatos": "The selected team has no related candidates"
 }

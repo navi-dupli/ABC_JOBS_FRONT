@@ -68,6 +68,7 @@ export class RegisterCompanyComponent implements OnInit {
         this.companyService.registerCompany(this.registerCompany.value).subscribe({
           next: (result) => {
             if (result) {
+              this.loading = false;
               const textModal = this.translate.instant("registrar_empresa_exitoso");
               const typeModal = this.translate.instant("exito");
               this.dataModal = {
@@ -80,6 +81,7 @@ export class RegisterCompanyComponent implements OnInit {
           },
           error: (e) => {
             console.log(e)
+            this.loading = false;
             if (e.status === 400) {
               this.dataModal = {
                 displayModal: true,
@@ -99,6 +101,7 @@ export class RegisterCompanyComponent implements OnInit {
           }
         });
       } else {
+        this.loading = false;
         const textModal = this.translate.instant("campos_incompletos");
         this.dataModal = {
             displayModal: true,
