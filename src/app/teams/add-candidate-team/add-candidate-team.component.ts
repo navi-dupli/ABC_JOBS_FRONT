@@ -73,6 +73,7 @@ export class AddCandidateTeamComponent implements OnInit {
         this.teamsService.addMemberToTeam(this.addMember.value).subscribe( {
           next: (result) => {
             if (result) {
+              this.loading = false;
               this.dataModal = {
                 displayModal: true,
                 textModal: this.translate.instant("asignar_candidatos_correctamente"),
@@ -82,6 +83,7 @@ export class AddCandidateTeamComponent implements OnInit {
             }
           },
           error: (e) => {
+            this.loading = false;
             this.dataModal = {
               displayModal: true,
               textModal: this.translate.instant("error_asignar_candidatos"),
@@ -91,6 +93,7 @@ export class AddCandidateTeamComponent implements OnInit {
           }
         });
       } else {
+        this.loading = false;
         const textModal = this.translate.instant("campos_incompletos");
         this.dataModal = {
             displayModal: true,
