@@ -105,5 +105,11 @@
   "evaluacion_desempenio_confirmacion": "¿Desea registrar la evaluacion de desempeño del candidato?",
   "evaluacion_desempenio_correctamente": "La evaluacion de desempeño del candidato se ha registrado correctamente",
   "error_evaluacion_desempenio": "Hubo un error al registrar la evaluacion de desempeño del candidato",
-  "sin_candidatos": "El equipo seleccionado no tiene candidatos relacionados"
+  "sin_candidatos": "El equipo seleccionado no tiene candidatos relacionados",
+  "crear_equipo": "Crear equipo",
+  "crear_equipo_trabajo": "Crear equipo de trabajo",
+  "nombre_equipo": "Nombre del equipo de trabajo",
+  "crear_equipo_confirmacion": "¿Desea crear el equipo de trabajo?",
+  "crear_equipo_correctamente": "El equipo de trabajo se creo correctamente",
+  "error_crear_equipo": "Hubo un error al crear el equipo de trabajo"
 }

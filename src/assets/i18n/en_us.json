@@ -105,5 +105,11 @@
   "evaluacion_desempenio_confirmacion": "Do you want to record the candidate's performance evaluation?",
   "evaluacion_desempenio_correctamente": "The candidate's performance evaluation has been recorded correctly",
   "error_evaluacion_desempenio": "There was an error in recording the candidate's performance evaluation",
-  "sin_candidatos": "The selected team has no related candidates"
+  "sin_candidatos": "The selected team has no related candidates",
+  "crear_equipo": "Create team",
+  "crear_equipo_trabajo": "Create work team",
+  "nombre_equipo": "Work team name",
+  "crear_equipo_confirmacion": "Do you want to create a work team?",
+  "crear_equipo_correctamente": "The work team has been created correctly",
+  "error_crear_equipo": "There was an error in creating the work team"
 }
