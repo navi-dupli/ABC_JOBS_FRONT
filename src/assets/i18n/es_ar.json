@@ -111,5 +111,6 @@
   "nombre_equipo": "Nombre del equipo de trabajo",
   "crear_equipo_confirmacion": "¿Desea crear el equipo de trabajo?",
   "crear_equipo_correctamente": "El equipo de trabajo se creo correctamente",
-  "error_crear_equipo": "Hubo un error al crear el equipo de trabajo"
+  "error_crear_equipo": "Hubo un error al crear el equipo de trabajo",
+  "mensaje_ayuda_calificacion": "La calificación es un valor de 0 a 10 y se permiten valores decimales. Ej: 5 ó 3.5"
 }
