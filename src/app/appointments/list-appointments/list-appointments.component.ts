@@ -32,6 +32,7 @@ export class ListAppointmentsComponent {
         this.totalAppointments[index].isDone = moment(element.date).isBefore(moment())
         this.totalAppointments[index].severity = result[index].isDone ? "info" : ""
         this.totalAppointments[index].participantName = result[index].candidateName
+        this.totalAppointments[index].rol = currentUser.rol
         if (currentUser.rol == "CANDIDATO") {
           result[index].participantName = this.totalAppointments[index].interviewerName
         } else if (currentUser.rol == "FUNCIONARIO_ABC") {
