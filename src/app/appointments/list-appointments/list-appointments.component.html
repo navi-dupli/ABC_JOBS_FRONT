@@ -17,7 +17,7 @@
                     <tr>
                         <td *ngFor="let col of columns">
                             <label *ngIf="col.field!='state'">
-                                <i *ngIf="rowData.isDone && col.field=='title'" class="pr-2 pi pi-eye" (click)="goDetail(rowData)"></i>
+                                <i *ngIf="rowData.isDone && col.field=='title' && rowData.rol != 'CANDIDATO'" class="pr-2 pi pi-eye icon-color" (click)="goDetail(rowData)"></i>
                                 <i *ngIf="!rowData.isDone && col.field=='title'" style="color: green"
                                     class="pr-2 pi pi-calendar"></i>
                                 {{ rowData[col.field] }}
