@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import jwt_decode from "jwt-decode";
 import { AuthService } from "../../services/auth/auth.service";
 import { Router } from "@angular/router";
 import { SessionService } from "../../services/auth/session.service";
@@ -31,6 +30,17 @@ export class MenuComponent {
                     icon: 'pi pi-fw pi-book',
                     routerLink: ['/crear-proyecto'],
                     scope: ['register:project']
+                }
+            ]
+        },
+        {
+            label: 'crear_equipo',
+            items: [
+                {
+                    label: 'crear_equipo',
+                    icon: 'pi pi-fw pi-user-plus',
+                    routerLink: ['/crear-equipo'],
+                    scope: ['register:job-group']
                 }
             ]
         },
