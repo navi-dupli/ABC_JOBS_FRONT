@@ -41,6 +41,10 @@ export class AuthGuard implements CanActivate {
         {
             url: '/evaluar-desempeño',
             scope: ['register:performance-evaluation']
+        },
+        {
+            url: '/crear-equipo',
+            scope: ['register:performance-evaluation']
         }
     ]
 
