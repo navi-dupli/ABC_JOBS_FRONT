@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
                     }
                 },
                 error: (e) => {
+                    this.loading = false;
                     this.dataModal = {
                         displayModal: true,
                         textModal: textModal,
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
                 }
             });
         } else {
+            this.loading = false;
             const textModal = this.translate.instant("campos_incompletos");
             this.dataModal = {
                 displayModal: true,

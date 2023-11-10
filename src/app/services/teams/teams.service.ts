@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ProjectModel} from "../../models/projects";
 import {environment} from "../../../environments/environment";
 
 @Injectable({
@@ -18,6 +17,14 @@ export class TeamsService {
 
   addMemberToTeam(body: any) {
     return this.http.post<any>(`${environment.url_api}/projects-app/teams/add-member-team`, body);
+  }
+
+  getCandidateByTeam(teamId: number) {
+    return this.http.get<any>(`${environment.url_api}/projects-app/teams/candidates/${teamId}`);
+  }
+
+  createTeam(body: any) {
+    return this.http.post<any>(`${environment.url_api}/projects-app/teams`, body);
   }
 
 }

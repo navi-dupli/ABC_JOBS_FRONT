@@ -1,7 +1,28 @@
 <div class="flex justify-content-center mt-5">
     <div class="flex flex-column justify-content-center surface-card p-5 w-9">
-        <div class="text-3xl font-medium mb-3">{{'asignar_candidatos' | translate}}</div>
-        <form [formGroup]="addMember" (ngSubmit)="onSubmit()">
+        <div class="text-3xl font-medium mb-3">{{'crear_equipo_trabajo' | translate}}</div>
+        <form [formGroup]="team" (ngSubmit)="onSubmit()">
+
+            <div class="mb-6">
+                <label 
+                    class="w-full block text-xl font-medium mb-2"
+                    for="name">{{'nombre_equipo'|translate}}</label>
+
+                <div class="w-full">
+                    <input id="name" type="text" [placeholder]="'nombre_equipo' | translate " pInputText
+                        [class]="'w-full ' + 
+                        (name!.invalid && (name!.dirty || name!.touched) ? 'ng-dirty' : '')"
+                        style="padding:1rem" formControlName="name">
+                </div>
+
+                <div class="error-form"
+                    *ngIf="name!.invalid && (name!.dirty || name!.touched)">
+                    <span *ngIf="name!.errors!.required">
+                        {{ 'campo_obligatorio' | translate }}
+                    </span>
+                </div>
+            </div>
+
             <div class="mb-6">
                 <label 
                     class="w-full block text-xl font-medium mb-2"
@@ -11,11 +32,11 @@
                     <p-dropdown 
                         [placeholder]="('seleccionar_opcion' | translate)"
                         [options]="projectOptions"
+                        id="project"
                         optionValue="id"
                         optionLabel="name"
                         formControlName="projectId"
-                        [class]="(projectId.invalid && (projectId.dirty || projectId.touched) ? 'ng-dirty' : '')" 
-                        (onChange)="onChangeProject(projectId.value)">
+                        [class]="(projectId.invalid && (projectId.dirty || projectId.touched) ? 'ng-dirty' : '')">
                     </p-dropdown>
                 </div>
 
@@ -31,51 +52,24 @@
             <div class="mb-6">
                 <label 
                     class="w-full block text-xl font-medium mb-2"
-                    for="team">{{'equipo'|translate}}</label>
+                    for="status">{{'estado'|translate}}</label>
 
                 <div class="w-full">
                     <p-dropdown 
                         [placeholder]="('seleccionar_opcion' | translate)"
-                        [options]="teamsOptions"
-                        optionValue="id"
+                        [options]="statusOptions"
+                        id="status"
+                        optionValue="name"
                         optionLabel="name"
-                        formControlName="teamId"
-                        [class]="(teamId.invalid && (teamId.dirty || teamId.touched) ? 'ng-dirty' : '')" 
-                        [emptyMessage]="('sin_equipos' | translate)">
+                        formControlName="status"
+                        [class]="(status.invalid && (status.dirty || status.touched) ? 'ng-dirty' : '')" >
                     </p-dropdown>
                 </div>
 
                 <div
                     class="error-form"
-                    *ngIf="teamId.invalid && (teamId.dirty || teamId.touched)">
-                    <span *ngIf="teamId.errors.required">
-                        {{'campo_obligatorio' | translate}}
-                    </span>
-                </div>
-            </div>
-
-            <div class="mb-6">
-                <label 
-                    class="w-full block text-xl font-medium mb-2"
-                    for="search-candidate">{{'candidato'|translate}}</label>
-                
-                <div class="w-full">
-                    <p-multiSelect 
-                        name="candidate"
-                        id="search-candidate"
-                        [options]="cadidateOptions" 
-                        formControlName="users"
-                        [placeholder]="'seleccionar_opcion'| translate"
-                        optionLabel="fullName" 
-                        class="multiselect-custom  w-full" 
-                        display="chip">
-                    </p-multiSelect>
-                </div>
-
-                <div
-                    class="error-form"
-                    *ngIf="users.invalid && (users.dirty || users.touched)">
-                    <span *ngIf="users.errors.required">
+                    *ngIf="status.invalid && (status.dirty || status.touched)">
+                    <span *ngIf="status.errors.required">
                         {{'campo_obligatorio' | translate}}
                     </span>
                 </div>

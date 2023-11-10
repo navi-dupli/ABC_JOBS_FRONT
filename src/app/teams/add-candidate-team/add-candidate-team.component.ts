@@ -39,7 +39,7 @@ export class AddCandidateTeamComponent implements OnInit {
     this.addMember = new FormGroup({
       projectId: new FormControl('', [Validators.required]),
       teamId: new FormControl('', [Validators.required]),
-      userId: new FormControl('', [Validators.required]),
+      users: new FormControl('', [Validators.required]),
     });
   }
   ngOnInit(): void {
@@ -73,6 +73,7 @@ export class AddCandidateTeamComponent implements OnInit {
         this.teamsService.addMemberToTeam(this.addMember.value).subscribe( {
           next: (result) => {
             if (result) {
+              this.loading = false;
               this.dataModal = {
                 displayModal: true,
                 textModal: this.translate.instant("asignar_candidatos_correctamente"),
@@ -82,6 +83,7 @@ export class AddCandidateTeamComponent implements OnInit {
             }
           },
           error: (e) => {
+            this.loading = false;
             this.dataModal = {
               displayModal: true,
               textModal: this.translate.instant("error_asignar_candidatos"),
@@ -91,6 +93,7 @@ export class AddCandidateTeamComponent implements OnInit {
           }
         });
       } else {
+        this.loading = false;
         const textModal = this.translate.instant("campos_incompletos");
         this.dataModal = {
             displayModal: true,
@@ -121,6 +124,6 @@ export class AddCandidateTeamComponent implements OnInit {
 
   get projectId() { return this.addMember.get('projectId'); }
   get teamId() { return this.addMember.get('teamId'); }
-  get userId() { return this.addMember.get('userId'); }
+  get users() { return this.addMember.get('users'); }
 
 }

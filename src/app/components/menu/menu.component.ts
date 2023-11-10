@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import jwt_decode from "jwt-decode";
 import { AuthService } from "../../services/auth/auth.service";
 import { Router } from "@angular/router";
 import { SessionService } from "../../services/auth/session.service";
@@ -19,7 +18,7 @@ export class MenuComponent {
                     label: 'home',
                     icon: 'pi pi-fw pi-home',
                     routerLink: ['/'],
-                    scope: ['read:users', 'register:project', 'register:company', 'search:candidate', 'register:technical-test', 'register:candidate']
+                    scope: ['read:users', 'register:project', 'register:company', 'search:candidate', 'register:technical-test', 'register:candidate, register:performance-evaluation']
                 }
             ]
         },
@@ -31,6 +30,17 @@ export class MenuComponent {
                     icon: 'pi pi-fw pi-book',
                     routerLink: ['/crear-proyecto'],
                     scope: ['register:project']
+                }
+            ]
+        },
+        {
+            label: 'crear_equipo',
+            items: [
+                {
+                    label: 'crear_equipo',
+                    icon: 'pi pi-fw pi-user-plus',
+                    routerLink: ['/crear-equipo'],
+                    scope: ['register:job-group']
                 }
             ]
         },
@@ -68,6 +78,12 @@ export class MenuComponent {
             ]
         },
         {
+            label: 'citas',
+            items: [
+                { label: 'citas', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/listar-citas'], scope: ['view:appointment'] }
+            ]
+        },
+        {
             label: 'equipos',
             items: [
                 {
@@ -77,7 +93,13 @@ export class MenuComponent {
                     scope: ['register:candidate']
                 }
             ]
-        }
+        },
+        {
+            label: 'eva_desempenio',
+            items: [
+                { label: 'eva_desempenio', icon: 'pi pi-fw pi-check-circle', routerLink: ['/evaluar-desempeño'], scope: ['register:performance-evaluation'] }
+            ]
+        },
     ];
 
     constructor(private authService: AuthService, private router: Router, private sessionService: SessionService) {

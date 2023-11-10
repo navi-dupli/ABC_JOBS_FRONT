@@ -5,30 +5,48 @@ import {SessionService} from "../services/auth/session.service";
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    routes = [{
-        url: '/',
-        scope: ['read:users', 'register:project', 'register:company', 'search:candidate','register:technical-test', 'register:candidate']
-    },
-    {
-        url: '/crear-proyecto',
-        scope: ['register:project']
-    },
-    {
-        url: '/registrar-empresa',
-        scope: ['register:company']
-    },
-    {
-        url: '/registar-resultados-prueba-tecnica',
-        scope: ['register:technical-test']
-    },
-    {
-        url: '/buscar-candidato',
-        scope: ['search:candidate']
-    },
-    {
-        url: '/asignar-candidato-equipo',
-        scope: ['register:candidate']
-    }]
+    routes = [
+        {
+            url: '/',
+            scope: ['read:users', 'register:project', 'register:company', 'search:candidate','register:technical-test', 'register:candidate']
+        },
+        {
+            url: '/crear-proyecto',
+            scope: ['register:project']
+        },
+        {
+            url: '/registrar-empresa',
+            scope: ['register:company']
+        },
+        {
+            url: '/registar-resultados-prueba-tecnica',
+            scope: ['register:technical-test']
+        },
+        {
+            url: '/buscar-candidato',
+            scope: ['search:candidate']
+        },
+        {
+            url: '/asignar-candidato-equipo',
+            scope: ['register:candidate']
+        },
+        {
+        url: '/listar-citas',
+        scope: ['view:appointment']
+        },
+        {
+            url: '/detalle-entrevista',
+            scope: ['view:appointment']
+        },
+        {
+            url: '/evaluar-desempeño',
+            scope: ['register:performance-evaluation']
+        },
+        {
+            url: '/crear-equipo',
+            scope: ['register:performance-evaluation']
+        }
+    ]
 
     constructor(private router: Router, private sessionService:SessionService) { }
 
@@ -37,8 +55,8 @@ export class AuthGuard implements CanActivate {
             // ususario logueado
             const permissions = this.sessionService.getScopes();
             const routeFound = this.routes.find((item) => {
-                const scopes = item.scope.find(scope => permissions.includes(scope));
-                return item.url === state.url && scopes
+                const scopes = item.scope.find(scope => permissions.indexOf(scope) > 0);
+                return state.url.indexOf(item.url) && scopes
             });
 
             if (routeFound) {
