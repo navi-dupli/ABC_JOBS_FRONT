@@ -6,10 +6,11 @@ Todas las notas de lanzamiento se registran en este archivo. Este proyecto sigue
 
 ### Cambios Generales
 
-- TO BE CONTINUED...
+- [ABCJ-97] Se ha agregado la funcionalidad de [WEB] - Evaluación de desempeño a candidatos. [Ver Detalles](https://abcjobsg16.atlassian.net/browse/ABCJ-97?atlOrigin=eyJpIjoiYzgwYTQ0ZjEyNzQzNGJhN2JmNjEyZTM0NmRhZWZhNjIiLCJwIjoic2hlZXRzLWppcmEifQ)
+- [ABCJ-66] Se ha agregado la funcionalidad de [WEB] - Crear equipo de trabajo. [Ver Detalles](https://abcjobsg16.atlassian.net/browse/ABCJ-66?atlOrigin=eyJpIjoiYzgwYTQ0ZjEyNzQzNGJhN2JmNjEyZTM0NmRhZWZhNjIiLCJwIjoic2hlZXRzLWppcmEifQ)
 
 
-## 2.0.0
+## 2.1.0
 
 ### Cambios Generales
 
