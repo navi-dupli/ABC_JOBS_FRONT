@@ -22,4 +22,8 @@ export class AuthService {
     localStorage.removeItem('currentUser');
   }
 
+  registerCandidate(candidate: any) {
+    return this.http.post<any>(`${environment.url_api}/candidate`, candidate);
+  }
+
 }
