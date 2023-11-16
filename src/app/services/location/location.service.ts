@@ -13,15 +13,15 @@ export class LocationService {
     }
 
     getCountries() {
-        return this.http.get<any>(`${environment.url_api}/commons-app/countries`);
+        return this.http.get<any>(`${environment.url_api}/commons/countries`);
     }
 
     getRegions(countryId: number) {
-        return this.http.get<any>(`${environment.url_api}/commons-app/regions/country/${countryId}`);
+        return this.http.get<any>(`${environment.url_api}/commons/regions/country/${countryId}`);
     }
 
     getCity(regionId: number) {
-        return this.http.get<any>(`${environment.url_api}/commons-app/cities/region/${regionId}`);
+        return this.http.get<any>(`${environment.url_api}/commons/cities/region/${regionId}`);
     }
 
 }

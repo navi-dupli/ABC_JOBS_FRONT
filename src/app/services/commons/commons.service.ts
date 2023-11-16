@@ -22,4 +22,8 @@ export class CommonsService {
     return this.http.get<any>(`${environment.url_api}/commons-app/education-types`);
   }
 
+  getIdType() {
+    return this.http.get<any>(`${environment.url_api}/commons/identification`);
+  }
+
 }

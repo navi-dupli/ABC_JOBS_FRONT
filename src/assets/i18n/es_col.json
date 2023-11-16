@@ -112,5 +112,17 @@
   "crear_equipo_confirmacion": "¿Desea crear el equipo de trabajo?",
   "crear_equipo_correctamente": "El equipo de trabajo se creo correctamente",
   "error_crear_equipo": "Hubo un error al crear el equipo de trabajo",
-  "mensaje_ayuda_calificacion": "La calificación es un valor de 0 a 10 y se permiten valores decimales. Ej: 5 ó 3.5"
+  "mensaje_ayuda_calificacion": "La calificación es un valor de 0 a 10 y se permiten valores decimales. Ej: 5 ó 3.5",
+  "registro": "Registro",
+  "nombres": "Nombres",
+  "apellidos": "Apellidos",
+  "error_formato_texto": "Formato incorrecto, el valor debe ser texto",
+  "tipo_identificacion": "Tipo identificación",
+  "identificacion": "Identificación",
+  "fecha_nacimiento": "Fecha de nacimiento",
+  "repetir_contrasena": "Repetir contraseña",
+  "no_coincide_contrasena": "La contraseña no coincide",
+  "registrar_candidato_confirmacion": "¿Desea registrarse como candidato?",
+  "registrar_candidato_exitoso": "Se ha registrado como candidato con éxito",
+  "registrar_candidato_fallido": "Hubo un error al registrarse como candidato"
 }
