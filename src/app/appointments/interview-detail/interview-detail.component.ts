@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {DetailInterviewService} from "../../services/detail-interview/detail-interview.service";
 import {ActivatedRoute} from "@angular/router";
 import {DetailInterviewModel} from "../../models/detail-interview";
-import { SessionService } from 'src/app/services/auth/session.service';
+import { SessionService } from '../../../app/services/auth/session.service';
 
 @Component({
   selector: 'app-interview-detail',
