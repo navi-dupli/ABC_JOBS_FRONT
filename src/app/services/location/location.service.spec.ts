@@ -29,7 +29,7 @@ describe('LocationService', () => {
     service.getCountries().subscribe(data => {
     });
 
-    const req = httpMock.expectOne(`${environment.url_api}/commons-app/countries`);
+    const req = httpMock.expectOne(`${environment.url_api}/commons/countries`);
     expect(req.request.method).toBe('GET');
     req.flush({ /* Datos simulados de países */ });
   });
@@ -38,7 +38,7 @@ describe('LocationService', () => {
     service.getRegions(1).subscribe(data => {
     });
 
-    const req = httpMock.expectOne(`${environment.url_api}/commons-app/regions/country/1`);
+    const req = httpMock.expectOne(`${environment.url_api}/commons/regions/country/1`);
     expect(req.request.method).toBe('GET');
     req.flush({ /* Datos simulados de regiones */ });
   });
@@ -47,7 +47,7 @@ describe('LocationService', () => {
     service.getCity(1).subscribe(data => {
     });
 
-    const req = httpMock.expectOne(`${environment.url_api}/commons-app/cities/region/1`);
+    const req = httpMock.expectOne(`${environment.url_api}/commons/cities/region/1`);
     expect(req.request.method).toBe('GET');
     req.flush({ /* Datos simulados de ciudades */ });
   });
