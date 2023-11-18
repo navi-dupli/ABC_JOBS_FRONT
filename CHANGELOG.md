@@ -2,6 +2,13 @@
 
 Todas las notas de lanzamiento se registran en este archivo. Este proyecto sigue la especificación [Semantic Versioning](https://semver.org/).
 
+## 2.2.0
+
+### Cambios Generales
+
+- [ABCJ-51] Se ha agregado la funcionalidad de [WEB] - Registro de candidato. [Ver Detalles](https://abcjobsg16.atlassian.net/browse/ABCJ-51)
+
+
 ## 2.1.0
 
 ### Cambios Generales
