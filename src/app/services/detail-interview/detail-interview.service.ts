@@ -11,7 +11,7 @@ export class DetailInterviewService {
   constructor(private http: HttpClient) {
   }
 
-  getDetailInterview(idInterview: number) {
-    return this.http.get<any>(`${environment.url_api}/selection-app/interview-notes/appointment/${idInterview}`);
+  getDetailInterview(idInterview: number, userId: any) {
+    return this.http.get<any>(`${environment.url_api}/selection-app/interview-notes/appointment/${idInterview}/${userId}`);
   }
 }

@@ -15,6 +15,10 @@ import { AuthGuard } from './guard/auth-guard';
                 path: 'iniciar-sesion',
                 loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule)
             },
+            {
+                path: 'registrarme',
+                loadChildren: () => import('./auth/register-candidate/register-candidate.module').then(m => m.RegisterCandidateModule)
+            },
             { path: 'notfound', component: NotfoundComponent },
             { path: '**', redirectTo: '/notfound' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })
