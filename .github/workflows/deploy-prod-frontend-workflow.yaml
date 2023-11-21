@@ -2,7 +2,7 @@ name: Deploy cloud run service
 on:
   push:
     branches:
-      - develop
+      - feature/*
 env:
   PROJECT_ID: proyecto-final-xcloud-qa
   SERVICE: frontend
@@ -35,7 +35,7 @@ jobs:
       #   with:
       #     credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
       - name: Rename file
-        run: mv Dockerfile-QA Dockerfile
+        run: mv Dockerfile-PROD Dockerfile
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v1
