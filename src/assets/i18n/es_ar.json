@@ -138,5 +138,10 @@
   "actualizacion_experiencia_correctamente": "La información de experiencia laboral se ha actualizado correctamente",
   "actualizar_experiencia_confirmacion": "¿Desea registrar la información de experiencia laboral?",
   "perfil_laboral": "Perfil laboral",
-  "agregar": "Agregar"
+  "agregar": "Agregar",
+  "sin_informacion": "Aun no tienes información registrada",
+  "institucion": "Institución",
+  "tipo": "Tipo",
+  "cargo": "Cargo",
+  "la_fecha_inicio_no_puede_ser_mayor_a_la_fecha_fin": "La fecha de inicio no puede ser mayor a la fecha fin"
 }

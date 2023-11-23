@@ -25,8 +25,18 @@ export class WorkExperienceComponent implements OnInit {
       companyName: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       dateStart: new FormControl('', [Validators.required]),
-      dateEnd: new FormControl('', [Validators.required]),
-    });
+      dateEnd: new FormControl(''),
+    }, this.validatedate);
+  }
+
+  validatedate(group: FormGroup) {
+    if (group.get('dateEnd')?.value == "" || group.get('dateEnd')?.value == null) {
+      group.get('dateEnd')?.setErrors(null);
+      return null;
+    }
+    const invalid = group.get('dateStart').value > group.get('dateEnd').value;
+    group.get('dateEnd')?.setErrors(invalid ? { 'invaliddate': true } : null);
+    return invalid ? { 'invaliddate': true } : null;
   }
 
   ngOnInit() { }

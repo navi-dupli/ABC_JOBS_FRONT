@@ -138,5 +138,10 @@
   "actualizacion_experiencia_correctamente": "Work experience information has been successfully updated",
   "actualizar_experiencia_confirmacion": "Do you want to record work experience information?",
   "perfil_laboral": "Job profile",
-  "agregar": "Add"
+  "agregar": "Add",
+  "sin_informacion": "No information has been recorded yet",
+  "institucion": "Institution",
+  "tipo": "Type",
+  "cargo": "Position",
+  "la_fecha_inicio_no_puede_ser_mayor_a_la_fecha_fin": "The start date cannot be greater than the end date"
 }

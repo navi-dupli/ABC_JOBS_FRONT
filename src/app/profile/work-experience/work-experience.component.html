@@ -1,6 +1,6 @@
-<div class="register-tech flex justify-content-center  pb-5 mb-5 ">
-  <div class="flex flex-column justify-content-center surface-card p-5 mt-4 mb-4 update-education-container">
-    <form [formGroup]="updateWorkExperiencie" (ngSubmit)="onSubmit()">
+<div class="register-tech flex justify-content-center pb-5 mb-5 mt-4 ">
+  <div class="flex flex-column justify-content-center surface-card mt-2 ml-6 mr-6 mt-2 update-education-container">
+    <form [formGroup]="updateWorkExperiencie" (ngSubmit)="onSubmit()" class=" pl-4 pr-4 pt-6 pb-2">
       <div class="mb-4">
         <label class="w-full block text-xl font-medium mb-2" for="role">{{'rol_desempenado'|translate}}</label>
 
@@ -74,8 +74,8 @@
         </div>
 
         <div class="error-form" *ngIf="dateEnd!.invalid && (dateEnd!.dirty || dateEnd!.touched)">
-          <span *ngIf="dateEnd!.errors!.required">
-            {{ 'campo_obligatorio' | translate }}
+          <span *ngIf="dateEnd!.errors!.invaliddate">
+            {{ 'la_fecha_inicio_no_puede_ser_mayor_a_la_fecha_fin' | translate }}
           </span>
         </div>
       </div>

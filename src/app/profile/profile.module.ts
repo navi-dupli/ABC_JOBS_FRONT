@@ -35,6 +35,7 @@ import { TagModule } from 'primeng/tag';
     RouterLink,
     TableModule,
     DividerModule,
+    DropdownModule,
   ], exports: [UpdateProfileComponent, UpdateEducationComponent, WorkExperienceComponent]
 })
 export class ProfileModule { }

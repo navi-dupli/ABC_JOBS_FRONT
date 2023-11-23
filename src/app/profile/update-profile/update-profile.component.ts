@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { CustomDialogModel } from 'src/app/models/custom-dialog.model';
-import { ProfileService } from 'src/app/services/profile/profile.service';
-
+import { CustomDialogModel } from '../../models/custom-dialog.model';
+import { CommonsService } from '../../services/commons/commons.service';
+import { ProfileService } from '../../services/profile/profile.service';
+import { AbilityModel, LanguageModel } from '../../models/commons';
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
@@ -12,36 +13,51 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
 export class UpdateProfileComponent implements OnInit {
 
   candidate: any;
-  langugesOptions: any = [
-    {
-      value: "Español"
-    },
-    {
-      value: "Inlges"
-    },
-  ]
+  abilityOptions!: AbilityModel[];
+  languageOptions!: LanguageModel[];
   profileSkills!: FormGroup;
   dataModal: CustomDialogModel = {
     displayModal: false
   }
   loading = false;
+  currentUser: any;
   constructor(
     private translate: TranslateService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private commonsService: CommonsService,
   ) {
-    const local = localStorage.getItem('currentUser');
-    let currentUser: any;
-    if (local !== null) {
-      currentUser = JSON.parse(local);
-    }
-    this.profileService.getCandidate(currentUser.id).subscribe(result => {
-      console.log(result);
-      this.candidate = result;
-    })
+    
     this.profileSkills = new FormGroup({
-      languges: new FormControl('', [Validators.required]),
-      skils: new FormControl('', [Validators.required]),
+      languges: new FormControl(''),
+      skils: new FormControl(''),
     });
+  }
+
+  updateCandidate() {
+    const local = localStorage.getItem('currentUser');
+    if (local !== null) {
+      this.currentUser = JSON.parse(local);
+    }
+    this.profileService.getCandidate(this.currentUser.id).subscribe(result => {
+      this.candidate = result;
+      this.getLanguges();
+      this.getSkils();
+    })
+  }
+  getLanguges() {
+    let lenguges: any = [];
+    this.candidate.languages.forEach((element: any) => {
+      lenguges.push(element.code);
+    })
+    this.profileSkills.get("languges")?.setValue(lenguges);
+  }
+
+  getSkils() {
+    let skils: any = [];
+    this.candidate.skills.forEach((element: any) => {
+      skils.push(element.id);
+    })
+    this.profileSkills.get("skils")?.setValue(skils);
   }
 
   onSubmit() {
@@ -79,10 +95,18 @@ export class UpdateProfileComponent implements OnInit {
   closeModal(event: boolean) {
     this.loading = false;
     if (event) {
-      this.clearForm();
+      this.updateCandidate()
     }
   }
   ngOnInit() {
+    this.commonsService.getAbilities().subscribe(result => {
+      this.abilityOptions = result;
+      this.updateCandidate()
+    });
+
+    this.commonsService.getLanguages().subscribe(result => {
+      this.languageOptions = result;
+    });
   }
 
   get languges() { return this.profileSkills.get('languges'); }
