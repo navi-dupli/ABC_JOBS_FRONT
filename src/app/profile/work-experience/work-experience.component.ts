@@ -62,7 +62,7 @@ export class WorkExperienceComponent implements OnInit {
           company: this.updateWorkExperiencie.get("companyName")?.value,
           description: this.updateWorkExperiencie.get("description")?.value,
           dateInit: this.updateWorkExperiencie.get("dateStart")?.value,
-          dateEnd: this.updateWorkExperiencie.get("dateEnd")?.value,
+          dateEnd: this.updateWorkExperiencie.get("dateEnd")?.value == "" ? null : this.updateWorkExperiencie.get("dateEnd")?.value,
         }
         const local = localStorage.getItem('currentUser');
         if (local !== null) {
