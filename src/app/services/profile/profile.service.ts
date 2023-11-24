@@ -13,5 +13,16 @@ export class ProfileService {
     return this.http.get<any>(`${environment.url_api}/users-app/candidate/${id}`);
   }
 
+  addExperience(candidateID: number, experience: any) {
+    return this.http.post<any>(`${environment.url_api}/users-app/candidate/${candidateID}/experience`, experience);
+  }
+
+  addEducation(candidateID: number, education: any) {
+    return this.http.post<any>(`${environment.url_api}/users-app/candidate/${candidateID}/education`, education);
+  }
+
+  UpdateLanguageSkills(candidateID: number, body: any) {
+    return this.http.post<any>(`${environment.url_api}/candidate/${candidateID}/add-ability-language`, body);
+  }
 
 }

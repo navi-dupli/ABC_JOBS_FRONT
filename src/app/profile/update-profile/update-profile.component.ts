@@ -26,7 +26,7 @@ export class UpdateProfileComponent implements OnInit {
     private profileService: ProfileService,
     private commonsService: CommonsService,
   ) {
-    
+
     this.profileSkills = new FormGroup({
       languges: new FormControl(''),
       skils: new FormControl(''),
@@ -46,17 +46,21 @@ export class UpdateProfileComponent implements OnInit {
   }
   getLanguges() {
     let lenguges: any = [];
-    this.candidate.languages.forEach((element: any) => {
-      lenguges.push(element.code);
-    })
+    if (this.candidate && this.candidate.languages) {
+      this.candidate.languages.forEach((element: any) => {
+        lenguges.push(element.code);
+      });
+    }
     this.profileSkills.get("languges")?.setValue(lenguges);
   }
 
   getSkils() {
     let skils: any = [];
-    this.candidate.skills.forEach((element: any) => {
-      skils.push(element.id);
-    })
+    if (this.candidate && this.candidate.skills) {
+      this.candidate?.skills.forEach((element: any) => {
+        skils.push(element.idAbility);
+      })
+    }
     this.profileSkills.get("skils")?.setValue(skils);
   }
 
@@ -75,22 +79,38 @@ export class UpdateProfileComponent implements OnInit {
       if (this.profileSkills.valid) {
         this.loading = true;
         let skilsAndLanguges = {
-          languges: this.profileSkills.get("languges")?.value,
-          skils: this.profileSkills.get("skils")?.value,
+          languages: this.profileSkills.get("languges")?.value,
+          abilities: this.profileSkills.get("skils")?.value,
         }
-        console.log(skilsAndLanguges);
-        this.loading = false;
-        this.dataModal = {
-          displayModal: true,
-          textModal: this.translate.instant("actualizacion_habilidades_correctamente"),
-          iconModal: 'pi-check',
-          typeModal: this.translate.instant("exito")
+        const local = localStorage.getItem('currentUser');
+        if (local !== null) {
+          this.currentUser = JSON.parse(local);
         }
+        this.profileService.UpdateLanguageSkills(this.currentUser.id, skilsAndLanguges).subscribe({
+          next: (result: any) => {
+            if (result) {
+              this.loading = false;
+              this.dataModal = {
+                displayModal: true,
+                textModal: this.translate.instant("actualizacion_habilidades_correctamente"),
+                iconModal: 'pi-check',
+                typeModal: this.translate.instant("exito")
+              }
+            }
+          },
+          error: (e: any) => {
+            this.loading = false;
+            this.dataModal = {
+              displayModal: true,
+              textModal: this.translate.instant("error_actualizando_informacion"),
+              iconModal: 'pi-times',
+              typeModal: this.translate.instant("error")
+            }
+          }
+        });
+
       }
     }
-  }
-  clearForm() {
-    this.profileSkills.reset();
   }
   closeModal(event: boolean) {
     this.loading = false;
@@ -99,11 +119,16 @@ export class UpdateProfileComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.getAbilities();
+    this.getLanguages();
+  }
+  getAbilities() {
     this.commonsService.getAbilities().subscribe(result => {
       this.abilityOptions = result;
-      this.updateCandidate()
+      this.updateCandidate();
     });
-
+  }
+  getLanguages() {
     this.commonsService.getLanguages().subscribe(result => {
       this.languageOptions = result;
     });

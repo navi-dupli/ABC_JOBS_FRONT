@@ -146,6 +146,7 @@
   "institucion": "Institución",
   "tipo": "Tipo",
   "cargo": "Cargo",
-  "la_fecha_inicio_no_puede_ser_mayor_a_la_fecha_fin": "La fecha de inicio no puede ser mayor a la fecha fin"
+  "la_fecha_inicio_no_puede_ser_mayor_a_la_fecha_fin": "La fecha de inicio no puede ser mayor a la fecha fin",
+  "error_actualizando_informacion": "Hubo un error al actualizar la información"
 
 }

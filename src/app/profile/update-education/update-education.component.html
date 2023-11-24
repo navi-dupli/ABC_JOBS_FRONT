@@ -32,28 +32,20 @@
         </div>
       </div>
       <div class="mb-4">
-        <label 
-            for="educationType" 
-            class="w-full block text-xl font-medium mb-2">{{'tipo' | translate}}</label>
-        
-            <div class="w-full">
-                <p-dropdown 
-                    [placeholder]="('seleccionar_opcion' | translate)"
-                    [options]="educationTypeOptions"
-                    optionValue="id"
-                    optionLabel="name"
-                    formControlName="educationType"
-                    [class]="(educationType.invalid && (educationType.dirty || educationType.touched) ? 'ng-dirty' : '')" ></p-dropdown>
-            </div>
+        <label for="educationType" class="w-full block text-xl font-medium mb-2">{{'tipo' | translate}}</label>
 
-            <div
-                class="error-form"
-                *ngIf="educationType.invalid && (educationType.dirty || educationType.touched)">
-                <span *ngIf="educationType.errors.required">
-                    {{ 'campo_obligatorio' | translate }}
-                </span>
-            </div>
-    </div>
+        <div class="w-full">
+          <p-dropdown [placeholder]="('seleccionar_opcion' | translate)" [options]="educationTypeOptions"
+            optionValue="name" optionLabel="name" formControlName="educationType"
+            [class]="(educationType.invalid && (educationType.dirty || educationType.touched) ? 'ng-dirty' : '')"></p-dropdown>
+        </div>
+
+        <div class="error-form" *ngIf="educationType.invalid && (educationType.dirty || educationType.touched)">
+          <span *ngIf="educationType.errors.required">
+            {{ 'campo_obligatorio' | translate }}
+          </span>
+        </div>
+      </div>
       <div class="mb-4">
         <label class="w-full block text-xl font-medium mb-2" for="datein">{{'fecha_inicio'|translate}}</label>
 
@@ -92,8 +84,8 @@
         </div>
       </div>
       <div class="flex justify-content-end">
-        <button pButton pRipple type="button" [label]="'cancelar'|translate" 
-          class="p-button-outlined mr-5" [routerLink]="['/completar-perfil']">
+        <button pButton pRipple type="button" [label]="'cancelar'|translate" class="p-button-outlined mr-5"
+          [routerLink]="['/completar-perfil']">
         </button>
         <button pButton pRipple type="button" [disabled]="updateEducation.invalid" [label]="'guardar'|translate"
           (click)="onSubmit()">

@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { EducationTypeModel } from '../../models/commons';
 import { CustomDialogModel } from '../../models/custom-dialog.model';
 import { CommonsService } from '../../services/commons/commons.service';
+import { ProfileService } from '../../services/profile/profile.service';
 
 @Component({
   selector: 'app-update-education',
@@ -16,6 +17,7 @@ export class UpdateEducationComponent implements OnInit {
   dataModal: CustomDialogModel = {
     displayModal: false
   }
+  currentUser: any;
   loading: boolean = false;
   uploadedFiles: any[] = [];
   multiple: boolean | undefined;
@@ -24,6 +26,7 @@ export class UpdateEducationComponent implements OnInit {
     private translate: TranslateService,
     private router: Router,
     private commonsService: CommonsService,
+    private profileService: ProfileService,
   ) {
     this.multiple = true;
     this.updateEducation = new FormGroup({
@@ -44,10 +47,12 @@ export class UpdateEducationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getEducationType()
+  }
+  getEducationType() {
     this.commonsService.getEducationType().subscribe(result => {
       this.educationTypeOptions = result;
     });
-
   }
   onSubmit() {
     const textModal = this.translate.instant("actualizar_educacion_confirmacion");
@@ -64,25 +69,40 @@ export class UpdateEducationComponent implements OnInit {
       if (this.updateEducation.valid) {
         this.loading = true;
         let education = {
-          tittleName: this.updateEducation.get("tittleName")?.value,
-          dateStart: this.updateEducation.get("dateStart")?.value,
+          title: this.updateEducation.get("tittleName")?.value,
+          dateInit: this.updateEducation.get("dateStart")?.value,
           dateEnd: this.updateEducation.get("dateEnd")?.value,
-          educationType: this.updateEducation.get("educationType")?.value,
+          type: this.updateEducation.get("educationType")?.value,
           institution: this.updateEducation.get("institution")?.value,
         }
-        console.log(education);
-        this.loading = false;
-        this.dataModal = {
-          displayModal: true,
-          textModal: this.translate.instant("actualizacion_educacion_correctamente"),
-          iconModal: 'pi-check',
-          typeModal: this.translate.instant("exito")
+        const local = localStorage.getItem('currentUser');
+        if (local !== null) {
+          this.currentUser = JSON.parse(local);
         }
+        this.profileService.addEducation(this.currentUser.id, education).subscribe({
+          next: (result: any) => {
+            if (result) {
+              this.loading = false;
+              this.dataModal = {
+                displayModal: true,
+                textModal: this.translate.instant("actualizacion_educacion_correctamente"),
+                iconModal: 'pi-check',
+                typeModal: this.translate.instant("exito")
+              }
+            }
+          },
+          error: (e: any) => {
+            this.loading = false;
+            this.dataModal = {
+              displayModal: true,
+              textModal: this.translate.instant("error_actualizando_informacion"),
+              iconModal: 'pi-times',
+              typeModal: this.translate.instant("error")
+            }
+          }
+        });
       }
     }
-  }
-  clearForm() {
-    this.updateEducation.reset();
   }
   closeModal(event: boolean) {
     this.loading = false;

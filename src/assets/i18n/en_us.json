@@ -143,5 +143,6 @@
   "institucion": "Institution",
   "tipo": "Type",
   "cargo": "Position",
-  "la_fecha_inicio_no_puede_ser_mayor_a_la_fecha_fin": "The start date cannot be greater than the end date"
+  "la_fecha_inicio_no_puede_ser_mayor_a_la_fecha_fin": "The start date cannot be greater than the end date",
+  "error_actualizando_informacion": "There was an error updating the information"
 }
