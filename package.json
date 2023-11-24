@@ -6,6 +6,7 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
+        "build:qa": "ng build --configuration=qa",
         "test": "jest --silent",
         "test:coverage": "jest --coverage --silent",
         "test:watch": "jest --watch",
