@@ -144,5 +144,7 @@
   "tipo": "Type",
   "cargo": "Position",
   "la_fecha_inicio_no_puede_ser_mayor_a_la_fecha_fin": "The start date cannot be greater than the end date",
-  "error_actualizando_informacion": "There was an error updating the information"
+  "error_actualizando_informacion": "There was an error updating the information",
+  "anos_experiencia": "Years of experience",
+  "error_formato_anos_experiencia": "Incorrect format, value must posivite number"
 }
