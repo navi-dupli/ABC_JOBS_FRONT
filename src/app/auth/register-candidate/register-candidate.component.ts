@@ -49,8 +49,8 @@ export class RegisterCandidateComponent implements OnInit {
   ngOnInit(): void {
     this.maxDate = new Date();
     this.register = this.fb.group({
-      names: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ]*$"), Validators.maxLength(100)]),
-      surnames: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ]*$"), Validators.maxLength(100)]),
+      names: new FormControl('', [Validators.required, Validators.pattern("^[a-zñA-ZÑ ]*$"), Validators.maxLength(100)]),
+      surnames: new FormControl('', [Validators.required, Validators.pattern("^[a-zñA-ZÑ ]*$"), Validators.maxLength(100)]),
       typeIdentificationId: new FormControl('', [Validators.required]),
       identification: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9]*$"), Validators.maxLength(100)]),
       phone: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.maxLength(50)]),
