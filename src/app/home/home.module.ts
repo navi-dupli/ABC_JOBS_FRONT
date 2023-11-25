@@ -9,11 +9,12 @@ import { RegisterCompanyModule } from '../companies/register-company/register-co
 import { SearchCandidateModule } from '../candidate/search-candidate/search-candidate.module';
 import { RegisterTechnicalTestModule } from '../test/register-technical-test/register-technical-test.module';
 import { AddCandidateTeamModule } from '../teams/add-candidate-team/add-candidate-team.module';
-import {InterviewDetailComponent} from "../appointments/interview-detail/interview-detail.component";
-import {TranslateModule} from "@ngx-translate/core";
-import {ButtonModule} from "primeng/button";
+import { InterviewDetailComponent } from "../appointments/interview-detail/interview-detail.component";
+import { TranslateModule } from "@ngx-translate/core";
+import { ButtonModule } from "primeng/button";
 import { PerformanceEvaluationModule } from '../test/performance-evaluation/performance-evaluation.module';
 import { CreateTeamModule } from '../teams/create-team/create-team.module';
+import { ProfileModule } from '../profile/profile.module';
 
 @NgModule({
   imports: [
@@ -29,12 +30,13 @@ import { CreateTeamModule } from '../teams/create-team/create-team.module';
     TranslateModule,
     ButtonModule,
     PerformanceEvaluationModule,
-    CreateTeamModule
+    CreateTeamModule,
+    ProfileModule
   ],
-    declarations: [
-        HomeComponent,
-        InterviewDetailComponent
-    ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+  declarations: [
+    HomeComponent,
+    InterviewDetailComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class HomeModule { }
