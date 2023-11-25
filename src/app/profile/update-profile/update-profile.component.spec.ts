@@ -96,6 +96,7 @@ describe('UpdateProfileComponent', () => {
     translateService.use('es');
     component.languges?.setValue(["ES,EN"]);
     component.skils?.setValue([1, 2]);
+    component.experienceYears?.setValue(1);
     jest.spyOn(profileService, 'UpdateLanguageSkills').mockReturnValue(of(true));
     component.confirmModal(true);
     expect(component.dataModal.displayModal).toBe(true);

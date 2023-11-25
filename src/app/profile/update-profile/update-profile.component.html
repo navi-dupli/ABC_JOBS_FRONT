@@ -4,7 +4,7 @@
       <div class=" col-12 pt-4 ">
         <p class="text-xl font-semibold">{{'perfil_laboral'|translate}}</p>
         <div class="grid">
-          <div class="col-6">
+          <div class="col-4">
             <label class=" block text-base font-medium mb-2" for="select-languges">{{'idiomas'|translate}}</label>
             <div class="w-full">
               <p-multiSelect name="languge" id="select-languges" [options]="languageOptions!" formControlName="languges"
@@ -20,7 +20,7 @@
               </span>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-4">
             <label class=" block text-base font-medium mb-2" for="select-languges">{{'habilidades'|translate}}</label>
             <div class="w-full">
               <p-multiSelect name="skill" id="select-skill" [options]="abilityOptions!"  formControlName="skils"
@@ -36,6 +36,24 @@
               </span>
             </div>
           </div>
+          <div class="col-4">
+            <label class=" block text-base font-medium mb-2" for="role">{{'anos_experiencia'|translate}}</label>
+
+            <div class="w-full">
+              <input id="experienceYears" type="number" [placeholder]="'anos_experiencia' | translate " pInputText [class]="'w-full ' + 
+                                (experienceYears!.invalid && (experienceYears!.dirty || experienceYears!.touched) ? 'ng-dirty' : '')"
+                 formControlName="experienceYears">
+            </div>
+
+            <div class="error-form" *ngIf="experienceYears!.invalid && (experienceYears!.dirty || experienceYears!.touched)">
+              <span *ngIf="experienceYears!.errors!.required">
+                {{'campo_obligatorio' | translate}}
+              </span>
+              <span *ngIf="experienceYears!.errors!.min">
+                {{'error_formato_anos_experiencia' | translate}}
+              </span>
+            </div>
+          </div>
         </div>
         <div class="pt-4 flex justify-content-end">
           <button pButton pRipple type="button" [label]="'cancelar'|translate" class="p-button-outlined mr-5 "
@@ -45,7 +63,6 @@
             (click)="onSubmit()">
           </button>
         </div>
-
         <div class="mx-auto mt-3 w-6" *ngIf="loading">
           <p-progressBar mode="indeterminate"></p-progressBar>
         </div>
