@@ -7,6 +7,7 @@ Todas las notas de lanzamiento se registran en este archivo. Este proyecto sigue
 ### Cambios Generales
 
 - [ABCJ-53] Se ha agregado la funcionalidad de [WEB]-Completar perfil candidato. [Ver Detalles](https://abcjobsg16.atlassian.net/browse/ABCJ-53)
+- [ABCJ-51] Se ha agregado la funcionalidad de [MOVIL]-Registrar candidato. [Ver Detalles](https://abcjobsg16.atlassian.net/browse/ABCJ-51)
 
 ## 2.2.0
 
