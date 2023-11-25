@@ -145,8 +145,8 @@
     <div class="text-center mb-5">
         <img src="assets/images/nombre.png" alt="Nombre empresa" class="mb-3" />
     </div>
-    <div class="text-center">
-        <label class=" text-2xl font-bold">{{ 'sin_informacion' | translate }}</label>
+    <div class="mx-auto mt-3 w-6" *ngIf="loading">
+      <p-progressBar mode="indeterminate"></p-progressBar>
     </div>
 </div>
 </div>
