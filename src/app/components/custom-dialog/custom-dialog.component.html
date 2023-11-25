@@ -9,7 +9,7 @@
         <i
                 [class]="'pi ' +
             (data.typeModal === 'Error' ? 'error ' : '') +
-            (data.typeModal === 'Confirmación' ? 'success ' : '') +
+            ((data.typeModal === 'Confirmación' || data.typeModal === 'Confirmation') ? 'success ' : '') +
             (data.iconModal ? data.iconModal : '')"></i>
         <p class="line-height-3 ml-2">
             {{data.textModal}}
@@ -19,11 +19,11 @@
         <button
           pButton
           (click)="closeDialog()"
-          [class]="data.typeModal === 'Confirmación' ? 'p-button-outlined' : ''"
-          [label]="data.typeModal === 'Confirmación' ? ('cancelar'|translate) : ('ok'| translate)"></button>
+          [class]="(data.typeModal === 'Confirmación' || data.typeModal === 'Confirmation') ? 'p-button-outlined' : ''"
+          [label]="(data.typeModal === 'Confirmación' || data.typeModal === 'Confirmation') ? ('cancelar'|translate) : ('ok'| translate)"></button>
         <button
           id="btnConfirm"
-          *ngIf="data.typeModal === 'Confirmación'"
+          *ngIf="(data.typeModal === 'Confirmación' || data.typeModal === 'Confirmation')"
           pButton
           (click)="confirmDialog()"
           [label]="'aceptar'|translate"></button>
