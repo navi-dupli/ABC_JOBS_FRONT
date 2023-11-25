@@ -2,7 +2,7 @@ name: Deploy cloud run service
 on:
   push:
     branches:
-      - master
+      - main
 env:
   PROJECT_ID: proyecto-final-xcloud-prod
   SERVICE: frontend
