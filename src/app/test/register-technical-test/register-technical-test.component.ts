@@ -53,7 +53,7 @@ export class RegisterTechnicalTestComponent {
       displayModal: true,
       textModal: textModal,
       iconModal: 'pi-exclamation-triangle',
-      typeModal: 'Confirmación'
+      typeModal: this.translate.instant("confirmacion")
     }
   }
 
