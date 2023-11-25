@@ -39,8 +39,10 @@ export class UpdateProfileComponent implements OnInit {
     if (local !== null) {
       this.currentUser = JSON.parse(local);
     }
+    this.loading = true;
     this.profileService.getCandidate(this.currentUser.id).subscribe(result => {
       this.candidate = result;
+      this.loading = false;
       this.profileSkills.get("experienceYears")?.setValue(this.candidate.experienceYears);
       this.getLanguges();
       this.getSkils();
