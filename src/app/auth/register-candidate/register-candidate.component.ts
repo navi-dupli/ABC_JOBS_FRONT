@@ -37,6 +37,8 @@ export class RegisterCandidateComponent implements OnInit {
   countriesOptions: CountriesModel[];
   regionOptions: RegionModel[];
   cityOptions: CityModel[];
+  isLoadedRegion = false;
+  isLoadedCity = false;
 
   constructor(
     private fb: FormBuilder,
@@ -56,8 +58,8 @@ export class RegisterCandidateComponent implements OnInit {
       phone: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.maxLength(50)]),
       dateBirthday: new FormControl('', [Validators.required]),
       countryId: new FormControl('', [Validators.required]),
-      regionId: new FormControl('', [Validators.required]),
-      cityId: new FormControl('', [Validators.required]),
+      regionId: new FormControl({value:'', disabled: true}, [Validators.required]),
+      cityId: new FormControl({value:'', disabled: true}, [Validators.required]),
       address: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       email: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$")]),
       password: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$._ %^&*-]).{8,}$")]),
@@ -151,12 +153,14 @@ export class RegisterCandidateComponent implements OnInit {
   onChangeCountry(country: number) {
     this.locationService.getRegions(country).subscribe(result => {
       this.regionOptions = result;
+      this.regionId.enable();
     })
   }
 
   onChangeRegion(region: number) {
     this.locationService.getCity(region).subscribe(result => {
       this.cityOptions = result;
+      this.cityId.enable();
     })
   }
 
