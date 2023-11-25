@@ -1,4 +1,5 @@
 .layout-topbar-menu {
+
   &__option {
     display: flex;
     align-items: center;
@@ -11,4 +12,8 @@
   &__option.session-card {
     border-radius: 4px;
   }
+}
+
+.layout-topbar {
+  z-index: 1;
 }

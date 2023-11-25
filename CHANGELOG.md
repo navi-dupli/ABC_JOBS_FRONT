@@ -2,12 +2,18 @@
 
 Todas las notas de lanzamiento se registran en este archivo. Este proyecto sigue la especificación [Semantic Versioning](https://semver.org/).
 
+## 3.0.0
+
+### Cambios Generales
+
+- [ABCJ-53] Se ha agregado la funcionalidad de [WEB]-Completar perfil candidato. [Ver Detalles](https://abcjobsg16.atlassian.net/browse/ABCJ-53)
+
 ## 2.2.0
 
 ### Cambios Generales
 
-- [ABCJ-51] [WEB] - Registro de candidato [Ver Detalles](https://abcjobsg16.atlassian.net/browse/ABCJ-51?atlOrigin=eyJpIjoiYzgwYTQ0ZjEyNzQzNGJhN2JmNjEyZTM0NmRhZWZhNjIiLCJwIjoic2hlZXRzLWppcmEifQ)
-- [ABCJ-327] [BACKEND] - Registro de candidato [Ver Detalles](https://abcjobsg16.atlassian.net/browse/ABCJ-327?atlOrigin=eyJpIjoiYzgwYTQ0ZjEyNzQzNGJhN2JmNjEyZTM0NmRhZWZhNjIiLCJwIjoic2hlZXRzLWppcmEifQ)
+- [ABCJ-51] Se ha agregado la funcionalidad de [WEB] - Registro de candidato. [Ver Detalles](https://abcjobsg16.atlassian.net/browse/ABCJ-51)
+
 
 ## 2.1.0
 

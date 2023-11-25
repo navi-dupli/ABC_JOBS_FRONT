@@ -78,9 +78,25 @@ export class MenuComponent {
             ]
         },
         {
+            label: 'completar-perfil',
+            items: [
+                {
+                    label: 'Completar perfil',
+                    icon: 'pi pi-fw pi-copy',
+                    routerLink: ['/completar-perfil'],
+                    scope: ['register:profile-candidate']
+                }
+            ]
+        },
+        {
             label: 'citas',
             items: [
-                { label: 'citas', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/listar-citas'], scope: ['view:appointment'] }
+                {
+                    label: 'citas',
+                    icon: 'pi pi-fw pi-calendar-times',
+                    routerLink: ['/listar-citas'],
+                    scope: ['view:appointment']
+                }
             ]
         },
         {
